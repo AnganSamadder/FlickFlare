@@ -4,6 +4,8 @@
 !backend/gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+/backend/.env
+/backend/src/main/resources/serviceAccountKey.json
 
 ### STS ###
 .apt_generated

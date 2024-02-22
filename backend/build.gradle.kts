@@ -16,11 +16,21 @@ repositories {
 	maven { url = uri("https://repo.spring.io/milestone") }
 }
 
+configurations {
+	all {
+		exclude(group = "commons-logging", module = "commons-logging")
+	}
+}
+
 dependencies {
+	implementation("com.google.firebase:firebase-admin:9.2.0")
+//	implementation("com.google.firebase:firebase-database")
 	implementation("org.springframework.boot:spring-boot-starter")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	runtimeOnly("com.mysql:mysql-connector-j")
+	implementation("org.projectlombok:lombok:1.18.28")
+	implementation("org.projectlombok:lombok:1.18.28")
+	runtimeOnly("mysql:mysql-connector-java:8.0.33")
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
