@@ -1,8 +1,8 @@
-package com.ASCP.MovieBrowser;
+package com.ASCP.MovieBrowser.movie;
 
-import java.io.File;
+
+
 import java.util.ArrayList;
-
 public class Movie {
     
     private String movieName;
@@ -11,7 +11,7 @@ public class Movie {
     private String movieDate;
     private boolean isUpcoming;
     private boolean isNowShowing;
-    private File moviePoster;
+    private String moviePoster;
     private String movieTrailerLink; 
     private String movieCategory;
     private String movieProducer;
@@ -45,7 +45,7 @@ public class Movie {
         return isNowShowing;
     }
 
-    public File getMoviePoster() {
+    public String getMoviePoster() {
         return moviePoster;
     }
 
@@ -102,7 +102,7 @@ public class Movie {
         this.isNowShowing = isNowShowing;
     }
 
-    public void setMoviePoster(File moviePoster) {
+    public void setMoviePoster(String moviePoster) {
         this.moviePoster = moviePoster;
     }
 
@@ -133,5 +133,5 @@ public class Movie {
     public void setMovieReviews(ArrayList<String> movieReviews) {
         this.movieReviews = movieReviews;
     }
-    
+
 }
