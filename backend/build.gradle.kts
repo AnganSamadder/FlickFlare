@@ -37,6 +37,25 @@ dependencies {
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 }
 
+sourceSets {
+	main {
+		java {
+			srcDir("src/main/java")
+		}
+		resources {
+			srcDir("src/main/resources")
+		}
+	}
+	test {
+		java {
+			srcDir("src/test/java")
+		}
+		resources {
+			srcDir("src/test/resources")
+		}
+	}
+}
+
 tasks.withType<Test> {
 	useJUnitPlatform()
 }

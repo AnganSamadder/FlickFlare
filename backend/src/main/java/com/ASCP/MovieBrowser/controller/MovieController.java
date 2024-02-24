@@ -10,7 +10,7 @@ import com.ASCP.MovieBrowser.model.Movie;
 import java.util.concurrent.ExecutionException;
 
 @RestController
-//@RequestMapping("/Movie")
+@RequestMapping("/movie")
 @AllArgsConstructor
 public class MovieController {
 

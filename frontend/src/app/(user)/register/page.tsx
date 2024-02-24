@@ -1,0 +1,250 @@
+export default function Register() {
+  return (
+    <div className="w-[1440px] h-[1024px] relative bg-orange-50 rounded-br-[19px]">
+      <div className="w-[1440px] h-20 left-0 top-[944px] absolute">
+        <div className="w-[1440px] h-20 left-0 top-0 absolute bg-zinc-700 border border-black" />
+        <div className="w-[571.10px] h-[25.14px] left-[13.71px] top-[27.43px] absolute text-orange-500 text-xl font-bold font-['Inter']">
+          © 2024 Cinema E-Booking. All rights reserved.
+        </div>
+      </div>
+      <div className="left-[548px] top-[116px] absolute text-orange-500 text-5xl font-bold font-['Maven Pro'] leading-normal">
+        Create Account
+      </div>
+      <div className="w-[1369px] h-[750px] left-[30px] top-[180px] absolute">
+        <div className="w-[1369px] h-[680px] left-0 top-0 absolute bg-zinc-700 bg-opacity-50 rounded-[17px]" />
+        <div className="w-[154px] h-[60px] left-[1215px] top-[690px] absolute flex-col justify-start items-start inline-flex">
+          <div className="w-[154px] h-[60px] bg-orange-500 rounded-[20px]" />
+          <div className="text-white text-2xl font-bold font-['Maven Pro'] leading-normal">
+            Confirm
+          </div>
+        </div>
+        <div className="w-[321px] h-[640px] left-[39px] top-[30px] absolute">
+          <div className="w-[321px] h-[120px] left-0 top-[355px] absolute">
+            <div className="w-[321px] h-[32.87px] left-0 top-[87.13px] absolute">
+              <div className="w-[283.24px] h-[16.05px] left-[15.55px] top-[6.88px] absolute text-zinc-700 text-opacity-75 text-[15px] font-medium font-['Maven Pro'] leading-normal">
+                Enter Confirm Password...
+              </div>
+            </div>
+            <div className="w-80 h-[32.87px] left-0 top-[43.57px] absolute">
+              <div className="w-[282.35px] h-[16.05px] left-[15.50px] top-[6.88px] absolute text-zinc-700 text-opacity-75 text-[15px] font-medium font-['Maven Pro'] leading-normal">
+                Enter Password...
+              </div>
+            </div>
+            <div className="w-[184.32px] h-[18.34px] left-0 top-0 absolute text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
+              Password*
+            </div>
+          </div>
+          <div className="w-[321px] h-20 left-0 top-[140px] absolute">
+            <div className="w-[321px] h-[34.40px] left-0 top-[45.60px] absolute">
+              <div className="w-[283.24px] h-[16.80px] left-[15.55px] top-[7.20px] absolute opacity-75 text-zinc-700 text-[15px] font-medium font-['Maven Pro'] leading-normal">
+                Enter numbers only...
+              </div>
+            </div>
+            <div className="w-[277.51px] h-[19.20px] left-0 top-0 absolute text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
+              Phone Number*
+            </div>
+          </div>
+          <div className="w-[321px] h-20 left-0 top-[240px] absolute">
+            <div className="w-[321px] h-[34.40px] left-0 top-[45.60px] absolute">
+              <div className="w-[283.24px] h-[16.80px] left-[15.55px] top-[7.20px] absolute opacity-75 text-zinc-700 text-[15px] font-medium font-['Maven Pro'] leading-normal">
+                Enter email...
+              </div>
+            </div>
+            <div className="w-[277.51px] h-[19.20px] left-0 top-0 absolute text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
+              Email*
+            </div>
+          </div>
+          <div className="w-[321px] h-[120px] left-0 top-0 absolute">
+            <div className="w-[321px] h-[33.08px] left-0 top-[86.92px] absolute">
+              <div className="w-[283.24px] h-[16.15px] left-[15.55px] top-[6.92px] absolute opacity-75 text-zinc-700 text-[15px] font-medium font-['Maven Pro'] leading-normal">
+                Enter last name...
+              </div>
+            </div>
+            <div className="w-[321px] h-[33.08px] left-0 top-[43.08px] absolute">
+              <div className="w-[283.24px] h-[16.15px] left-[15.55px] top-[6.92px] absolute opacity-75 text-zinc-700 text-[15px] font-medium font-['Maven Pro'] leading-normal">
+                Enter first name...
+              </div>
+            </div>
+            <div className="w-[118.05px] h-[18.46px] left-0 top-0 absolute text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
+              Name*
+            </div>
+          </div>
+          <div className="left-0 top-[616px] absolute">
+            <span className="text-orange-500 text-2xl font-bold font-['Maven Pro'] leading-normal">
+              *
+            </span>
+            <span className="text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
+              {" "}
+              Required to be filled in
+            </span>
+          </div>
+        </div>
+        <div className="w-[932px] h-[638px] left-[408px] top-[12px] absolute">
+          <div className="left-0 top-0 absolute text-white text-xl font-bold font-['Maven Pro'] leading-normal">
+            Optional
+          </div>
+          <div className="w-[779px] h-[241px] left-[23px] top-[97px] absolute">
+            <div className="w-[775px] h-9 left-[4px] top-[35px] absolute">
+              <div className="w-[246px] h-9 left-[181px] top-0 absolute">
+                <div className="w-[233px] h-[18px] left-[13px] top-[7px] absolute text-zinc-700 text-opacity-75 text-[15px] font-medium font-['Maven Pro'] leading-normal">
+                  Card Type
+                </div>
+              </div>
+              <div className="left-[441px] top-[6px] absolute text-white text-[15px] font-medium font-['Maven Pro'] leading-normal">
+                Visa, Mastercard, American Express, Discover
+              </div>
+              <div className="left-0 top-[2px] absolute text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
+                Card Type
+              </div>
+            </div>
+            <div className="w-[375px] h-9 left-[4px] top-[129px] absolute">
+              <div className="w-[194px] h-9 left-[181px] top-0 absolute">
+                <div className="w-[89px] h-9 left-[105px] top-0 absolute">
+                  <div className="w-[76px] h-[18px] left-[13px] top-[6px] absolute text-zinc-700 text-opacity-75 text-[15px] font-medium font-['Maven Pro'] leading-normal">
+                    Year
+                  </div>
+                </div>
+                <div className="w-[89px] h-9 left-0 top-0 absolute">
+                  <div className="w-[76px] h-[18px] left-[13px] top-[6px] absolute text-zinc-700 text-opacity-75 text-[15px] font-medium font-['Maven Pro'] leading-normal">
+                    Month
+                  </div>
+                </div>
+              </div>
+              <div className="left-[270px] top-[6px] absolute text-white text-[15px] font-medium font-['Maven Pro'] leading-normal">
+                /
+              </div>
+              <div className="left-0 top-[6px] absolute text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
+                Expiration Date
+              </div>
+            </div>
+            <div className="w-[756px] h-[35.54px] left-[4px] top-[82px] absolute">
+              <div className="w-[299px] h-[35.54px] left-[181px] top-0 absolute">
+                <div className="w-[283.24px] h-[17.40px] left-[13px] top-[5px] absolute text-zinc-700 text-opacity-75 text-[15px] font-medium font-['Maven Pro'] leading-normal">
+                  Enter card number...
+                </div>
+              </div>
+              <div className="left-0 top-[6px] absolute text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
+                Card Number
+              </div>
+              <div className="left-[501px] top-[6px] absolute text-white text-[15px] font-medium font-['Maven Pro'] leading-normal">
+                The 16 digits on front of your card
+              </div>
+            </div>
+            <div className="w-[267px] h-[35.54px] left-[401px] top-[134px] absolute">
+              <div className="w-[200.50px] h-[35.54px] left-[66.50px] top-0 absolute">
+                <div className="w-[189.93px] h-[17.40px] left-[8.72px] top-[5px] absolute text-zinc-700 text-opacity-75 text-[15px] font-medium font-['Maven Pro'] leading-normal">
+                  Enter CVV...
+                </div>
+              </div>
+              <div className="w-[46.35px] left-0 top-[4px] absolute text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
+                CVV
+              </div>
+            </div>
+            <div className="w-[174px] h-9 left-0 top-[205px] absolute">
+              <div className="w-[174px] h-9 left-0 top-0 absolute bg-orange-500 rounded-[20px]" />
+              <div className="w-[103.95px] h-[14.40px] left-[35px] top-[4px] absolute text-white text-2xl font-bold font-['Maven Pro'] leading-normal">
+                Add Card
+              </div>
+            </div>
+            <div className="left-[4px] top-0 absolute text-white text-[32px] font-bold font-['Maven Pro'] leading-normal">
+              Payment
+            </div>
+          </div>
+          <div className="w-[411px] h-[73.54px] left-[29px] top-[391px] absolute">
+            <div className="left-0 top-0 absolute text-white text-[32px] font-bold font-['Maven Pro'] leading-normal">
+              Billing Address
+            </div>
+            <div className="w-[408px] h-[35.54px] left-[3px] top-[38px] absolute">
+              <div className="w-[299px] h-[35.54px] left-[109px] top-0 absolute flex-col justify-start items-start inline-flex">
+                <div className="w-[283.24px] h-[17.40px] text-zinc-700 text-opacity-75 text-[15px] font-medium font-['Maven Pro'] leading-normal">
+                  Enter shipping address...
+                </div>
+              </div>
+              <div className="left-0 top-[6px] absolute text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
+                Address
+              </div>
+            </div>
+          </div>
+          <div className="w-[813px] h-[169.54px] left-[32px] top-[391px] absolute">
+            <div className="w-[386px] h-[35.54px] left-[427px] top-[38px] absolute">
+              <div className="w-[298.23px] h-[35.54px] left-[87.77px] top-0 absolute">
+                <div className="w-[282.50px] h-[17.40px] left-[12.97px] top-[5px] absolute text-zinc-700 text-opacity-75 text-[15px] font-medium font-['Maven Pro'] leading-normal">
+                  Enter street...
+                </div>
+              </div>
+              <div className="w-[66.83px] left-0 top-[6px] absolute text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
+                Street
+              </div>
+            </div>
+            <div className="w-[386px] h-[35.54px] left-[427px] top-[88px] absolute">
+              <div className="w-[299px] h-[35.54px] left-[87px] top-0 absolute">
+                <div className="w-[283.24px] h-[17.40px] left-[13px] top-[5px] absolute text-zinc-700 text-opacity-75 text-[15px] font-medium font-['Maven Pro'] leading-normal">
+                  Enter city...
+                </div>
+              </div>
+              <div className="left-0 top-[6px] absolute text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
+                City
+              </div>
+            </div>
+            <div className="w-[390px] h-[35.54px] left-[18px] top-[88px] absolute">
+              <div className="w-[299px] h-[35.54px] left-[91px] top-0 absolute">
+                <div className="w-[283.24px] h-[17.40px] left-[10px] top-[5px] absolute text-zinc-700 text-opacity-75 text-[15px] font-medium font-['Maven Pro'] leading-normal">
+                  Enter state...
+                </div>
+              </div>
+              <div className="left-0 top-[6px] absolute text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
+                State
+              </div>
+            </div>
+            <div className="w-[408px] h-[35.54px] left-0 top-[134px] absolute">
+              <div className="w-[299px] h-[35.54px] left-[109px] top-0 absolute">
+                <div className="w-[283.24px] h-[17.40px] left-[13px] top-[5px] absolute text-zinc-700 text-opacity-75 text-[15px] font-medium font-['Maven Pro'] leading-normal">
+                  Enter zip code...
+                </div>
+              </div>
+              <div className="left-0 top-[6px] absolute text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
+                Zip Code
+              </div>
+            </div>
+            <div className="left-[424px] top-0 absolute text-white text-[32px] font-bold font-['Maven Pro'] leading-normal">
+              Home Address
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="w-[1440px] h-[95px] left-0 top-0 absolute">
+        <div className="w-[1440px] h-[84px] left-0 top-0 absolute bg-zinc-800 rounded-bl-[20px] rounded-br-[20px] shadow border-black" />
+        <div className="w-[60px] h-[60px] left-[1341px] top-[13px] absolute bg-zinc-800 bg-opacity-0" />
+        <div className="w-[751px] h-[83px] left-[281px] top-[12px] absolute">
+          <div className="w-[751px] h-[63px] left-0 top-0 absolute bg-stone-900 rounded-[29px]" />
+          <div className="w-36 h-[27px] left-[596px] top-[20px] absolute text-white text-xl font-bold font-['Maven Pro'] leading-normal">
+            Coming Soon
+          </div>
+          <div className="w-[35px] h-[0px] left-[575px] top-[16px] absolute origin-top-left rotate-90 border border-black"></div>
+          <div className="w-[175px] h-[30px] left-[382px] top-[20px] absolute text-white text-xl font-bold font-['Maven Pro'] leading-normal">
+            Currently Running
+          </div>
+          <div className="w-[35px] h-[0px] left-[361px] top-[16px] absolute origin-top-left rotate-90 border border-black"></div>
+          <div className="w-[154px] h-[63px] left-[224px] top-[20px] absolute text-white text-xl font-bold font-['Maven Pro'] leading-normal">
+            Order History
+          </div>
+          <div className="w-[35px] h-[0px] left-[202px] top-[16px] absolute origin-top-left rotate-90 border border-black"></div>
+          <div className="w-[97px] h-[63px] left-[130px] top-[20px] absolute text-white text-xl font-bold font-['Maven Pro'] leading-normal">
+            Profile
+          </div>
+          <div className="w-[35px] h-[0px] left-[109px] top-[16px] absolute origin-top-left rotate-90 border border-black"></div>
+          <div className="w-[94px] h-[63px] left-[36px] top-[20px] absolute text-white text-xl font-bold font-['Maven Pro'] leading-normal">
+            Home
+          </div>
+        </div>
+        <div className="w-[703px] h-[39px] left-[32px] top-[24px] absolute text-orange-500 text-[40px] font-extrabold font-['Maven Pro'] leading-normal">
+          NinjaFlix
+        </div>
+        <img
+          className="w-[54px] h-[49px] left-[200px] top-[14px] absolute"
+          src="https://via.placeholder.com/54x49"
+        />
+      </div>
+    </div>
+  );
+}

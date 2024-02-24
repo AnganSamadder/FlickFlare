@@ -1,113 +1,182 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="w-[1440px] h-[1024px] relative bg-white">
+      <div className="left-[52px] top-[880px] absolute text-orange-500 text-4xl font-bold font-['Maven Pro'] leading-normal">
+        Coming Soon
+      </div>
+      <div className="w-[1379px] h-[687px] left-[52px] top-[169px] absolute">
+        <div className="w-[474px] h-[629px] left-[905px] top-[58px] absolute">
+          <div className="w-[289px] h-11 left-[93px] top-[585px] absolute">
+            <div className="w-[135px] h-11 left-0 top-0 absolute">
+              <div className="w-[135px] h-11 left-0 top-0 absolute bg-orange-500 rounded-tl-[29px] rounded-bl-[29px]" />
+              <div className="w-[91px] h-6 left-[29px] top-[10px] absolute text-white text-[15px] font-bold font-['Maven Pro'] leading-normal">
+                View Trailer
+                <br />
+              </div>
+            </div>
+            <div className="w-[135px] h-11 left-[154px] top-0 absolute">
+              <div className="w-[135px] h-11 left-0 top-0 absolute bg-orange-500 rounded-tr-[29px] rounded-br-[29px]" />
+              <div className="w-[91px] h-6 left-[26px] top-[10px] absolute text-white text-[15px] font-bold font-['Maven Pro'] leading-normal">
+                More info
+              </div>
+            </div>
+          </div>
+          <div className="w-[319px] h-[90px] left-[78px] top-[496px] absolute">
+            <span
+              /*style*/ className="text-white text-xl font-bold font-['Maven Pro'] leading-normal"
+            >
+              Description:
+            </span>
+            <span
+              /*style*/ className="text-white text-xl font-normal font-['Maven Pro'] leading-normal"
+            >
+              {" "}
+              Bitten by a radioactive spider in the subway, Brooklyn teenager
+              Miles Morales...
+              <br />
+              <br />
+              <br />{" "}
+            </span>
+          </div>
+          <img
+            className="w-[323px] h-[404px] left-[76px] top-[41px] absolute"
+            src="https://via.placeholder.com/323x404"
+          />
+          <div className="w-[474px] left-0 top-0 absolute text-center text-white text-[32px] font-bold font-['Maven Pro'] leading-normal">
+            Spider Man: Into The..
+          </div>
+        </div>
+        <div className="w-[323px] h-[629px] left-[501px] top-[58px] absolute">
+          <div className="w-[289px] h-11 left-[17px] top-[585px] absolute">
+            <div className="w-[135px] h-11 left-0 top-0 absolute">
+              <div className="w-[135px] h-11 left-0 top-0 absolute bg-orange-500 rounded-tl-[29px] rounded-bl-[29px]" />
+              <div className="w-[91px] h-6 left-[29px] top-[10px] absolute text-white text-[15px] font-bold font-['Maven Pro'] leading-normal">
+                View Trailer
+                <br />
+              </div>
+            </div>
+            <div className="w-[135px] h-11 left-[154px] top-0 absolute">
+              <div className="w-[135px] h-11 left-0 top-0 absolute bg-orange-500 rounded-tr-[29px] rounded-br-[29px]" />
+              <div className="w-[91px] h-6 left-[26px] top-[10px] absolute text-white text-[15px] font-bold font-['Maven Pro'] leading-normal">
+                More info
+              </div>
+            </div>
+          </div>
+          <div className="w-[319px] h-[90px] left-[2px] top-[496px] absolute">
+            <span
+              /*style*/ className="text-white text-xl font-bold font-['Maven Pro'] leading-normal"
+            >
+              Description:
+            </span>
+            <span
+              /*style*/ className="text-white text-xl font-normal font-['Maven Pro'] leading-normal"
+            >
+              {" "}
+              Paul Atreides, a brilliant and gifted young man born into a great
+              destiny beyond his...
+              <br />
+              <br />
+              <br />{" "}
+            </span>
+          </div>
+          <img
+            className="w-[323px] h-[404px] left-0 top-[41px] absolute"
+            src="https://via.placeholder.com/323x404"
+          />
+          <div className="left-[122px] top-0 absolute text-center text-white text-[32px] font-bold font-['Maven Pro'] leading-normal">
+            Dune
+          </div>
+        </div>
+        <div className="w-[323px] h-[629px] left-[27px] top-[58px] absolute">
+          <div className="w-[289px] h-11 left-[17px] top-[585px] absolute">
+            <div className="w-[135px] h-11 left-0 top-0 absolute">
+              <div className="w-[135px] h-11 left-0 top-0 absolute bg-orange-500 rounded-tl-[29px] rounded-bl-[29px]" />
+              <div className="w-[91px] h-6 left-[29px] top-[10px] absolute text-white text-[15px] font-bold font-['Maven Pro'] leading-normal">
+                View Trailer
+                <br />
+              </div>
+            </div>
+            <div className="w-[135px] h-11 left-[154px] top-0 absolute">
+              <div className="w-[135px] h-11 left-0 top-0 absolute bg-orange-500 rounded-tr-[29px] rounded-br-[29px]" />
+              <div className="w-[91px] h-6 left-[26px] top-[10px] absolute text-white text-[15px] font-bold font-['Maven Pro'] leading-normal">
+                More info
+              </div>
+            </div>
+          </div>
+          <div className="w-[319px] h-[90px] left-[2px] top-[496px] absolute">
+            <span
+              /*style*/ className="text-white text-xl font-bold font-['Maven Pro'] leading-normal"
+            >
+              Description
+            </span>
+            <span
+              /*style*/ className="text-white text-xl font-normal font-['Maven Pro'] leading-normal"
+            >
+              : A billionaire industrialist and genius inventor, Tony Stark
+              (Robert Downey Jr.)...
+              <br />
+              <br />
+              <br />{" "}
+            </span>
+          </div>
+          <img
+            className="w-[323px] h-[404px] left-0 top-[51px] absolute"
+            src="https://via.placeholder.com/323x404"
+          />
+          <div className="left-[94px] top-0 absolute text-center text-white text-[32px] font-bold font-['Maven Pro'] leading-normal">
+            Iron man
+          </div>
+        </div>
+        <div className="left-0 top-0 absolute text-orange-500 text-4xl font-bold font-['Maven Pro'] leading-normal">
+          Currently Running
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+      <div className="w-[685px] h-[31.68px] left-[377px] top-[116px] absolute">
+        <div className="w-[685px] h-[31.68px] left-0 top-0 absolute bg-orange-50 rounded-[29px]" />
+        <div className="w-[618px] h-[25px] left-[38px] top-[3px] absolute text-stone-300 text-base font-normal font-['Maven Pro'] leading-normal">
+          Search by title ...
+        </div>
+        <div className="w-[17px] h-[17px] left-[10.24px] top-[6.34px] absolute" />
+      </div>
+      <div className="w-[1470px] h-20 left-0 top-[944px] absolute">
+        <div className="w-[1470px] h-20 left-0 top-0 absolute bg-zinc-700 border border-black" />
+        <div className="w-[583px] h-[25.14px] left-[14px] top-[27.43px] absolute text-orange-500 text-xl font-bold font-['Inter']">
+          © 2024 Cinema E-Booking. All rights reserved.
+        </div>
+      </div>
+      <div className="w-[1440px] h-[95px] left-0 top-0 absolute">
+        <div className="w-[1440px] h-[84px] left-0 top-0 absolute bg-zinc-800 rounded-bl-[20px] rounded-br-[20px] shadow border-black" />
+        <div className="w-[60px] h-[60px] left-[1341px] top-[13px] absolute bg-zinc-800 bg-opacity-0" />
+        <div className="w-[751px] h-[83px] left-[281px] top-[12px] absolute">
+          <div className="w-[751px] h-[63px] left-0 top-0 absolute bg-stone-900 rounded-[29px]" />
+          <div className="w-36 h-[27px] left-[596px] top-[20px] absolute text-white text-xl font-bold font-['Maven Pro'] leading-normal">
+            Coming Soon
+          </div>
+          <div className="w-[35px] h-[0px] left-[575px] top-[16px] absolute origin-top-left rotate-90 border border-black"></div>
+          <div className="w-[175px] h-[30px] left-[382px] top-[20px] absolute text-white text-xl font-bold font-['Maven Pro'] leading-normal">
+            Currently Running
+          </div>
+          <div className="w-[35px] h-[0px] left-[361px] top-[16px] absolute origin-top-left rotate-90 border border-black"></div>
+          <div className="w-[154px] h-[63px] left-[224px] top-[20px] absolute text-white text-xl font-bold font-['Maven Pro'] leading-normal">
+            Order History
+          </div>
+          <div className="w-[35px] h-[0px] left-[202px] top-[16px] absolute origin-top-left rotate-90 border border-black"></div>
+          <div className="w-[97px] h-[63px] left-[130px] top-[20px] absolute text-white text-xl font-bold font-['Maven Pro'] leading-normal">
+            Profile
+          </div>
+          <div className="w-[35px] h-[0px] left-[109px] top-[16px] absolute origin-top-left rotate-90 border border-black"></div>
+          <div className="w-[94px] h-[63px] left-[36px] top-[20px] absolute text-white text-xl font-bold font-['Maven Pro'] leading-normal">
+            Home
+          </div>
+        </div>
+        <div className="w-[222px] h-[39px] left-[32px] top-[24px] absolute text-orange-500 text-[40px] font-extrabold font-['Maven Pro'] leading-normal">
+          NinjaFlix
+        </div>
+        <img
+          className="w-[54px] h-[49px] left-[200px] top-[14px] absolute"
+          src="https://via.placeholder.com/54x49"
         />
       </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </div>
   );
 }
