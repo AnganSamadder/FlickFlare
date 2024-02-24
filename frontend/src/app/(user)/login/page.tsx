@@ -1,12 +1,6 @@
 export default function Login({}) {
   return (
     <div className="w-[1440px] h-[1024px] relative bg-orange-50 rounded-br-[19px]">
-      <div className="w-[1470px] h-20 left-0 top-[944px] absolute">
-        <div className="w-[1470px] h-20 left-0 top-0 absolute bg-zinc-700 border border-black" />
-        <div className="w-[583px] h-[25.14px] left-[14px] top-[27.43px] absolute text-orange-500 text-xl font-bold font-['Inter']">
-          © 2024 Cinema E-Booking. All rights reserved.
-        </div>
-      </div>
       <div className="left-[658px] top-[116px] absolute text-orange-500 text-5xl font-bold font-['Maven Pro'] leading-normal">
         Login
       </div>
