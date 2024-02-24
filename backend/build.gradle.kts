@@ -24,7 +24,6 @@ configurations {
 
 dependencies {
 	implementation("com.google.firebase:firebase-admin:9.2.0")
-//	implementation("com.google.firebase:firebase-database")
 	implementation("org.springframework.boot:spring-boot-starter")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
@@ -35,25 +34,6 @@ dependencies {
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
-}
-
-sourceSets {
-	main {
-		java {
-			srcDir("src/main/java")
-		}
-		resources {
-			srcDir("src/main/resources")
-		}
-	}
-	test {
-		java {
-			srcDir("src/test/java")
-		}
-		resources {
-			srcDir("src/test/resources")
-		}
-	}
 }
 
 tasks.withType<Test> {

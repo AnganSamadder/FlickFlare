@@ -9,15 +9,14 @@ import java.util.Objects;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
-import org.hibernate.dialect.SybaseDialect;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
-public class MovieBrowserApplication {
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+public class MovieBrowserApplication{
 
-	public static void main(String[] args) throws IOException{
+  public static void main(String[] args) throws IOException{
     File serviceAccountfile = new File(Objects.requireNonNull(MovieBrowserApplication.class.getClassLoader().getResource("serviceAccountKey.json")).getFile());
     FileInputStream serviceAccount = new FileInputStream(serviceAccountfile.getAbsolutePath());
 
@@ -25,7 +24,7 @@ public class MovieBrowserApplication {
             .setCredentials(GoogleCredentials.fromStream(serviceAccount))
             .build();
 
-    if (FirebaseApp.getApps().isEmpty()) {
+    if(FirebaseApp.getApps().isEmpty()){
       FirebaseApp.initializeApp(options);
     }
 
