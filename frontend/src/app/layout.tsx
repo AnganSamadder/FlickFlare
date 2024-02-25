@@ -10,7 +10,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Navbar />
-      <body>{children}</body>
+      <body>
+        <div className="w-screen h-16"></div>
+        {children}
+      </body>
       <Footer />
     </html>
   );
