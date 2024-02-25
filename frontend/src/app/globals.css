@@ -5,3 +5,13 @@
 :root {
     background: #000;
 }
+
+.input[type='text'] {
+    width: 100%;
+    position: relative;
+    border-radius: 11px;
+    max-width: 100%;
+    overflow: hidden;
+    height: 32.87px;
+}
+
