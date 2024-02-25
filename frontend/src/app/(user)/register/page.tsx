@@ -128,9 +128,12 @@ export default function Register() {
             </div>
             <div className="w-[756px] h-[35.54px] left-[4px] top-[82px] absolute">
               <div className="w-[299px] h-[35.54px] left-[181px] top-0 absolute bg-orange-50">
-                <div className="w-[283.24px] h-[17.40px] left-[13px] top-[5px] absolute text-zinc-700 text-opacity-75 text-[15px] font-medium font-['Maven Pro'] leading-normal">
-                  Enter card number...
-                </div>
+              <input 
+                  type="text"
+                  name="cardnumber"
+                  className="w-[250px] h-[17.40px] left-[13px] top-[8px] absolute text-zinc-700 text-opacity-75 text-[15px] font-medium font-['Maven Pro'] leading-normal bg-transparent"
+                  placeholder="Enter card number..."
+                />
               </div>
               <div className="left-0 top-[6px] absolute text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
                 Card Number
@@ -167,36 +170,40 @@ export default function Register() {
             <div className="left-0 top-[-25px] absolute text-white text-[32px] font-bold font-['Maven Pro'] leading-normal">
               Billing Address
             </div>
-            <div className="w-[408px] h-[35.54px] left-[3px] top-[38px] absolute">
-              <div className="w-[299px] h-[35.54px] left-[109px] top-0 absolute flex-col justify-start items-start inline-flex bg-orange-50 rounded-md">
-                <input
-                type="text"
-                name="shippingAddress"
-                className="w-[283.24px] h-[30.40px]  text-zinc-700 text-opacity-75 text-[15px] font-medium font-['Maven Pro'] leading-normal bg-transparent"
-                placeholder="Enter shipping address..."
-                />
+            <div className="w-[400px] h-[35.54px] left-[3px] top-[38px] absolute">
+              <div className="w-[298.23px] h-[35.54px] left-[110.77px] top-[8px] absolute bg-orange-50 rounded-md">
+                  <input
+                  type="text"
+                  name="shippingAddress"
+                  className="w-[270px] h-[15.40px] left-[12.97px] top-[8px] absolute text-zinc-700 text-opacity-75 text-[15px] font-medium font-['Maven Pro'] leading-normal bg-transparent"
+                  placeholder="Enter shipping address..."
+                  />
               </div>
               <div className="left-0 top-[6px] absolute text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
                 Address
               </div>
-            </div>
-          </div>
-          <div className="w-[813px] h-[169.54px] left-[32px] top-[391px] absolute">
+            </div>          
             <div className="w-[386px] h-[35.54px] left-[427px] top-[38px] absolute">
-              <div className="w-[298.23px] h-[35.54px] left-[87.77px] top-0 absolute">
-                <div className="w-[282.50px] h-[17.40px] left-[12.97px] top-[5px] absolute text-zinc-700 text-opacity-75 text-[15px] font-medium font-['Maven Pro'] leading-normal">
-                  Enter street...
-                </div>
+              <div className="w-[298.23px] h-[35.54px] left-[87.77px] top-[8px] absolute bg-orange-50 rounded-md">
+                  <input
+                  type="text"
+                  name="street"
+                  className="w-[270px] h-[15.40px] left-[12.97px] top-[8px] absolute text-zinc-700 text-opacity-75 text-[15px] font-medium font-['Maven Pro'] leading-normal bg-transparent"
+                  placeholder="Enter street..."
+                  />                
               </div>
               <div className="w-[66.83px] left-0 top-[6px] absolute text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
-                Street
+                Home
               </div>
             </div>
             <div className="w-[386px] h-[35.54px] left-[427px] top-[88px] absolute">
-              <div className="w-[299px] h-[35.54px] left-[87px] top-0 absolute">
-                <div className="w-[283.24px] h-[17.40px] left-[13px] top-[5px] absolute text-zinc-700 text-opacity-75 text-[15px] font-medium font-['Maven Pro'] leading-normal">
-                  Enter city...
-                </div>
+              <div className="w-[298.23px] h-[35.54px] left-[87.77px] top-[8px] absolute bg-orange-50 rounded-md">
+                  <input
+                  type="text"
+                  name="city"
+                  className="w-[270px] h-[15.40px] left-[12.97px] top-[8px] absolute text-zinc-700 text-opacity-75 text-[15px] font-medium font-['Maven Pro'] leading-normal bg-transparent"
+                  placeholder="Enter city..."
+                  />                
               </div>
               <div className="left-0 top-[6px] absolute text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
                 City
@@ -221,9 +228,6 @@ export default function Register() {
               <div className="left-0 top-[6px] absolute text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
                 Zip Code
               </div>
-            </div>
-            <div className="left-[424px] top-[-25px] absolute text-white text-[32px] font-bold font-['Maven Pro'] leading-normal">
-              Home Address
             </div>
           </div>
         </div>
