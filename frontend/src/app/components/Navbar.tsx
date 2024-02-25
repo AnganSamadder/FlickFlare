@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 function NavbarButton(props: {
   onClick: (event: React.MouseEvent<HTMLElement>) => void;
@@ -36,6 +36,7 @@ function NavbarButton(props: {
 }
 
 const Navbar = () => {
+  const router = useRouter();
   const pathname = usePathname();
   const [showing, setShowing] = React.useState<string | null>(null);
 
@@ -49,7 +50,11 @@ const Navbar = () => {
     event: React.MouseEvent<HTMLElement>,
     newShowing: string | null,
   ) => {
+    // console.log(newShowing);
     setShowing(newShowing);
+    if (newShowing === "currently-running") {
+      router.push("/home");
+    }
   };
 
   return (

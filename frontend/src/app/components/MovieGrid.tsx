@@ -3,6 +3,7 @@ import { cn } from "../utils/cn";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export const MovieGrid = ({
   items,
@@ -21,14 +22,14 @@ export const MovieGrid = ({
   return (
     <div
       className={cn(
-        "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3",
+        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-2",
         className,
       )}
     >
       {items.map((item, idx) => (
-        <Link
-          href={item?.link}
-          key={item?.link}
+        <div
+          // href={item?.link}
+          key={item?.title}
           className="relative group  block p-2 h-full w-full"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
@@ -36,7 +37,7 @@ export const MovieGrid = ({
           <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.span
-                className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block  rounded-3xl"
+                className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block rounded-3xl"
                 layoutId="hoverBackground"
                 initial={{ opacity: 0 }}
                 animate={{
@@ -54,8 +55,9 @@ export const MovieGrid = ({
             <CardTitle>{item.title}</CardTitle>
             <CardImg src={item.img}></CardImg>
             <CardDescription>{item.description}</CardDescription>
+            <CardButtons trailerLink={item.link} />
           </Card>
-        </Link>
+        </div>
       ))}
     </div>
   );
@@ -138,5 +140,36 @@ export const CardDescription = ({
     >
       {children}
     </p>
+  );
+};
+
+export const CardButtons = ({
+  className,
+  trailerLink,
+}: {
+  className?: string;
+  trailerLink: string;
+}) => {
+  const router = useRouter();
+
+  return (
+    <div className={cn("flex justify-center mt-8", className)}>
+      <button
+        className="p-[3px] relative"
+        onClick={() => router.push(trailerLink)}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-500 rounded-l-full" />
+        <div className="px-8 py-2  bg-black rounded-[6px] rounded-l-full relative group transition duration-200 text-white hover:bg-transparent">
+          View Trailer
+        </div>
+      </button>
+      <div className="w-2" />
+      <button className="p-[3px] relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-500 rounded-r-full" />
+        <div className="px-8 py-2  bg-black rounded-[6px] rounded-r-full relative group transition duration-200 text-white hover:bg-transparent">
+          More info
+        </div>
+      </button>
+    </div>
   );
 };

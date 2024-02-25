@@ -9,12 +9,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Navbar />
       <body>
+        <Navbar />
         <div className="w-screen h-16"></div>
         {children}
+        <Footer />
       </body>
-      <Footer />
     </html>
   );
 }
