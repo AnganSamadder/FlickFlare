@@ -1,14 +1,9 @@
-const admin = require('firebase-admin');
 
-// Initialize Firebase Admin SDK
-const serviceAccount = require('../../serviceAccountKey.json'); // Update with your service account key path
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
-});
+const firestore = require('../firebaseConfig.js');
 
 // Reference Firestore collection
-const collectionName = 'movie'; // Replace 'your-collection-name' with your collection name
-const collectionRef = admin.firestore().collection(collectionName);
+const collectionName = 'movie';
+const collectionRef = firestore.collection(collectionName);
 
 async function search(searchString) {
 
@@ -18,7 +13,7 @@ async function search(searchString) {
 
         const matchingDocumentIds = [];
         querySnapshot.forEach(doc => {//Iterate through each doc
-            const title=doc.data()["Title"].substring(0,searchString.length);//shorten title to searchString length
+            const title=doc.data()["title"].substring(0,searchString.length);//shorten title to searchString length
             if(title.toLowerCase().localeCompare(searchString.toLowerCase())==0){
                 matchingDocumentIds.push(doc.id);
             }
@@ -33,3 +28,4 @@ async function search(searchString) {
     }
 }
 
+module.exports = search;
