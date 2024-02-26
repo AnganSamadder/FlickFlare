@@ -10,10 +10,22 @@ export const MovieGrid = ({
   className,
 }: {
   items: {
+    id: string;
     title: string;
-    img: string;
     description: string;
-    link: string;
+    showtimes: string[];
+    releaseDate: string;
+    poster: string;
+    trailer: string;
+    genres: string[];
+    director: string;
+    producer: string;
+    castList: string[];
+    synopsis: string;
+    mpaaCode: string;
+    reviews: string[];
+    upcoming: boolean;
+    nowShowing: boolean;
   }[];
   className?: string;
 }) => {
@@ -28,16 +40,15 @@ export const MovieGrid = ({
     >
       {items.map((item, idx) => (
         <div
-          // href={item?.link}
           key={item?.title}
-          className="relative group  block p-2 h-full w-full"
+          className="relative group block p-10 h-full w-full"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
           <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.span
-                className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block rounded-3xl"
+                className="absolute inset-0 w-full h-full bg-neutral-200 dark:bg-slate-800/[0.8] block rounded-3xl"
                 layoutId="hoverBackground"
                 initial={{ opacity: 0 }}
                 animate={{
@@ -53,9 +64,9 @@ export const MovieGrid = ({
           </AnimatePresence>
           <Card>
             <CardTitle>{item.title}</CardTitle>
-            <CardImg src={item.img}></CardImg>
+            <CardImg src={item.poster}></CardImg>
             <CardDescription>{item.description}</CardDescription>
-            <CardButtons trailerLink={item.link} />
+            <CardButtons trailerLink={item.trailer} />
           </Card>
         </div>
       ))}
