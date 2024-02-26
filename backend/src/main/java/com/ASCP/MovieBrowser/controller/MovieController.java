@@ -10,6 +10,7 @@ import com.ASCP.MovieBrowser.model.Movie;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/movie")
 @AllArgsConstructor
@@ -45,6 +46,11 @@ public class MovieController{
   public String delete(@RequestParam String id){
     movieService.deleteMovie(id);
     return "movie deleted";
+  }
+
+  @GetMapping("/search")
+  public ArrayList<Movie> search(@RequestParam String input) throws ExecutionException, InterruptedException{
+    return movieService.searchMovies(input);
   }
 
   @GetMapping("/test")

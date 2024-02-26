@@ -1,12 +1,14 @@
 "use client";
+import { Movie } from "@/app/interfaces/movie";
+import SearchBar from "@/app/components/SearchBar";
 import React from "react";
 import { usePathname, useRouter } from "next/navigation";
 
-function NavbarButton(props: {
+export const NavbarButton = (props: {
   onClick: (event: React.MouseEvent<HTMLElement>) => void;
   showing: string | null;
   onClick1: (event: React.MouseEvent<HTMLElement>) => void;
-}) {
+}) => {
   return (
     <div className="inset-0 bg-gradient-to-r from-amber-500 to-red-500 rounded-full">
       <button className="p-[3px] pr-[1.5px] relative" onClick={props.onClick}>
@@ -33,7 +35,7 @@ function NavbarButton(props: {
       </button>
     </div>
   );
-}
+};
 
 const Navbar = () => {
   const router = useRouter();
@@ -70,12 +72,7 @@ const Navbar = () => {
             </a>
           </div>
           <div className="flex w-5/6 items-center space-x-4">
-            <div className="w-3/5 h-[32px] bg-orange-50 rounded-[29px] flex">
-              <input
-                className="w-full px-4 bg-transparent outline-none"
-                placeholder="Search"
-              />
-            </div>
+            <SearchBar />
             <div className="flex w-2/5 justify-center">
               <NavbarButton
                 onClick={(event) => handleShowing(event, "currently-running")}

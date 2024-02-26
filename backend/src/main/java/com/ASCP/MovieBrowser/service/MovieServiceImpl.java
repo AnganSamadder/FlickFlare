@@ -46,4 +46,20 @@ public class MovieServiceImpl implements MovieService{
     Firestore db = FirestoreClient.getFirestore();
     ApiFuture<WriteResult> writeResult = db.collection("movie").document(id).delete();
   }
+
+  @Override
+  public ArrayList<Movie> searchMovies(String input) throws ExecutionException, InterruptedException{
+    if(input.equals("")){
+      return new ArrayList<>();
+    }
+
+    ArrayList<Movie> movies = getAllMovies();
+    ArrayList<Movie> matchedMovies = new ArrayList<>();
+    for(Movie movie : movies){
+      if(movie.getTitle().toLowerCase().contains(input.toLowerCase())){
+        matchedMovies.add(movie);
+      }
+    }
+    return matchedMovies;
+  }
 }

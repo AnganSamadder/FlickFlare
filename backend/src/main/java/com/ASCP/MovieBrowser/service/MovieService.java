@@ -16,4 +16,6 @@ public interface MovieService{
   public Movie getMovie(String id) throws ExecutionException, InterruptedException;
 
   public void deleteMovie(String id);
+
+  public ArrayList<Movie> searchMovies(String input) throws ExecutionException, InterruptedException;
 }

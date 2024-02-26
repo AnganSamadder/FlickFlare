@@ -1,5 +1,6 @@
 "use client";
 import { cn } from "../utils/cn";
+import { Movie } from "../interfaces/movie";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
@@ -9,24 +10,7 @@ export const MovieGrid = ({
   items,
   className,
 }: {
-  items: {
-    id: string;
-    title: string;
-    description: string;
-    showtimes: string[];
-    releaseDate: string;
-    poster: string;
-    trailer: string;
-    genres: string[];
-    director: string;
-    producer: string;
-    castList: string[];
-    synopsis: string;
-    mpaaCode: string;
-    reviews: string[];
-    upcoming: boolean;
-    nowShowing: boolean;
-  }[];
+  items: Movie[];
   className?: string;
 }) => {
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -64,7 +48,7 @@ export const MovieGrid = ({
           </AnimatePresence>
           <Card>
             <CardTitle>{item.title}</CardTitle>
-            <CardImg src={item.poster}></CardImg>
+            <CardImg src={item.poster} />
             <CardDescription>{item.description}</CardDescription>
             <CardButtons trailerLink={item.trailer} />
           </Card>
@@ -125,11 +109,11 @@ export const CardImg = ({
   return (
     <div className="items-center">
       <img
-        className={cn("rounded-2xl text-center mx-auto", className)}
+        className={cn("rounded-2xl mx-auto", className)}
         src={src}
         // alt={alt}
-        width={323}
-        height={404}
+        // width={323}
+        // height={404}
       />
     </div>
   );
