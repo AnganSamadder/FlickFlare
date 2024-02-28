@@ -1,12 +1,13 @@
 export default function Seats() {
   return (
-    <div className="w-[1440px] h-[1024px] relative bg-white">
+    <div className="w-[1440px] h-[1024px] relative bg-black">
       <div className="w-[1358px] h-[783px] left-[47px] top-[137px] absolute">
         <div className="w-[200px] h-[226px] left-0 top-[84px] absolute">
           <div className="w-[200px] left-0 top-0 absolute">
             <span className="text-orange-500 text-[32px] font-bold font-['Maven Pro'] leading-normal">
               Movie:{" "}
             </span>
+            <br/>
             <span className="text-white text-2xl font-medium font-['Maven Pro'] leading-normal">
               Iron Man
             </span>
@@ -15,6 +16,7 @@ export default function Seats() {
             <span className="text-orange-500 text-[32px] font-bold font-['Maven Pro'] leading-normal">
               Showtime:{" "}
             </span>
+            <br/>
             <span className="text-white text-2xl font-medium font-['Maven Pro'] leading-normal">
               10/10    1:00 PM
             </span>
@@ -26,7 +28,7 @@ export default function Seats() {
             <div className="w-[341px] h-[303px] left-[5px] top-[69px] absolute">
               <div className="w-[341px] h-9 left-0 top-[61px] absolute">
                 <div className="w-[78px] h-9 left-0 top-0 absolute">
-                  <div className="w-[74px] h-[18px] left-[4px] top-[7px] absolute text-zinc-700 text-opacity-75 text-[15px] font-medium font-['Maven Pro'] leading-normal">
+                  <div className="w-[74px] h-[18px] left-[4px] top-[7px] absolute text-zinc-200 text-opacity-80 text-[15px] font-medium font-['Maven Pro'] leading-normal">
                     Adult
                   </div>
                 </div>
@@ -50,7 +52,7 @@ export default function Seats() {
               <div className="w-[200px] h-[0px] left-[271px] top-[113px] absolute origin-top-left -rotate-180 border border-black"></div>
               <div className="w-[331px] h-9 left-0 top-[130px] absolute">
                 <div className="w-[78px] h-9 left-0 top-0 absolute">
-                  <div className="w-[74px] h-[18px] left-[4px] top-[7px] absolute text-zinc-700 text-opacity-75 text-[15px] font-medium font-['Maven Pro'] leading-normal">
+                  <div className="w-[74px] h-[18px] left-[4px] top-[7px] absolute text-zinc-200 text-opacity-80 text-[15px] font-medium font-['Maven Pro'] leading-normal">
                     Child
                   </div>
                 </div>
@@ -74,7 +76,7 @@ export default function Seats() {
               <div className="w-[200px] h-[0px] left-[271px] top-[182px] absolute origin-top-left -rotate-180 border border-black"></div>
               <div className="w-[341px] h-9 left-0 top-[198px] absolute">
                 <div className="w-[78px] h-9 left-0 top-0 absolute">
-                  <div className="w-[74px] h-[18px] left-[4px] top-[7px] absolute text-zinc-700 text-opacity-75 text-[15px] font-medium font-['Maven Pro'] leading-normal">
+                  <div className="w-[74px] h-[18px] left-[4px] top-[7px] absolute text-zinc-200 text-opacity-80 text-[15px] font-medium font-['Maven Pro'] leading-normal">
                     Senior
                   </div>
                 </div>
@@ -98,7 +100,7 @@ export default function Seats() {
               <div className="w-[200px] h-[0px] left-[271px] top-[251px] absolute origin-top-left -rotate-180 border border-black"></div>
               <div className="w-[298px] h-9 left-0 top-[267px] absolute">
                 <div className="w-[78px] h-9 left-0 top-0 absolute">
-                  <div className="w-[74px] h-[18px] left-[4px] top-[7px] absolute text-zinc-700 text-opacity-75 text-[15px] font-medium font-['Maven Pro'] leading-normal">
+                  <div className="w-[74px] h-[18px] left-[4px] top-[7px] absolute text-zinc-200 text-opacity-80 text-[15px] font-medium font-['Maven Pro'] leading-normal">
                     Age
                   </div>
                 </div>
@@ -129,14 +131,14 @@ export default function Seats() {
                 <div className="w-[325px] h-[0px] left-[325px] top-[44px] absolute origin-top-left -rotate-180 border border-black"></div>
               </div>
             </div>
-            <div className="w-[308px] h-7 left-[39px] top-0 absolute text-orange-500 text-5xl font-bold font-['Maven Pro'] leading-normal">
+            <div className="w-[308px] h-0 left-[53px] top-[-25px] absolute text-orange-500 text-5xl font-bold font-['Maven Pro'] leading-normal">
               Select Age
             </div>
           </div>
           <div className="w-[762px] h-[606px] left-[15px] top-[54px] absolute">
             <div className="w-[700px] h-[30px] left-[31px] top-[565px] absolute">
               <div className="w-[700px] h-[30px] left-0 top-0 absolute bg-orange-50" />
-              <div className="w-[80.92px] left-[310px] top-[3px] absolute text-center text-black text-2xl font-bold font-['Maven Pro'] leading-normal">
+              <div className="w-[80.92px] left-[310px] top-[-4px] absolute text-center text-black text-2xl font-bold font-['Maven Pro'] leading-normal">
                 Screen
               </div>
             </div>
@@ -517,9 +519,9 @@ export default function Seats() {
           </div>
           <div className="left-[27px] top-[743px] absolute text-center text-white text-xl font-normal font-['Maven Pro'] leading-normal">
             Select a seat in “Select Seats”, then apply the age category of each
-            seat in “Select Age”
+            seat in “Select Age.”
           </div>
-          <div className="w-[396px] h-[28.33px] left-[268px] top-0 absolute text-orange-500 text-5xl font-bold font-['Maven Pro'] leading-normal">
+          <div className="w-[396px] h-[28.33px] left-[268px] top-[-25px] absolute text-orange-500 text-5xl font-bold font-['Maven Pro'] leading-normal">
             Select Seats
           </div>
         </div>
@@ -535,7 +537,7 @@ export default function Seats() {
           </div>
           <img
             className="w-[70px] h-[70px] left-[368px] top-0 absolute"
-            src="https://via.placeholder.com/70x70"
+            src="https://www.figma.com/file/REWCHzaLG3PQZZahjMYWSR/Cinema-E-Booking-Prototype?type=design&node-id=76-741&mode=design&t=fD7pXLTsakpKD2sY-4"
           />
           <img
             className="w-[70px] h-[70px] left-[188px] top-0 absolute"
@@ -546,57 +548,20 @@ export default function Seats() {
             src="https://via.placeholder.com/70x70"
           />
         </div>
-        <div className="w-[102px] h-11 left-[1243px] top-[725px] absolute">
-          <div className="w-[102px] h-11 left-0 top-0 absolute bg-orange-500 rounded-tl-[29px] rounded-br-[29px]" />
-          <div className="w-[35px] h-6 left-[34px] top-[10px] absolute text-white text-[15px] font-bold font-['Maven Pro'] leading-normal">
+        <div className="w-[102px] h-11 left-[1210px] top-[720px] absolute">
+          <button
+              className="px-12 py-3 rounded-br-3xl rounded-tl-3xl bg-orange-500 text-white font-bold font-['Maven Pro'] leading-normal transition duration-200 hover:bg-orange-500 hover:text-black border-2 border-transparent ">
             Next
-          </div>
+          </button>
         </div>
         <div className="w-[135px] h-11 left-[32px] top-0 absolute">
-          <div className="w-[135px] h-11 left-0 top-0 absolute bg-orange-500 rounded-tr-[29px] rounded-bl-[29px]" />
-          <div className="w-[91px] h-6 left-[34px] top-[10px] absolute text-white text-[15px] font-bold font-['Maven Pro'] leading-normal">
-            Go Back
+          <div className="w-[135px] h-11 z-10 left-[-17px] top-[-65px] absolute">
+            <button
+                className="px-8 py-2 rounded-bl-3xl rounded-tr-3xl bg-orange-500 text-white font-bold font-['Maven Pro'] leading-normal transition duration-200 hover:bg-orange-500 hover:text-black border-2 border-transparent ">
+              Back
+            </button>
           </div>
         </div>
-      </div>
-      <div className="w-[1470px] h-20 left-0 top-[944px] absolute">
-        <div className="w-[1470px] h-20 left-0 top-0 absolute bg-zinc-700 border border-black" />
-        <div className="w-[583px] h-[25.14px] left-[14px] top-[27.43px] absolute text-orange-500 text-xl font-bold font-['Inter']">
-          © 2024 Cinema E-Booking. All rights reserved.
-        </div>
-      </div>
-      <div className="w-[1440px] h-[95px] left-0 top-0 absolute">
-        <div className="w-[1440px] h-[84px] left-0 top-0 absolute bg-zinc-800 rounded-bl-[20px] rounded-br-[20px] shadow border-black" />
-        <div className="w-[60px] h-[60px] left-[1341px] top-[13px] absolute bg-zinc-800 bg-opacity-0" />
-        <div className="w-[751px] h-[83px] left-[281px] top-[12px] absolute">
-          <div className="w-[751px] h-[63px] left-0 top-0 absolute bg-stone-900 rounded-[29px]" />
-          <div className="w-36 h-[27px] left-[596px] top-[20px] absolute text-white text-xl font-bold font-['Maven Pro'] leading-normal">
-            Coming Soon
-          </div>
-          <div className="w-[35px] h-[0px] left-[575px] top-[16px] absolute origin-top-left rotate-90 border border-black"></div>
-          <div className="w-[175px] h-[30px] left-[382px] top-[20px] absolute text-white text-xl font-bold font-['Maven Pro'] leading-normal">
-            Currently Running
-          </div>
-          <div className="w-[35px] h-[0px] left-[361px] top-[16px] absolute origin-top-left rotate-90 border border-black"></div>
-          <div className="w-[154px] h-[63px] left-[224px] top-[20px] absolute text-white text-xl font-bold font-['Maven Pro'] leading-normal">
-            Order History
-          </div>
-          <div className="w-[35px] h-[0px] left-[202px] top-[16px] absolute origin-top-left rotate-90 border border-black"></div>
-          <div className="w-[97px] h-[63px] left-[130px] top-[20px] absolute text-white text-xl font-bold font-['Maven Pro'] leading-normal">
-            Profile
-          </div>
-          <div className="w-[35px] h-[0px] left-[109px] top-[16px] absolute origin-top-left rotate-90 border border-black"></div>
-          <div className="w-[94px] h-[63px] left-[36px] top-[20px] absolute text-white text-xl font-bold font-['Maven Pro'] leading-normal">
-            Home
-          </div>
-        </div>
-        <div className="w-[703px] h-[39px] left-[32px] top-[24px] absolute text-orange-500 text-[40px] font-extrabold font-['Maven Pro'] leading-normal">
-          NinjaFlix
-        </div>
-        <img
-          className="w-[54px] h-[49px] left-[200px] top-[14px] absolute"
-          src="https://via.placeholder.com/54x49"
-        />
       </div>
     </div>
   );
