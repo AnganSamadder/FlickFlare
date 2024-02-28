@@ -81,10 +81,10 @@ export default function Register() {
           </div>
         </div>
         <div className="w-[1000px] h-[650px] left-[350px] top-[12px] absolute bg-zinc-700 rounded-xl">
-          <div className="left-6 top-0 absolute text-white text-xl font-bold font-['Maven Pro'] leading-normal">
+          <div className="left-6 p-4 absolute text-white text-l font-bold font-['Maven Pro'] leading-normal">
             Optional
           </div>
-          <div className="w-[779px] h-[241px] left-[23px] top-[97px] absolute">
+          <div className="w-[779px] h-[241px] left-[23px] top-[50px] absolute">
             <div className="w-[375px] h-9 left-[4px] top-[129px] absolute">
               <div className="w-[194px] h-9 left-[181px] top-0 absolute">
                 <InputField
@@ -105,7 +105,7 @@ export default function Register() {
                 Expiration Date
               </div>
             </div>
-            <div className="w-[756px] h-[35.54px] left-[4px] top-[82px] absolute">
+            <div className="w-[756px] h-[35.54px] left-[4px] top-[80px] absolute">
               <InputField
                 placeholder={"Enter card number..."}
                 name={"cardNumber"}
@@ -135,7 +135,7 @@ export default function Register() {
                 </p>
               </button>
             </div>
-            <div className="left-[4px] top-[-25px] absolute text-white text-[32px] font-bold font-['Maven Pro'] leading-normal">
+            <div className="left-[4px] top-0 absolute text-white text-[32px] font-bold font-['Maven Pro'] leading-normal">
               Payment
             </div>
           </div>
@@ -154,27 +154,21 @@ export default function Register() {
               </div>
             </div>
             <div className="w-[386px] h-[35.54px] left-[427px] top-[38px] absolute">
-              <div className="w-[298.23px] h-[35.54px] left-[87.77px] top-[8px] absolute bg-orange-50 rounded-md">
-                <input
-                  type="text"
-                  name="street"
-                  className="w-[270px] h-[15.40px] left-[12.97px] top-[8px] absolute text-zinc-700 text-opacity-75 text-[15px] font-medium font-['Maven Pro'] leading-normal bg-transparent"
-                  placeholder="Enter street..."
-                />
-              </div>
+              <InputField
+                placeholder={"Enter street..."}
+                name={"street"}
+                classname={"w-[298.23px] h-[35.54px] left-[87.77px] top-[8px]"}
+              />
               <div className="w-[66.83px] left-0 top-[6px] absolute text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
                 Home
               </div>
             </div>
             <div className="w-[386px] h-[35.54px] left-[427px] top-[88px] absolute">
-              <div className="w-[298.23px] h-[35.54px] left-[87.77px] top-[8px] absolute bg-orange-50 rounded-md">
-                <input
-                  type="text"
-                  name="city"
-                  className="w-[270px] h-[15.40px] left-[12.97px] top-[8px] absolute text-zinc-700 text-opacity-75 text-[15px] font-medium font-['Maven Pro'] leading-normal bg-transparent"
-                  placeholder="Enter city..."
-                />
-              </div>
+              <InputField
+                placeholder={"Enter city..."}
+                name={"city"}
+                classname={"w-[298.23px] h-[35.54px] left-[87.77px] top-[8px]"}
+              />
               <div className="left-0 top-[6px] absolute text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
                 City
               </div>
@@ -191,9 +185,9 @@ export default function Register() {
             </div>
             <div className="w-[408px] h-[35.54px] left-0 top-[134px] absolute">
               <InputField
-                placeholder={"Enter state..."}
-                name={"state"}
-                classname={"w-[299px] h-[35.54px] left-[109px] top-10"}
+                placeholder={"Enter zip code..."}
+                name={"zipCode"}
+                classname={"w-[299px] h-[35.54px] left-[113px] top-[10px]"}
               />
               <div className="left-0 top-[6px] absolute text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
                 Zip Code
