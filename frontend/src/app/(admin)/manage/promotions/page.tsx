@@ -1,4 +1,4 @@
-export default function Promotions() {
+function Figma() {
   return (
     <div className="w-[1440px] h-[1024px] relative bg-white">
       <div className="w-[1331px] h-[801px] left-[55px] top-[116px] absolute">
@@ -182,6 +182,14 @@ export default function Promotions() {
           src="https://via.placeholder.com/54x49"
         />
       </div>
+    </div>
+  );
+}
+
+export default function Promotions() {
+  return (
+    <div>
+      <div>Manage Movies</div>
     </div>
   );
 }

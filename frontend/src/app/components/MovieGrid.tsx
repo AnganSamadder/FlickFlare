@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export const MovieGrid = ({
+const MovieGrid = ({
   items,
   className,
 }: {
@@ -168,3 +168,5 @@ export const CardButtons = ({
     </div>
   );
 };
+
+export default MovieGrid;
