@@ -26,3 +26,5 @@ const InputField = (props: InputFieldProps) => {
     </div>
   );
 };
+
+export default InputField;
