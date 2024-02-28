@@ -43,9 +43,13 @@ const Navbar = () => {
   const [showing, setShowing] = React.useState<string | null>(null);
 
   React.useEffect(() => {
-    if (pathname === "/home" || pathname === "/") {
+    if (
+      pathname === "/home" ||
+      pathname === "/" ||
+      pathname === "/home/admin"
+    ) {
       setShowing("currently-running");
-    } else if (pathname === "/upcoming") {
+    } else if (pathname === "/upcoming" || pathname === "/upcoming/admin") {
       setShowing("coming-soon");
     } else {
       setShowing(null);
