@@ -5,7 +5,7 @@ export default function Register() {
   return (
     <div className="w-[1440px] h-[1024px] relative bg-black rounded-br-[19px]">
       <div className="left-[548px] top-[116px] absolute text-orange-500 text-5xl font-bold font-['Maven Pro'] leading-normal">
-        Create Account
+        Edit Profile
       </div>
       <div className="w-[1369px] h-[750px] left-[30px] top-[180px] absolute">
         <div className="w-[1369px] h-[680px] left-0 top-0 absolute bg-zinc-700 bg-opacity-50 rounded-[17px]" />
