@@ -43,9 +43,13 @@ const Navbar = () => {
   const [showing, setShowing] = React.useState<string | null>(null);
 
   React.useEffect(() => {
-    setShowing(
-      pathname === "/" || pathname === "/home" ? "currently-running" : null,
-    );
+    if (pathname === "/home" || pathname === "/") {
+      setShowing("currently-running");
+    } else if (pathname === "/upcoming") {
+      setShowing("coming-soon");
+    } else {
+      setShowing(null);
+    }
   }, [pathname]);
 
   const handleShowing = (
@@ -55,7 +59,9 @@ const Navbar = () => {
     // console.log(newShowing);
     setShowing(newShowing);
     if (newShowing === "currently-running") {
-      router.push("/home");
+      router.replace("/home");
+    } else {
+      router.replace("/upcoming");
     }
   };
 
@@ -65,7 +71,7 @@ const Navbar = () => {
         <div className="flex w-full h-16 items-center justify-around">
           <div className="flex w-1/6">
             <a
-              href="home"
+              href="/home"
               className="text-orange-500 text-2xl font-extrabold hover px-3 py-2"
             >
               MovieBrowser

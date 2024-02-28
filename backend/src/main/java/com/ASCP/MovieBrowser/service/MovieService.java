@@ -18,4 +18,8 @@ public interface MovieService{
   public void deleteMovie(String id);
 
   public ArrayList<Movie> searchMovies(String input) throws ExecutionException, InterruptedException;
+
+  public ArrayList<Movie> searchMoviesByGenre(String genre) throws ExecutionException, InterruptedException;
+
+  public ArrayList<Movie> searchMoviesByShowing(boolean showing) throws ExecutionException, InterruptedException;
 }

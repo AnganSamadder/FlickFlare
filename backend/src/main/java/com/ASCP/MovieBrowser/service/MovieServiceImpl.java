@@ -62,4 +62,33 @@ public class MovieServiceImpl implements MovieService{
     }
     return matchedMovies;
   }
+
+  public ArrayList<Movie> searchMoviesByGenre(String input) throws ExecutionException, InterruptedException{
+    if(input.isEmpty()){
+      return new ArrayList<>();
+    }
+
+    ArrayList<Movie> movies = getAllMovies();
+    ArrayList<Movie> matchedMovies = new ArrayList<>();
+    for(Movie movie : movies){
+      for(String genre : movie.getGenres()){
+        if(genre.toLowerCase().contains(input.toLowerCase())){
+          matchedMovies.add(movie);
+          break;
+        }
+      }
+    }
+    return matchedMovies;
+  }
+
+  public ArrayList<Movie> searchMoviesByShowing(boolean showing) throws ExecutionException, InterruptedException{
+    ArrayList<Movie> movies = getAllMovies();
+    ArrayList<Movie> matchedMovies = new ArrayList<>();
+    for(Movie movie : movies){
+      if(movie.isNowShowing() == showing){
+        matchedMovies.add(movie);
+      }
+    }
+    return matchedMovies;
+  }
 }

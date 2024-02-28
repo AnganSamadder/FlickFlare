@@ -53,6 +53,16 @@ public class MovieController{
     return movieService.searchMovies(input);
   }
 
+  @GetMapping("/genre")
+  public ArrayList<Movie> searchByGenre(@RequestParam String genre) throws ExecutionException, InterruptedException{
+    return movieService.searchMoviesByGenre(genre);
+  }
+
+  @GetMapping("/showing")
+  public ArrayList<Movie> searchByShowing(@RequestParam boolean showing) throws ExecutionException, InterruptedException{
+    return movieService.searchMoviesByShowing(showing);
+  }
+
   @GetMapping("/test")
   public ResponseEntity<String> test(){
     return ResponseEntity.ok("Test");
