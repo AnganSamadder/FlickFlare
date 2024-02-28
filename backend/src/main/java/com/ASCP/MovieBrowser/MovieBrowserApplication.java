@@ -1,9 +1,6 @@
 package com.ASCP.MovieBrowser;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.Objects;
 
 import com.google.auth.oauth2.GoogleCredentials;
@@ -17,8 +14,14 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 public class MovieBrowserApplication{
 
   public static void main(String[] args) throws IOException{
-    File serviceAccountfile = new File(Objects.requireNonNull(MovieBrowserApplication.class.getClassLoader().getResource("serviceAccountKey.json")).getFile());
-    FileInputStream serviceAccount = new FileInputStream(serviceAccountfile.getAbsolutePath());
+    InputStream serviceAccount;
+
+    try{
+      File serviceAccountfile = new File(Objects.requireNonNull(MovieBrowserApplication.class.getClassLoader().getResource("serviceAccountKey.json")).getFile());
+      serviceAccount = new FileInputStream(serviceAccountfile.getAbsolutePath());
+    }catch(FileNotFoundException e){
+      serviceAccount = Objects.requireNonNull(MovieBrowserApplication.class.getClassLoader().getResourceAsStream("serviceAccountKey.json"));
+    }
 
     FirebaseOptions options = new FirebaseOptions.Builder()
             .setCredentials(GoogleCredentials.fromStream(serviceAccount))
