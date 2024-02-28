@@ -13,7 +13,7 @@ const InputField = (props: InputFieldProps) => {
   return (
     <div
       className={cn(
-        "absolute bg-orange-50 rounded-md align-middle",
+        "bg-orange-50 rounded-md flex align-middle",
         props.classname,
       )}
     >
