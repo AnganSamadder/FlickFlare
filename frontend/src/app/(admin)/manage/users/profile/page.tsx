@@ -16,57 +16,53 @@ export default function Profile() {
             </div>
           </button>
         </div>
-        <div className="w-[321px] h-[640px] left-[39px] top-[30px] absolute">
-          <div className="w-[321px] h-[120px] left-0 top-[355px] absolute">
-            <label className="w-[277.51px] h-[18.34px] left-0 top-0 absolute text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
-              Change Password
-            </label>
-            <InputField
-              placeholder={"Enter new password..."}
-              name={"newPassword"}
-              classname={"w-[250px] h-[33.08px] mb-2 mt-10"}
-            />
-            <InputField
-              placeholder={"Confirm new password..."}
-              name={"confirmNewPassword"}
-              classname={"w-[250px] h-[33.08px] left-0 top-[86.92px]"}
-            />
-          </div>
-          <div className="w-[321px] h-20 left-0 top-[140px] absolute">
-            <div className="w-[277.51px] h-[19.20px] left-0 top-0 absolute text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
-              Change Phone Number
-            </div>
-            <InputField
-              placeholder={"123-456-7890"}
-              name={"phoneNumber"}
-              classname={"w-[250px] h-[33.08px] mt-10"}
-            />
-          </div>
-          <div className="w-[321px] h-20 left-0 top-[240px] absolute">
-            <InputField
-              placeholder={"johndoe@example.com"}
-              name={"email"}
-              classname={"w-[250px] h-[33.08px] mt-10"}
-            />
-            <div className="w-[277.51px] h-[19.20px] left-0 top-0 absolute text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
-              Email
-            </div>
-          </div>
-          <div className="w-[321px] h-[120px] left-0 top-0 absolute">
-            <label className="w-[277.51px] h-[18.46px] left-0 top-0 absolute text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
+        <div className="w-[321px] h-[640px] left-[39px] top-[30px] absolute flex-col items-center">
+            <label
+                className="w-[277.51px] h-[18.46px] text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
               Change Name
             </label>
             <InputField
-              placeholder={"John"}
-              name={"firstName"}
-              classname={"w-[250px] h-[33.08px] mb-2 mt-10"}
+                placeholder={"John"}
+                name={"firstName"}
+                classname={"w-[250px] h-[33.08px] mb-2 mt-5"}
             />
             <InputField
-              placeholder={"Doe"}
-              name={"lastName"}
-              classname={"w-[250px] h-[33.08px] left-0 top-[86.92px]"}
+                placeholder={"Doe"}
+                name={"lastName"}
+                classname={"w-[250px] h-[33.08px] left-0 top-[86.92px] mb-10"}
             />
-          </div>
+            <label
+                className="w-[277.51px] h-[19.20px] text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
+              Change Phone Number
+            </label>
+            <InputField
+                placeholder={"123-456-7890"}
+                name={"phoneNumber"}
+                classname={"w-[250px] h-[33.08px] mt-2 mb-10"}
+            />
+            <label
+                className="w-[277.51px] h-[19.20px] text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
+              Email
+            </label>
+            <InputField
+                placeholder={"johndoe@example.com"}
+                name={"email"}
+                classname={"w-[250px] h-[33.08px] mt-2 mb-10"}
+            />
+            <label
+                className="w-[277.51px] h-[18.34px] text-orange-500 text-2xl font-medium font-['Maven Pro'] leading-normal">
+              Change Password
+            </label>
+            <InputField
+                placeholder={"Enter new password..."}
+                name={"newPassword"}
+                classname={"w-[250px] h-[33.08px] mb-2 mt-2"}
+            />
+            <InputField
+                placeholder={"Confirm new password..."}
+                name={"confirmNewPassword"}
+                classname={"w-[250px] h-[33.08px] left-0 top-[86.92px]"}
+            />
         </div>
         <div className="w-[1000px] min-w-max h-[650px] left-[350px] top-[12px] absolute bg-zinc-700 rounded-xl">
           <label className="left-6 p-4 absolute text-white text-l font-bold font-['Maven Pro'] leading-normal">
