@@ -4,11 +4,11 @@ import {Checkbox} from "@nextui-org/react";
 
 export default function Register() {
   return (
-      <div className="h-fit flex-col justify-center mb-40">
+      <div className="h-fit flex-col align-cen mb-40">
         <div className="text-center text-5xl font-bold text-orange-500 mb-2">
           Create Account
         </div>
-        <div className="w-[1369px] h-[675px] mx-10 mb-5 p relative bg-zinc-700 bg-opacity-50 rounded-[17px]">
+        <div className="w-fit h-fit mx-10 mb-5 bg-zinc-700 bg-opacity-50 flex flex-row rounded-[17px]">
           <div className="w-fit h-fit py-10 px-6 flex-col items-center bg-transparent">
             <label
                 className="w-fit h-fit text-orange-500 text-2xl font-medium leading-normal">
@@ -66,7 +66,7 @@ export default function Register() {
             </span>
             </div>
           </div>
-          <div className="w-[1000px] min-w-max h-[650px] ml-auto left-[350px] top-[12px] absolute bg-zinc-700 rounded-xl">
+          <div className="w-fit h-fit m-4 p-2 bg-zinc-700 rounded-xl">
             <label className="ml-6 p-4 text-white text-l font-bold leading-normal">
               Optional
             </label>
