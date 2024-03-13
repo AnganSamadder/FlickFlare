@@ -1,94 +1,87 @@
 package com.ASCP.MovieBrowser.service;
 
-import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.*;
-import com.google.firebase.cloud.FirestoreClient;
+import com.ASCP.MovieBrowser.model.*;
+import com.ASCP.MovieBrowser.repository.ActorRepository;
+import com.ASCP.MovieBrowser.repository.GenreRepository;
+import com.ASCP.MovieBrowser.repository.MovieRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ASCP.MovieBrowser.model.Movie;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
 @Service
-public class MovieServiceImpl implements MovieService{
+public class MovieServiceImpl implements MovieService {
 
-  @Override
-  public Movie saveMovie(Movie movie){
+    @Autowired
+    private MovieRepository movieRepository;
+    @Autowired
+    private GenreRepository genreRepository;
+    @Autowired
+    private ActorRepository actorRepository;
 
-//        return movieRepository.save(movie);
-
-    Firestore db = FirestoreClient.getFirestore();
-    ApiFuture<WriteResult> result = db.collection("movie").document(movie.getTitle()).set(movie);
-    return movie;
-
-
-  }
-
-  public ArrayList<Movie> getAllMovies() throws ExecutionException, InterruptedException{
-    Firestore db = FirestoreClient.getFirestore();
-    QuerySnapshot document = db.collection("movie").get().get();
-    return new ArrayList<>(document.toObjects(Movie.class));
-  }
-
-  @Override
-  public Movie getMovie(String id) throws ExecutionException, InterruptedException{
-    Firestore db = FirestoreClient.getFirestore();
-    DocumentSnapshot document = db.collection("movie").document(id).get().get();
-    if(document.exists()){
-      return document.toObject(Movie.class);
-    }
-    return null;
-  }
-
-  @Override
-  public void deleteMovie(String id){
-    Firestore db = FirestoreClient.getFirestore();
-    ApiFuture<WriteResult> writeResult = db.collection("movie").document(id).delete();
-  }
-
-  @Override
-  public ArrayList<Movie> searchMovies(String input) throws ExecutionException, InterruptedException{
-    if(input.equals("")){
-      return new ArrayList<>();
-    }
-
-    ArrayList<Movie> movies = getAllMovies();
-    ArrayList<Movie> matchedMovies = new ArrayList<>();
-    for(Movie movie : movies){
-      if(movie.getTitle().toLowerCase().contains(input.toLowerCase())){
-        matchedMovies.add(movie);
-      }
-    }
-    return matchedMovies;
-  }
-
-  public ArrayList<Movie> searchMoviesByGenre(String input) throws ExecutionException, InterruptedException{
-    if(input.isEmpty()){
-      return new ArrayList<>();
-    }
-
-    ArrayList<Movie> movies = getAllMovies();
-    ArrayList<Movie> matchedMovies = new ArrayList<>();
-    for(Movie movie : movies){
-      for(String genre : movie.getGenres()){
-        if(genre.toLowerCase().contains(input.toLowerCase())){
-          matchedMovies.add(movie);
-          break;
+    public void saveMovie(Movie movie) {
+        for (MovieShowtime showtime : movie.getShowtimes()) {
+            showtime.setMovie(movie);
         }
-      }
-    }
-    return matchedMovies;
-  }
 
-  public ArrayList<Movie> searchMoviesByShowing(boolean showing) throws ExecutionException, InterruptedException{
-    ArrayList<Movie> movies = getAllMovies();
-    ArrayList<Movie> matchedMovies = new ArrayList<>();
-    for(Movie movie : movies){
-      if(movie.isNowShowing() == showing){
-        matchedMovies.add(movie);
-      }
+        for (MovieReview review : movie.getReviews()) {
+            review.setMovie(movie);
+        }
+
+        for (Genre genre : movie.getGenres()) {
+            Optional<Genre> existingGenre = genreRepository.findByGenre(genre.getGenre());
+            if (existingGenre.isPresent()) {
+                genre.setId(existingGenre.get().getId());
+                genreRepository.save(genre);
+            } else {
+                genreRepository.save(genre);
+            }
+        }
+
+        for (Actor actor : movie.getCast()) {
+            Optional<Actor> existingActor = actorRepository.findByActor(actor.getActor());
+            if (existingActor.isPresent()) {
+                actor.setId(existingActor.get().getId());
+                actorRepository.save(actor);
+            } else {
+                actorRepository.save(actor);
+            }
+        }
+
+        movieRepository.save(movie);
     }
-    return matchedMovies;
-  }
+
+    public List<Movie> getAllMovies() {
+        List<Movie> movies = new ArrayList<>();
+        movieRepository.findAll().forEach(movies::add);
+        return movies;
+    }
+
+
+    public Movie getMovie(long id) throws ExecutionException, InterruptedException {
+        return movieRepository.findById(id).isPresent() ? movieRepository.findById(id).get() : null;
+    }
+
+
+    public void deleteMovie(long id) {
+        movieRepository.deleteById(id);
+    }
+
+
+    public List<Movie> searchMovies(String input) throws ExecutionException, InterruptedException {
+        if (input.isEmpty()) {
+            return new ArrayList<>();
+        }
+
+        return movieRepository.findByTitleContainingIgnoreCase(input);
+    }
+
+    public List<Movie> getShowingMovies(boolean showing) throws ExecutionException, InterruptedException {
+        return movieRepository.findByShowing(showing);
+    }
 }

@@ -3,23 +3,21 @@ package com.ASCP.MovieBrowser.service;
 import com.ASCP.MovieBrowser.model.Movie;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 @Service
-public interface MovieService{
+public interface MovieService {
 
-  public Movie saveMovie(Movie movie);
+    public void saveMovie(Movie movie);
 
-  public ArrayList<Movie> getAllMovies() throws ExecutionException, InterruptedException;
+    public List<Movie> getAllMovies() throws ExecutionException, InterruptedException;
 
-  public Movie getMovie(String id) throws ExecutionException, InterruptedException;
+    public Movie getMovie(long id) throws ExecutionException, InterruptedException;
 
-  public void deleteMovie(String id);
+    public void deleteMovie(long id);
 
-  public ArrayList<Movie> searchMovies(String input) throws ExecutionException, InterruptedException;
+    public List<Movie> searchMovies(String input) throws ExecutionException, InterruptedException;
 
-  public ArrayList<Movie> searchMoviesByGenre(String genre) throws ExecutionException, InterruptedException;
-
-  public ArrayList<Movie> searchMoviesByShowing(boolean showing) throws ExecutionException, InterruptedException;
+    public List<Movie> getShowingMovies(boolean showing) throws ExecutionException, InterruptedException;
 }

@@ -1,40 +1,58 @@
 package com.ASCP.MovieBrowser.model;
 
-import java.io.File;
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
 @Data
-public class Movie{
+@Table(name = "movie")
+public class Movie {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private String id;
-  private String title;
-  private String description;
-  @ElementCollection
-  private ArrayList<String> showtimes;
-  private String releaseDate;
-  private boolean isUpcoming;
-  private boolean isNowShowing;
-  private String poster;
-  private String trailer;
-  @ElementCollection
-  private ArrayList<String> genres;
-  private String director;
-  private String producer;
-  @ElementCollection
-  private ArrayList<String> castList;
-  private String synopsis;
-  private String mpaaCode;
-  @ElementCollection
-  private ArrayList<String> reviews;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true, nullable = false)
+    private long id;
+    @Column
+    private String title;
+    @Column
+    private String description;
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<MovieShowtime> showtimes;
+    @Column(name = "release_date")
+    private String releaseDate;
+    @Column
+    private boolean upcoming;
+    @Column
+    private boolean showing;
+    @Column
+    private String poster;
+    @Column
+    private String trailer;
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "movie_genre",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id")
+    )
+    private Set<Genre> genres;
+    @Column
+    private String director;
+    @Column
+    private String producer;
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "movie_cast",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "actor_id")
+    )
+    private Set<Actor> cast;
+    @Column
+    private String synopsis;
+    @Column
+    private String mpaa;
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<MovieReview> reviews;
 }
