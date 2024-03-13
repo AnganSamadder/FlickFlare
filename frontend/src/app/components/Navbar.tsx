@@ -3,6 +3,7 @@ import { Movie } from "@/app/interfaces/movie";
 import SearchBar from "@/app/components/SearchBar";
 import React from "react";
 import { usePathname, useRouter } from "next/navigation";
+import UserDropdownMenu from "@/app/components/UserDropdownMenu";
 
 export const NavbarButton = (props: {
   onClick: (event: React.MouseEvent<HTMLElement>) => void;
@@ -91,10 +92,9 @@ const Navbar = () => {
               />
             </div>
             <div>
-              <img
-                className="w-[54px] h-[49px] rounded-full"
-                src="https://toolset.com/wp-content/uploads/2018/06/909657-profile_pic.png"
-              />
+              <UserDropdownMenu
+                  userType={"guest"}>
+              </UserDropdownMenu>
             </div>
           </div>
         </div>

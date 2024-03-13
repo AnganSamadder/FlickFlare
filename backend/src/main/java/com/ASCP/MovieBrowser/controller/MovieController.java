@@ -7,65 +7,61 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.ASCP.MovieBrowser.model.Movie;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 @CrossOrigin
 @RestController
 @RequestMapping("/movie")
 @AllArgsConstructor
-public class MovieController{
-
-  @Autowired
-  public MovieService movieService;
+public class MovieController {
 
 
-  @PostMapping("/add")
-  public String add(@RequestBody Movie movie){
-    movieService.saveMovie(movie);
-    return "new movie added";
-  }
+    @Autowired
+    public MovieService movieService;
 
-  @GetMapping("/getAll")
-  public ArrayList<Movie> get() throws ExecutionException, InterruptedException{
-    return movieService.getAllMovies();
-  }
 
-  @GetMapping("/get")
-  public Movie get(@RequestParam String id) throws ExecutionException, InterruptedException{
-    return movieService.getMovie(id);
-  }
+    @PostMapping("/add")
+    public String add(@RequestBody Movie movie) {
+        movieService.saveMovie(movie);
+        return "new movie added";
+    }
 
-  @PutMapping("/update")
-  public String update(@RequestBody Movie movie){
-    movieService.saveMovie(movie);
-    return "movie updated";
-  }
+    @GetMapping("/getAll")
+    public List<Movie> get() throws ExecutionException, InterruptedException {
+        return movieService.getAllMovies();
+    }
 
-  @PutMapping("/delete")
-  public String delete(@RequestParam String id){
-    movieService.deleteMovie(id);
-    return "movie deleted";
-  }
+    @GetMapping("/get")
+    public Movie get(@RequestParam int id) throws ExecutionException, InterruptedException {
+        return movieService.getMovie(id);
+    }
 
-  @GetMapping("/search")
-  public ArrayList<Movie> search(@RequestParam String input) throws ExecutionException, InterruptedException{
-    return movieService.searchMovies(input);
-  }
+    @PutMapping("/update")
+    public String update(@RequestBody Movie movie) {
+        movieService.saveMovie(movie);
+        return "movie updated";
+    }
 
-  @GetMapping("/genre")
-  public ArrayList<Movie> searchByGenre(@RequestParam String genre) throws ExecutionException, InterruptedException{
-    return movieService.searchMoviesByGenre(genre);
-  }
+    @PutMapping("/delete")
+    public String delete(@RequestParam int id) {
+        movieService.deleteMovie(id);
+        return "movie deleted";
+    }
 
-  @GetMapping("/showing")
-  public ArrayList<Movie> searchByShowing(@RequestParam boolean showing) throws ExecutionException, InterruptedException{
-    return movieService.searchMoviesByShowing(showing);
-  }
+    @GetMapping("/search")
+    public List<Movie> search(@RequestParam String input) throws ExecutionException, InterruptedException {
+        return movieService.searchMovies(input);
+    }
 
-  @GetMapping("/test")
-  public ResponseEntity<String> test(){
-    return ResponseEntity.ok("Test");
-  }
+    @GetMapping("/showing")
+    public List<Movie> searchByShowing(@RequestParam boolean showing) throws ExecutionException, InterruptedException {
+        return movieService.getShowingMovies(showing);
+    }
+
+    @GetMapping("/test")
+    public ResponseEntity<String> test() {
+        return ResponseEntity.ok("Test");
+    }
 
 }
