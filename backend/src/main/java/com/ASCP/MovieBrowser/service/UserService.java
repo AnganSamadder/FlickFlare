@@ -10,8 +10,12 @@ import java.util.concurrent.ExecutionException;
 @Service
 public interface UserService {
 
+    public boolean emailExists(User user);
+
     public void saveUser(User user);
+
     public User getUser(long id) throws ExecutionException, InterruptedException;
+
     public Set<Card> getCards(long id) throws ExecutionException, InterruptedException;
 
     //public void deleteUser(long id);
