@@ -29,6 +29,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.projectlombok:lombok:1.18.28")
 	implementation("org.projectlombok:lombok:1.18.28")
+	implementation("org.springframework.boot:spring-boot-starter-mail:3.2.3")
 	runtimeOnly("mysql:mysql-connector-java:8.0.33")
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
