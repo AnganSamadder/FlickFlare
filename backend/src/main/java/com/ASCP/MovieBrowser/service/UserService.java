@@ -19,4 +19,7 @@ public interface UserService {
     public Set<Card> getCards(long id) throws ExecutionException, InterruptedException;
 
     //public void deleteUser(long id);
+
+    public String encrypt(String encryptionString);
 }
+

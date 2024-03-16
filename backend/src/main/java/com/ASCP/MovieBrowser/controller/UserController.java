@@ -27,6 +27,9 @@ public class UserController {
             if (userService.emailExists(user)) {
                 return 409;//Email already exists. Prompt to Sign in
             }
+            String password = user.getPassword();
+            String encryptedPassword = userService.encrypt(password);
+            user.setPassword(encryptedPassword);
             userService.saveUser(user);
             return 201;//success
         } catch (Exception e) {
@@ -52,4 +55,5 @@ public class UserController {
     public Set<Card> getCards(@RequestParam int id) throws ExecutionException, InterruptedException {
         return userService.getCards(id);
     }
+
 }

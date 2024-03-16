@@ -48,4 +48,51 @@ public class UserServiceImpl implements UserService {
         User user = getUser(id);
         return user.getCards();
     }
+
+    public String encrypt(String encryptionString) {
+
+        final int key = 7;
+        String encryptedString = "";
+        StringBuilder encryptedStringBuilder = new StringBuilder();
+
+        for (int i = 0; i < encryptionString.length(); i++) {
+            char character = encryptionString.charAt(i);
+            int asciiValue = (int) character;
+
+            if(i == 0) {
+                asciiValue = asciiValue + 1;
+
+            }
+            else {
+                asciiValue = asciiValue - i - key;
+
+            }
+            char encryptedChar = (char) asciiValue;
+            encryptedStringBuilder.append(encryptedChar);
+
+        }
+
+          return encryptedStringBuilder.toString();
+    }
+
+    public String decrypt(String encryptedString) {
+        final int key = 7;
+        StringBuilder decryptedStringBuilder = new StringBuilder();
+
+        for (int i = 0; i < encryptedString.length(); i++) {
+            char character = encryptedString.charAt(i);
+            int asciiValue = (int) character;
+
+            if(i == 0) {
+                asciiValue = asciiValue - 1; // Reverse the encryption operation for the first character
+            }
+            else {
+                asciiValue = asciiValue + i + key; // Reverse the encryption operation for subsequent characters
+            }
+            char decryptedChar = (char) asciiValue;
+            decryptedStringBuilder.append(decryptedChar);
+        }
+
+        return decryptedStringBuilder.toString();
+    }
 }
