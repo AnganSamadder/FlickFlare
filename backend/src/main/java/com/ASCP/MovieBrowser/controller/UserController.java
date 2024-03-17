@@ -64,7 +64,8 @@ public class UserController {
     @PostMapping("/verify")
     public String verify(@RequestParam String email, @RequestParam String firstname) {
         String code = emailService.codeGen();
-        emailService.sendVerificationEmail(email,
+        String subject = "Welcome to FlickFlare!";
+        emailService.sendVerificationEmail(email, subject,
                 "Hello " + firstname + ",\n\nPlease type this verification code into the designated box on our website " +
                         "Here is your verification code: " + code);
         return code;//Compare user input with returned code
@@ -79,5 +80,27 @@ public class UserController {
     public Set<Card> getCards(@RequestParam int id) throws ExecutionException, InterruptedException {
         return userService.getCards(id);
     }
+
+    @PostMapping("/forgotPassword")
+    public String forgotPassword(@RequestParam long id) {
+        User user = null;
+        try {
+            if (userRepository.findById(id).isPresent()) {
+                user = userRepository.findById(id).get();
+            }
+        } catch (Exception e) {
+            throw new NullPointerException("User not found");
+        }
+        String firstname = user.getFirstName();
+        String code = emailService.codeGen();
+        String subject = "Forgot Password?";
+        String email = user.getEmail();
+        emailService.sendVerificationEmail(email, subject,
+                "Hello " + firstname + ",\n\nPlease type this verification code into the designated box on our website " +
+                        "Here is your verification code: " + code);
+        return code;//Compare user input with returned code
+
+    }
+
 
 }

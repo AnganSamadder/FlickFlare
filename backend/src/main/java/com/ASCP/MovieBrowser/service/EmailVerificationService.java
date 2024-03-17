@@ -13,13 +13,14 @@ public class EmailVerificationService {
     private JavaMailSender mailSender;
 
     public void sendVerificationEmail(String toEmail,
+                                      String subject,
                                       String body) {
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("flickflareverify@gmail.com");
         message.setTo(toEmail);
+        message.setSubject(subject);
         message.setText(body);
-        message.setSubject("Welcome to FlickFlare");
         mailSender.send(message);
 
         System.out.println("Mail Sent!");
@@ -33,4 +34,7 @@ public class EmailVerificationService {
         }
         return randString.toString();
     }
+
+
+
 }
