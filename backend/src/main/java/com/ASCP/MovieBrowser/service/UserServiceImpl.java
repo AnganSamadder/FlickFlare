@@ -18,10 +18,11 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     @Autowired
     private CardRepository cardRepository;
+    UserService userService;
+
 
     @Override
-    public boolean emailExists(User user) {
-        String email = user.getEmail();
+    public boolean emailExists(String email) {
         for (User existingUser : userRepository.findAll()) {
             if (email.equalsIgnoreCase(existingUser.getEmail())) {
                 return true;
@@ -29,7 +30,18 @@ public class UserServiceImpl implements UserService {
         }
         return false;
     }
+    public boolean validateCreds(User user, String inputPwd, String decrytpedPwd){
 
+        if(user!=null){
+
+            if(inputPwd.equals(decrytpedPwd)){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        return false;
+    }
     public void saveUser(User user) {
 
         cardRepository.saveAll(user.getCards());

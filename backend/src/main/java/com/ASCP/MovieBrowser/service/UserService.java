@@ -10,16 +10,19 @@ import java.util.concurrent.ExecutionException;
 @Service
 public interface UserService {
 
-    public boolean emailExists(User user);
+    public boolean emailExists(String email);
 
     public void saveUser(User user);
 
     public User getUser(long id) throws ExecutionException, InterruptedException;
+
+    public boolean validateCreds(User user, String inputPwd, String decrytpedPwd);
 
     public Set<Card> getCards(long id) throws ExecutionException, InterruptedException;
 
     //public void deleteUser(long id);
 
     public String encrypt(String encryptionString);
+    public String decrypt(String encryptedString);
 }
 
