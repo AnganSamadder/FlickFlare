@@ -19,7 +19,7 @@ export default async function Home() {
       <div className="text-orange-500 text-4xl font-bold font-['Maven Pro'] leading-normal pt-5">
         Currently Running
       </div>
-      <MovieGrid items={movies} />
+      <MovieGrid movies={movies} />
     </div>
   );
 }

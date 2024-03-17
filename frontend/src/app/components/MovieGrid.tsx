@@ -1,59 +1,79 @@
 "use client";
 import { cn } from "../utils/cn";
 import { Movie } from "../interfaces/movie";
+import TrailerPopup from "./TrailerPopup";
 import { AnimatePresence, motion } from "framer-motion";
-import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 const MovieGrid = ({
-  items,
+  movies,
   className,
 }: {
-  items: Movie[];
+  movies: Movie[];
   className?: string;
 }) => {
-  let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [selectedMovie, setSelectedMovie] = useState(String);
+  const [trailerIsOpen, setTrailerIsOpen] = useState(false);
+
+  const handleTrailer = (trailer: string) => {
+    setSelectedMovie(trailer);
+    setTrailerIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setTrailerIsOpen(false);
+    setSelectedMovie("");
+  };
 
   return (
-    <div
-      className={cn(
-        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-2",
-        className,
+    <div>
+      <div
+        className={cn(
+          "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-2",
+          className,
+        )}
+      >
+        {movies?.map((movie, idx) => (
+          <div
+            key={movie?.title}
+            className="relative group block p-10 h-full w-full"
+            onMouseEnter={() => setHoveredIndex(idx)}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
+            <AnimatePresence>
+              {hoveredIndex === idx && (
+                <motion.span
+                  className="absolute inset-0 w-full h-full bg-neutral-200 dark:bg-slate-800/[0.8] block rounded-3xl"
+                  layoutId="hoverBackground"
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: 1,
+                    transition: { duration: 0.15 },
+                  }}
+                  exit={{
+                    opacity: 0,
+                    transition: { duration: 0.15, delay: 0.2 },
+                  }}
+                />
+              )}
+            </AnimatePresence>
+            <Card>
+              <CardTitle>{movie.title}</CardTitle>
+              <CardImg src={movie.poster} />
+              <CardDescription>{movie.description}</CardDescription>
+              <CardButtons onClick={() => handleTrailer(movie.trailer)} />
+            </Card>
+          </div>
+        ))}
+      </div>
+      {trailerIsOpen && (
+        <TrailerPopup
+          trailer={selectedMovie}
+          closePopup={closeModal}
+        ></TrailerPopup>
       )}
-    >
-      {items.map((item, idx) => (
-        <div
-          key={item?.title}
-          className="relative group block p-10 h-full w-full"
-          onMouseEnter={() => setHoveredIndex(idx)}
-          onMouseLeave={() => setHoveredIndex(null)}
-        >
-          <AnimatePresence>
-            {hoveredIndex === idx && (
-              <motion.span
-                className="absolute inset-0 w-full h-full bg-neutral-200 dark:bg-slate-800/[0.8] block rounded-3xl"
-                layoutId="hoverBackground"
-                initial={{ opacity: 0 }}
-                animate={{
-                  opacity: 1,
-                  transition: { duration: 0.15 },
-                }}
-                exit={{
-                  opacity: 0,
-                  transition: { duration: 0.15, delay: 0.2 },
-                }}
-              />
-            )}
-          </AnimatePresence>
-          <Card>
-            <CardTitle>{item.title}</CardTitle>
-            <CardImg src={item.poster} />
-            <CardDescription>{item.description}</CardDescription>
-            <CardButtons trailerLink={item.trailer} />
-          </Card>
-        </div>
-      ))}
     </div>
   );
 };
@@ -108,13 +128,7 @@ export const CardImg = ({
 }) => {
   return (
     <div className="items-center">
-      <img
-        className={cn("rounded-2xl mx-auto", className)}
-        src={src}
-        // alt={alt}
-        // width={323}
-        // height={404}
-      />
+      <img className={cn("rounded-2xl mx-auto", className)} src={src} />
     </div>
   );
 };
@@ -140,19 +154,16 @@ export const CardDescription = ({
 
 export const CardButtons = ({
   className,
-  trailerLink,
+  onClick,
 }: {
   className?: string;
-  trailerLink: string;
+  onClick?: () => void;
 }) => {
   const router = useRouter();
 
   return (
     <div className={cn("flex justify-center mt-8", className)}>
-      <button
-        className="p-[3px] relative"
-        onClick={() => router.push(trailerLink)}
-      >
+      <button className="p-[3px] relative" onClick={onClick}>
         <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-500 rounded-l-full" />
         <div className="px-8 py-2  bg-black rounded-[6px] rounded-l-full relative group transition duration-200 text-white hover:bg-transparent">
           View Trailer

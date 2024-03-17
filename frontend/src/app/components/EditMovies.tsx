@@ -2,7 +2,6 @@
 import { Movie } from "@/app/interfaces/movie";
 import InputField from "@/app/components/InputField";
 import React from "react";
-import { className } from "postcss-selector-parser";
 
 const EditMoviesList = (props: {
   movies: Movie[];

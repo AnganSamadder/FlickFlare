@@ -199,20 +199,20 @@ const EditMovies = (props: { movies: Movie[] }) => {
 
   return (
     <div className="h-[75vh] p-4 flex bg-zinc-800 rounded-2xl">
-      <div className="w-1/4 h-full pr-2 flex flex-col items-center rounded-2xl">
-        <div className="text-white pb-2 text-2xl font-bold">Movies</div>
-        <EditMoviesList
-          movies={props.movies}
-          onClick={handleSelect}
-          selectedMovie={selectedMovie}
-        />
-      </div>
-      <div className="w-3/4 h-full pl-2 flex flex-col items-center rounded-2xl">
-        <div className="text-white pb-2 text-2xl font-bold">Edit Movies</div>
-        <div className="w-full h-full bg-zinc-700 rounded-2xl">
-          <EditMovie movie={selectedMovie} />
-        </div>
-      </div>
+      {/*<div className="w-1/4 h-full pr-2 flex flex-col items-center rounded-2xl">*/}
+      {/*  <div className="text-white pb-2 text-2xl font-bold">Movies</div>*/}
+      {/*  <EditMoviesList*/}
+      {/*    movies={props.movies}*/}
+      {/*    onClick={handleSelect}*/}
+      {/*    selectedMovie={selectedMovie}*/}
+      {/*  />*/}
+      {/*</div>*/}
+      {/*<div className="w-3/4 h-full pl-2 flex flex-col items-center rounded-2xl">*/}
+      {/*  <div className="text-white pb-2 text-2xl font-bold">Edit Movies</div>*/}
+      {/*  <div className="w-full h-full bg-zinc-700 rounded-2xl">*/}
+      {/*    <EditMovie movie={selectedMovie} />*/}
+      {/*  </div>*/}
+      {/*</div>*/}
     </div>
   );
 };

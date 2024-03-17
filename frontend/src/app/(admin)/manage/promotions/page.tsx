@@ -1,3 +1,5 @@
+// import EditPromotions from "@/app/components/EditPromotions";
+
 function Figma() {
   return (
     <div className="w-[1440px] h-[1024px] relative bg-white">
@@ -189,7 +191,8 @@ function Figma() {
 export default function Promotions() {
   return (
     <div>
-      <div>Manage Movies</div>
+      <div>Manage Promotions</div>
+      {/*<EditPromotions/>*/}
     </div>
   );
 }

@@ -7,7 +7,7 @@ export default function Seats() {
             <span className="text-orange-500 text-[32px] font-bold font-['Maven Pro'] leading-normal">
               Movie:{" "}
             </span>
-            <br/>
+            <br />
             <span className="text-white text-2xl font-medium font-['Maven Pro'] leading-normal">
               Iron Man
             </span>
@@ -16,7 +16,7 @@ export default function Seats() {
             <span className="text-orange-500 text-[32px] font-bold font-['Maven Pro'] leading-normal">
               Showtime:{" "}
             </span>
-            <br/>
+            <br />
             <span className="text-white text-2xl font-medium font-['Maven Pro'] leading-normal">
               10/10    1:00 PM
             </span>
@@ -150,7 +150,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[70px] top-0 absolute">
@@ -159,7 +159,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[140px] top-0 absolute">
@@ -168,7 +168,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[210px] top-0 absolute">
@@ -177,7 +177,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[280px] top-0 absolute">
@@ -186,7 +186,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[350px] top-0 absolute">
@@ -195,7 +195,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[420px] top-0 absolute">
@@ -204,7 +204,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[490px] top-0 absolute">
@@ -213,7 +213,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[560px] top-0 absolute">
@@ -222,7 +222,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[630px] top-0 absolute">
@@ -231,7 +231,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
               </div>
@@ -242,7 +242,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[70px] top-0 absolute">
@@ -251,7 +251,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[140px] top-0 absolute">
@@ -260,7 +260,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[210px] top-0 absolute">
@@ -269,7 +269,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[280px] top-0 absolute">
@@ -278,7 +278,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[350px] top-0 absolute">
@@ -287,7 +287,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[420px] top-0 absolute">
@@ -296,7 +296,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[490px] top-0 absolute">
@@ -305,7 +305,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[560px] top-0 absolute">
@@ -314,7 +314,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[630px] top-0 absolute">
@@ -323,7 +323,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
               </div>
@@ -334,7 +334,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[70px] top-0 absolute">
@@ -343,7 +343,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[140px] top-0 absolute">
@@ -352,7 +352,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[210px] top-0 absolute">
@@ -361,7 +361,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[280px] top-0 absolute">
@@ -370,7 +370,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[350px] top-0 absolute">
@@ -379,7 +379,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[420px] top-0 absolute">
@@ -388,11 +388,11 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[490px] top-0 absolute">
@@ -401,7 +401,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[560px] top-0 absolute">
@@ -410,7 +410,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[630px] top-0 absolute">
@@ -419,7 +419,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
               </div>
@@ -430,7 +430,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[70px] top-0 absolute">
@@ -439,7 +439,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[140px] top-0 absolute">
@@ -448,7 +448,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[210px] top-0 absolute">
@@ -457,7 +457,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[280px] top-0 absolute">
@@ -466,7 +466,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[350px] top-0 absolute">
@@ -475,7 +475,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[420px] top-0 absolute">
@@ -484,7 +484,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[490px] top-0 absolute">
@@ -493,7 +493,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[560px] top-0 absolute">
@@ -502,7 +502,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
                 <div className="w-[70px] h-[94px] left-[630px] top-0 absolute">
@@ -511,7 +511,7 @@ export default function Seats() {
                   </div>
                   <img
                     className="w-[70px] h-[70px] left-0 top-0 absolute"
-                    src="https://via.placeholder.com/70x70"
+                    src="https://static.thenounproject.com/png/334133-200.png"
                   />
                 </div>
               </div>
@@ -537,27 +537,25 @@ export default function Seats() {
           </div>
           <img
             className="w-[70px] h-[70px] left-[368px] top-0 absolute"
-            src="https://www.figma.com/file/REWCHzaLG3PQZZahjMYWSR/Cinema-E-Booking-Prototype?type=design&node-id=76-741&mode=design&t=fD7pXLTsakpKD2sY-4"
+            src="https://static.thenounproject.com/png/334133-200.png"
           />
           <img
             className="w-[70px] h-[70px] left-[188px] top-0 absolute"
-            src="https://via.placeholder.com/70x70"
+            src="https://static.thenounproject.com/png/334133-200.png"
           />
           <img
             className="w-[70px] h-[70px] left-0 top-0 absolute"
-            src="https://via.placeholder.com/70x70"
+            src="https://static.thenounproject.com/png/334133-200.png"
           />
         </div>
         <div className="w-[102px] h-11 left-[1210px] top-[720px] absolute">
-          <button
-              className="px-12 py-3 rounded-br-3xl rounded-tl-3xl bg-orange-500 text-white font-bold font-['Maven Pro'] leading-normal transition duration-200 hover:bg-orange-500 hover:text-black border-2 border-transparent ">
+          <button className="px-12 py-3 rounded-br-3xl rounded-tl-3xl bg-orange-500 text-white font-bold font-['Maven Pro'] leading-normal transition duration-200 hover:bg-orange-500 hover:text-black border-2 border-transparent ">
             Next
           </button>
         </div>
         <div className="w-[135px] h-11 left-[32px] top-0 absolute">
           <div className="w-[135px] h-11 z-10 left-[-17px] top-[-65px] absolute">
-            <button
-                className="px-8 py-2 rounded-bl-3xl rounded-tr-3xl bg-orange-500 text-white font-bold font-['Maven Pro'] leading-normal transition duration-200 hover:bg-orange-500 hover:text-black border-2 border-transparent ">
+            <button className="px-8 py-2 rounded-bl-3xl rounded-tr-3xl bg-orange-500 text-white font-bold font-['Maven Pro'] leading-normal transition duration-200 hover:bg-orange-500 hover:text-black border-2 border-transparent ">
               Back
             </button>
           </div>
