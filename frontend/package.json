@@ -9,29 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@carbon/web-components": "^2.4.0",
-    "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.0",
-    "@fontsource/roboto": "^5.0.8",
-    "@mui/material": "^5.15.11",
-    "@nextui-org/react": "^2.2.9",
+    "@carbon/web-components": "^2.5.0",
+    "@nextui-org/react": "^2.2.10",
     "clsx": "^2.1.0",
-    "framer-motion": "^11.0.6",
-    "next": "14.1.0",
-    "prettier": "^3.2.5",
+    "framer-motion": "^11.0.14",
+    "next": "^14.1.3",
+    "postcss-selector-parser": "^6.0.16",
     "react": "^18",
     "react-dom": "^18",
-    "tailwind-merge": "^2.2.1"
+    "tailwind-merge": "^2.2.2"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "18.2.59",
-    "@types/react-dom": "^18",
-    "autoprefixer": "^10.0.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.1.0",
+    "@types/node": "^20.11.28",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@types/react-modal-video": "^1.2.3",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.1.3",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
-    "typescript": "5.3.3"
+    "typescript": "^5.4.2"
   }
 }
