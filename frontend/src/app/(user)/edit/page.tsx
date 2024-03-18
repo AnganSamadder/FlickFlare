@@ -81,8 +81,36 @@ export default function EditProfile() {
   };
 
   const handleConfirm = () => {
-    localStorage.setItem("user", JSON.stringify(user));
-    router.push("/home");
+    console.log(JSON.stringify(user));
+    fetch(`http://localhost:8080/user/editProfile?id=${user.userId}`, {
+      method: "PUT",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    }).then((response) => {
+      response.text().then((data) => {
+        if (response.ok) {
+          fetch(
+            `http://localhost:8080/user/updateNotifyEmail?id=${user.userId}`,
+            {
+              method: "POST",
+              mode: "cors",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            },
+          );
+          localStorage.setItem("user", JSON.stringify(user));
+          router.push("/home");
+        } else {
+          console.log(data);
+        }
+        // localStorage.setItem("user", JSON.stringify(user));
+        // router.push("/home");
+      });
+    });
   };
 
   return (

@@ -19,7 +19,7 @@ const UserDropdown = () => {
         ];
       case "admin":
         return [
-          { label: "Manage Users", value: "/manage/users" },
+          { label: "Manage Users", value: "/edit" },
           { label: "Manage Movies", value: "/manage/movies" },
           { label: "Manage Promotions", value: "/manage/promotions" },
           { label: "Sign Out", value: "signout" },
