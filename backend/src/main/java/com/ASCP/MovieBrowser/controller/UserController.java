@@ -81,9 +81,9 @@ public class UserController {
             }
             String pwd = userService.decrypt(user.getPassword());
             if (userService.validateCreds(pwd, password)) {
-                if (user.isAdmin()) {
-                    return ResponseEntity.status(HttpStatus.OK).body("Admin Credentials verified");//Success. Redirect to Admin page
-                }
+//                if (user.isAdmin()) {
+//                    return ResponseEntity.status(HttpStatus.OK).body("A" + Long.toString(user.getUserId()));//Success. Redirect to Admin page
+//                }
                 return ResponseEntity.status(HttpStatus.OK).body(Long.toString(user.getUserId()));//Success. Redirect to user page
             } else {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect Email or Password");

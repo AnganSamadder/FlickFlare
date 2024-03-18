@@ -24,15 +24,17 @@ export default function Login() {
     ).then((response) => {
       response.text().then((data) => {
         if (response.ok) {
-          if (data === "Admin Credentials verified") {
-            router.push("/home/admin");
-          }
           console.log(data);
           fetch(`http://localhost:8080/user/get?id=${data}`).then(
             (response) => {
               response.json().then((data) => {
-                localStorage.setItem("userType", "user");
                 localStorage.setItem("user", JSON.stringify(data));
+                if (data["admin"]) {
+                  localStorage.setItem("userType", "admin");
+                  router.push("/home/admin");
+                } else {
+                  localStorage.setItem("userType", "user");
+                }
               });
             },
           );
