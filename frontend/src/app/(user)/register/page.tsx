@@ -17,6 +17,7 @@ export default function Register() {
     password: "",
     subToPromos: false,
     cards: [],
+    addresses: [],
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,6 +53,7 @@ export default function Register() {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         router.push(`/register/${data}/pending`);
       });
   };

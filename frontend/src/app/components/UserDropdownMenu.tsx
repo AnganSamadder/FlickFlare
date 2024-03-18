@@ -14,7 +14,7 @@ const UserDropdown = () => {
     switch (localStorage.getItem("userType")) {
       case "user":
         return [
-          { label: "Edit Profile", value: "/manage/users/profile" },
+          { label: "Edit Profile", value: "/edit" },
           { label: "Sign Out", value: "signout" },
         ];
       case "admin":

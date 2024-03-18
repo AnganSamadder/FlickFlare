@@ -1,7 +1,9 @@
 package com.ASCP.MovieBrowser.service;
 
+import com.ASCP.MovieBrowser.model.Address;
 import com.ASCP.MovieBrowser.model.Card;
 import com.ASCP.MovieBrowser.model.User;
+import com.ASCP.MovieBrowser.repository.AddressRepository;
 import com.ASCP.MovieBrowser.repository.CardRepository;
 import com.ASCP.MovieBrowser.repository.UserRepository;
 
@@ -20,6 +22,8 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     @Autowired
     private CardRepository cardRepository;
+    @Autowired
+    private AddressRepository addressRepository;
 
 
     @Override
@@ -44,6 +48,7 @@ public class UserServiceImpl implements UserService {
         }
 
         cardRepository.saveAll(user.getCards());
+        addressRepository.saveAll(user.getAddresses());
         String password = user.getPassword();
         UserServiceImpl userService = new UserServiceImpl();
         String encryptedPassword = userService.encrypt(password);

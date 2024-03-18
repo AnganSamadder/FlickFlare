@@ -1,33 +1,30 @@
 package com.ASCP.MovieBrowser.model;
 
-import java.util.Set;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@Table(name = "card")
-@NoArgsConstructor
-public class Card {
+@Table(name = "address")
+public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    private long card_id;
-    @ManyToMany(mappedBy = "cards")
-    @EqualsAndHashCode.Exclude
+    private Long id;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     @JsonIgnore
-    private Set<User> users;
+    private User user;
     @Column
-    private String cardNumber;
+    private String street;
     @Column
-    private String expMonth;
+    private String city;
     @Column
-    private String expYear;
+    private String state;
     @Column
-    private int secCode;
+    private String zip;
+
 }

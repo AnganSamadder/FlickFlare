@@ -38,6 +38,8 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "card_id")
     )
     private Set<Card> cards = new HashSet<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<Address> addresses;
     @Column
     private boolean verified;
     @Column

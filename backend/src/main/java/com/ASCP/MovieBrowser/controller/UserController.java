@@ -163,16 +163,11 @@ public class UserController {
     @PutMapping("/editProfile")
     public ResponseEntity<String> editProfile(@RequestParam long id, @RequestBody User user) {
         User editUser;
-        if (userRepository.findById(id).isPresent()) {
-            editUser = userRepository.findById(id).get();
-        } else {
+        if (userRepository.findById(id).isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User with given id doesn't exist");
         }
-        editUser.setFirstName(user.getFirstName());
-        editUser.setLastName(user.getLastName());
-        editUser.setPhoneNumber(user.getPhoneNumber());
-        editUser.setSubToPromo(user.isSubToPromo());
-        userRepository.save(editUser);
+        user.setUserId(id);
+        userRepository.save(user);
         return ResponseEntity.status(HttpStatus.OK).body("User profile successfully updated");
     }
 

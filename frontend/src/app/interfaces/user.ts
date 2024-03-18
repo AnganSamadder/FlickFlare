@@ -1,7 +1,8 @@
+import { Address } from "@/app/interfaces/address";
 import { Card } from "@/app/interfaces/card";
 
 export interface User {
-  userId?: number;
+  id?: string;
   password: string;
   email: string;
   firstName: string;
@@ -9,7 +10,8 @@ export interface User {
   phoneNumber: string;
   subToPromos: boolean;
   admin?: boolean;
-  cards: Card[];
+  cards?: Card[];
+  addresses?: Address[];
   verified?: boolean;
   verifyCode?: string;
 }
