@@ -1,6 +1,5 @@
 import MovieGrid from "@/app/components/MovieGrid";
 import ManageButton from "@/app/components/ManageButton";
-import { useRouter } from "next/navigation";
 
 export default async function Home() {
   const res = await fetch("http://localhost:8080/movie/getAll");
@@ -21,7 +20,7 @@ export default async function Home() {
           <ManageButton />
         </div>
       </div>
-      <MovieGrid items={movies} />
+      <MovieGrid movies={movies} />
     </div>
   );
 }

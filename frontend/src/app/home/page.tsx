@@ -12,7 +12,6 @@ export default async function Home() {
   }
 
   const movies = await res.json();
-  // console.log(movies);
 
   return (
     <div className="">

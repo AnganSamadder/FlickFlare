@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -23,7 +25,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean emailExists(String email) {
         String emailLowerCase = email.toLowerCase();
-        for (User existingUser : userRepository.findAll()) {
+//        System.out.println("hi sdfg");
+//        System.out.println("bye\n" + getAllUsers() + "sdfg");
+        for (User existingUser : getAllUsers()) {
+            System.out.println(existingUser.getEmail());
             if (emailLowerCase.equalsIgnoreCase(existingUser.getEmail())) {
                 return true;
             }
@@ -53,6 +58,12 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
+    public List<User> getAllUsers() {
+        List<User> users = new ArrayList<>();
+        userRepository.findAll().forEach(users::add);
+        return users;
+    }
+
     public User getUser(long id) {
         if (userRepository.findById(id).isPresent()) {
             return userRepository.findById(id).get();
@@ -63,6 +74,13 @@ public class UserServiceImpl implements UserService {
     public Set<Card> getCards(long id) {
         User user = getUser(id);
         return user.getCards();
+    }
+
+    public void verify(long id) {
+        User user = getUser(id);
+        user.setVerified(true);
+        user.setVerifyCode("0");
+        userRepository.save(user);
     }
 
     public String encrypt(String encryptionString) {

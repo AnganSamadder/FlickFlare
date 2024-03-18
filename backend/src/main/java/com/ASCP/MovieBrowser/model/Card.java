@@ -20,15 +20,21 @@ public class Card {
     @Column(unique = true, nullable = false)
     private long card_id;
     @Column
-    private String cardType;
-    @Column
     private String cardNumber;
     @Column
     private String expDate;
     @Column
-    private String billingAddress;
+    private int secCode;
+    @Column
+    private String address;
+    @Column
+    private String city;
+    @Column
+    private String state;
+    @Column
+    private String zip;
     @ManyToMany(mappedBy = "cards")
     @EqualsAndHashCode.Exclude
     @JsonIgnore
-    private Set<User> users = new HashSet<>();
+    private Set<User> users;
 }

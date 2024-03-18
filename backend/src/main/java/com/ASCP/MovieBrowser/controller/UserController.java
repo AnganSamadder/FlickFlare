@@ -6,18 +6,18 @@ import com.ASCP.MovieBrowser.model.Card;
 import com.ASCP.MovieBrowser.repository.UserRepository;
 import com.ASCP.MovieBrowser.service.UserService;
 import com.ASCP.MovieBrowser.service.EmailVerificationService;
-import jakarta.mail.SendFailedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.MailSendException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
 
 
+@CrossOrigin
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -29,34 +29,38 @@ public class UserController {
     @Autowired
     public UserRepository userRepository;
 
-    @PostMapping("/emailVerify")//Call when Register. Send Verification Email. Returns verification code. Also check if email is valid
-    public ResponseEntity<String> verify(@RequestParam String email, @RequestParam String firstname) {
+    @PostMapping("/register")
+    public ResponseEntity<String> register(@RequestBody User user) {
         try {
-            if (userService.emailExists(email)) {
-                return ResponseEntity.status(HttpStatus.CONFLICT).body("Email already exists.");//Email already exists. Prompt to Sign in
+            System.out.println("user");
+            if (userService.emailExists(user.getEmail())) {
+                System.out.println("Email already exists.");
+                return ResponseEntity.status(HttpStatus.CONFLICT).body("Email already exists.");
             }
             String code = emailService.codeGen();
             String subject = "Welcome to FlickFlare!";
-            emailService.sendVerificationEmail(email, subject,
-                    "Hello " + firstname + ",\n\nPlease type this verification code into the designated box on our website " +
+            emailService.sendVerificationEmail(user.getEmail(), subject,
+                    "Hello " + user.getFirstName() + ",\n\nPlease type this verification code into the designated box on our website " +
                             "Here is your verification code: " + code);
-            return ResponseEntity.status(HttpStatus.OK).body(code);//Email Sent. Compare user input with returned code
-        }catch (Exception e) {
+            user.setVerifyCode(code);
+            userService.saveUser(user);
+            return ResponseEntity.status(HttpStatus.OK).body(Long.toString(user.getUserId()));
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
     }
-    @PostMapping("/add")//Call when code is verified. Send all details from Registration page.
-    public ResponseEntity<String> add(@RequestBody User user) {
+
+    @PutMapping("/verify")
+    public ResponseEntity<String> verify(@RequestParam long id) {
         try {
-            userService.saveUser(user);
-            return ResponseEntity.status(HttpStatus.CREATED).body("User created successfully.");//success
+            userService.verify(id);
+            return ResponseEntity.status(HttpStatus.OK).body("User verified");
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error Occurred: " + e.getMessage());//failure. Try again.
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
     }
 
-
-    @PostMapping("/login")//Login
+    @PostMapping("/login")
     public ResponseEntity<String> login(@RequestParam String email, @RequestParam String password) {
         try {
             if (!userService.emailExists(email)) {
@@ -74,13 +78,27 @@ public class UserController {
             }
             String pwd = userService.decrypt(user.getPassword());
             if (userService.validateCreds(pwd, password)) {
-                if(user.isAdmin()){
+                if (user.isAdmin()) {
                     return ResponseEntity.status(HttpStatus.OK).body("Admin Credentials verified");//Success. Redirect to Admin page
                 }
                 return ResponseEntity.status(HttpStatus.OK).body("Credentials verified");//Success. Redirect to user page
             } else {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect Email or Password.");
             }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/getAll")
+    public ResponseEntity<Object> getAll() {
+        try {
+            List<User> users = userService.getAllUsers();
+            for (User user : users) {
+                user.setPassword("************");
+                user.setCards(new HashSet<>());
+            }
+            return ResponseEntity.status(HttpStatus.OK).body(users);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
@@ -95,9 +113,9 @@ public class UserController {
             }
             user.setPassword("************");
             user.setCards(new HashSet<>());
-            return ResponseEntity.status(HttpStatus.OK).body(user);//Success
+            return ResponseEntity.status(HttpStatus.OK).body(user);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());//ServerFailure
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
     }
 
@@ -107,15 +125,15 @@ public class UserController {
         try {
             temp = new HashSet<>(userService.getCards(id));
         } catch (NullPointerException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User with the given id doesn't exist.");//UserId incorrect
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User with the given id doesn't exist.");
         }
-        if(temp.isEmpty()){
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("User does not have any cards.");//No cards to show
+        if (temp.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("User does not have any cards.");
         }
-        for(Card card : temp){
+        for (Card card : temp) {
             card.setCardNumber("XXXX XXXX XXXX " + userService.decrypt(card.getCardNumber().substring(12)));
         }
-        return ResponseEntity.status(HttpStatus.OK).body(temp);//Success
+        return ResponseEntity.status(HttpStatus.OK).body(temp);
     }
 
     @PostMapping("/forgotPassword")
@@ -135,25 +153,26 @@ public class UserController {
         emailService.sendVerificationEmail(email, subject,
                 "Hello " + firstname + ",\n\nPlease type this verification code into the designated box on our website " +
                         "Here is your verification code: " + code);
-        return ResponseEntity.status(HttpStatus.OK).body(code);//Email sent Compare User input with returned code
+        return ResponseEntity.status(HttpStatus.OK).body(code);
 
     }
+
     @PutMapping("/editProfile")
-    public ResponseEntity<String> editProfile(@RequestParam long id, @RequestBody User user){
+    public ResponseEntity<String> editProfile(@RequestParam long id, @RequestBody User user) {
         User editUser;
-        if(userRepository.findById(id).isPresent()){
+        if (userRepository.findById(id).isPresent()) {
             editUser = userRepository.findById(id).get();
-        }else{
+        } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User with given id doesn't exist");
         }
         editUser.setFirstName(user.getFirstName());
         editUser.setLastName(user.getLastName());
         editUser.setPhoneNumber(user.getPhoneNumber());
         editUser.setSubToPromo(user.isSubToPromo());
-        editUser.setAddress(user.getAddress());
         userRepository.save(editUser);
         return ResponseEntity.status(HttpStatus.OK).body("User profile successfully updated");
     }
+
     @PostMapping("/updateNotifyEmail")
     public void updateEmail(@RequestParam long id) {
         User user = null;
@@ -169,8 +188,9 @@ public class UserController {
         String body = "Hello" + firstname + " Your account information has been updated," +
                 "if this was not you, contact us at FlickFlareverify@gmail.com";
         String email = user.getEmail();
-        emailService.sendVerificationEmail(email,subject,body);
+        emailService.sendVerificationEmail(email, subject, body);
     }
+
     @PutMapping("/newPassword")
     public void newPassword(@RequestParam long id, String newPassword) {
         User user = null;

@@ -1,9 +1,8 @@
 "use client";
-import { Movie } from "@/app/interfaces/movie";
 import SearchBar from "@/app/components/SearchBar";
+import UserDropdownMenu from "@/app/components/UserDropdownMenu";
 import React from "react";
 import { usePathname, useRouter } from "next/navigation";
-import UserDropdownMenu from "@/app/components/UserDropdownMenu";
 
 export const NavbarButton = (props: {
   onClick: (event: React.MouseEvent<HTMLElement>) => void;

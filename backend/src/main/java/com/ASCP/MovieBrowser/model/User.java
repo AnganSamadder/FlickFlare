@@ -16,7 +16,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    private long user_id;
+    private long userId;
     @Column
     private String password;
     @Column
@@ -30,7 +30,7 @@ public class User {
     @Column
     private boolean subToPromo;
     @Column
-    private boolean isAdmin=false;
+    private boolean admin;
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_card",
@@ -38,5 +38,9 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "card_id")
     )
     private Set<Card> cards = new HashSet<>();
-    private String address;
+    @Column
+    private boolean verified;
+    @Column
+    private String verifyCode;
+
 }
