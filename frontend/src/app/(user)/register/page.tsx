@@ -19,6 +19,7 @@ export default function Register() {
     cards: [],
     addresses: [],
   });
+  const [warning, setWarning] = useState<string>("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.name === "confirmPassword") {
@@ -50,12 +51,16 @@ export default function Register() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(user),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        router.push(`/register/${data}/pending`);
+    }).then((response) => {
+      response.text().then((data) => {
+        if (response.ok) {
+          // console.log(data);
+          router.push(`/register/${data}/pending`);
+        } else {
+          setWarning(data);
+        }
       });
+    });
   };
 
   useEffect(() => {
@@ -163,6 +168,11 @@ export default function Register() {
               I agree to receive emails about new movies or promotions?
             </label>
           </div>
+          {warning && (
+            <div className="text-red-500 text-l font-medium font-['Maven Pro'] leading-normal">
+              {warning}
+            </div>
+          )}
           <div className="p-8">
             <button
               disabled={buttonDisabled}
