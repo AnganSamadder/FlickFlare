@@ -9,15 +9,15 @@ import java.util.concurrent.ExecutionException;
 @Service
 public interface MovieService {
 
-    public void saveMovie(Movie movie);
+    void saveMovie(Movie movie);
 
-    public List<Movie> getAllMovies() throws ExecutionException, InterruptedException;
+    List<Movie> getAllMovies() throws ExecutionException, InterruptedException;
 
-    public Movie getMovie(long id) throws ExecutionException, InterruptedException;
+    Movie getMovie(long id) throws ExecutionException, InterruptedException;
 
-    public void deleteMovie(long id);
+    void deleteMovie(long id);
 
-    public List<Movie> searchMovies(String input) throws ExecutionException, InterruptedException;
+    List<Movie> searchMovies(String input) throws ExecutionException, InterruptedException;
 
-    public List<Movie> getShowingMovies(boolean showing) throws ExecutionException, InterruptedException;
+    List<Movie> getShowingMovies(boolean showing) throws ExecutionException, InterruptedException;
 }

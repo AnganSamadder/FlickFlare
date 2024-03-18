@@ -24,6 +24,7 @@ public class MovieServiceImpl implements MovieService {
     @Autowired
     private ActorRepository actorRepository;
 
+    @Override
     public void saveMovie(Movie movie) {
         for (MovieShowtime showtime : movie.getShowtimes()) {
             showtime.setMovie(movie);
@@ -56,23 +57,24 @@ public class MovieServiceImpl implements MovieService {
         movieRepository.save(movie);
     }
 
+    @Override
     public List<Movie> getAllMovies() {
         List<Movie> movies = new ArrayList<>();
         movieRepository.findAll().forEach(movies::add);
         return movies;
     }
 
-
+    @Override
     public Movie getMovie(long id) throws ExecutionException, InterruptedException {
         return movieRepository.findById(id).isPresent() ? movieRepository.findById(id).get() : null;
     }
 
-
+    @Override
     public void deleteMovie(long id) {
         movieRepository.deleteById(id);
     }
 
-
+    @Override
     public List<Movie> searchMovies(String input) throws ExecutionException, InterruptedException {
         if (input.isEmpty()) {
             return new ArrayList<>();
@@ -81,6 +83,7 @@ public class MovieServiceImpl implements MovieService {
         return movieRepository.findByTitleContainingIgnoreCase(input);
     }
 
+    @Override
     public List<Movie> getShowingMovies(boolean showing) throws ExecutionException, InterruptedException {
         return movieRepository.findByShowing(showing);
     }

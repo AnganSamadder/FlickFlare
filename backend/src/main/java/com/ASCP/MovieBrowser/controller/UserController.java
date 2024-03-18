@@ -4,8 +4,8 @@ package com.ASCP.MovieBrowser.controller;
 import com.ASCP.MovieBrowser.model.User;
 import com.ASCP.MovieBrowser.model.Card;
 import com.ASCP.MovieBrowser.repository.UserRepository;
+import com.ASCP.MovieBrowser.service.EmailVerificationServiceImpl;
 import com.ASCP.MovieBrowser.service.UserService;
-import com.ASCP.MovieBrowser.service.EmailVerificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +25,7 @@ public class UserController {
     @Autowired
     public UserService userService;
     @Autowired
-    public EmailVerificationService emailService;
+    public EmailVerificationServiceImpl emailService;
     @Autowired
     public UserRepository userRepository;
 

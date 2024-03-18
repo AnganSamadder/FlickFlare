@@ -25,8 +25,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean emailExists(String email) {
         String emailLowerCase = email.toLowerCase();
-//        System.out.println("hi sdfg");
-//        System.out.println("bye\n" + getAllUsers() + "sdfg");
         for (User existingUser : getAllUsers()) {
             System.out.println(existingUser.getEmail());
             if (emailLowerCase.equalsIgnoreCase(existingUser.getEmail())) {
@@ -37,10 +35,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public boolean validateCreds(String inputPwd, String decrytpedPwd) {
-        if (inputPwd.equals(decrytpedPwd)) {
-            return true;
-        }
-        return false;
+        return inputPwd.equals(decrytpedPwd);
     }
 
     public void saveUser(User user) {
