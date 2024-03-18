@@ -18,34 +18,38 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     @Autowired
     private CardRepository cardRepository;
-    UserService userService;
 
 
     @Override
     public boolean emailExists(String email) {
+        String emailLowerCase = email.toLowerCase();
         for (User existingUser : userRepository.findAll()) {
-            if (email.equalsIgnoreCase(existingUser.getEmail())) {
+            if (emailLowerCase.equalsIgnoreCase(existingUser.getEmail())) {
                 return true;
             }
         }
         return false;
     }
-    public boolean validateCreds(User user, String inputPwd, String decrytpedPwd){
 
-        if(user!=null){
-
-            if(inputPwd.equals(decrytpedPwd)){
-                return true;
-            }else{
-                return false;
-            }
+    public boolean validateCreds(String inputPwd, String decrytpedPwd) {
+        if (inputPwd.equals(decrytpedPwd)) {
+            return true;
         }
         return false;
     }
+
     public void saveUser(User user) {
+        for (Card card : user.getCards()) {
+            String encryptedNum = encrypt(card.getCardNumber());
+            card.setCardNumber(encryptedNum);
+        }
 
         cardRepository.saveAll(user.getCards());
-
+        String password = user.getPassword();
+        UserServiceImpl userService = new UserServiceImpl();
+        String encryptedPassword = userService.encrypt(password);
+        user.setPassword(encryptedPassword);
+        user.setEmail(user.getEmail().toLowerCase());
         userRepository.save(user);
     }
 
@@ -71,11 +75,10 @@ public class UserServiceImpl implements UserService {
             char character = encryptionString.charAt(i);
             int asciiValue = (int) character;
 
-            if(i == 0) {
+            if (i == 0) {
                 asciiValue = asciiValue + 1;
 
-            }
-            else {
+            } else {
                 asciiValue = asciiValue - i - key;
 
             }
@@ -84,7 +87,7 @@ public class UserServiceImpl implements UserService {
 
         }
 
-          return encryptedStringBuilder.toString();
+        return encryptedStringBuilder.toString();
     }
 
     public String decrypt(String encryptedString) {
@@ -95,10 +98,9 @@ public class UserServiceImpl implements UserService {
             char character = encryptedString.charAt(i);
             int asciiValue = (int) character;
 
-            if(i == 0) {
+            if (i == 0) {
                 asciiValue = asciiValue - 1; // Reverse the encryption operation for the first character
-            }
-            else {
+            } else {
                 asciiValue = asciiValue + i + key; // Reverse the encryption operation for subsequent characters
             }
             char decryptedChar = (char) asciiValue;
