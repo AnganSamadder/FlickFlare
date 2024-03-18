@@ -154,6 +154,38 @@ public class UserController {
         userRepository.save(editUser);
         return ResponseEntity.status(HttpStatus.OK).body("User profile successfully updated");
     }
+    @PostMapping("/updateNotifyEmail")
+    public void updateEmail(@RequestParam long id) {
+        User user = null;
+        try {
+            if (userRepository.findById(id).isPresent()) {
+                user = userRepository.findById(id).get();
+            }
+        } catch (Exception e) {
+            throw new NullPointerException("User not found");
+        }
+        String firstname = user.getFirstName();
+        String subject = "Your account information has been updated!";
+        String body = "Hello" + firstname + " Your account information has been updated," +
+                "if this was not you, contact us at FlickFlareverify@gmail.com";
+        String email = user.getEmail();
+        emailService.sendVerificationEmail(email,subject,body);
+    }
+    @PutMapping("/newPassword")
+    public void newPassword(@RequestParam long id, String newPassword) {
+        User user = null;
+        try {
+            if (userRepository.findById(id).isPresent()) {
+                user = userRepository.findById(id).get();
+            }
+        } catch (Exception e) {
+            throw new NullPointerException("User not found");
+        }
+        user.setPassword(newPassword);
+        String password = user.getPassword();
+        String encryptedPassword = userService.encrypt(password);
+        user.setPassword(encryptedPassword);
+    }
 //    @PutMapping("/editPassword")
 //    public ResponseEntity<String> editPassword(@RequestParam long id, @RequestParam String password){
 //        User user;
