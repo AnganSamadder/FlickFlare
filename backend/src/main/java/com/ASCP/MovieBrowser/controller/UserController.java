@@ -83,7 +83,7 @@ public class UserController {
                 }
                 return ResponseEntity.status(HttpStatus.OK).body("Credentials verified");//Success. Redirect to user page
             } else {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect Email or Password.");
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect Email or Password");
             }
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());

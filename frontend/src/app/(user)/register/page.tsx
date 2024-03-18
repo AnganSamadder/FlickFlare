@@ -85,31 +85,31 @@ export default function Register() {
                 First Name
               </div>
               <InputField
-                placeholder={"Enter first name..."}
-                name={"firstName"}
+                placeholder="Enter first name..."
+                name="firstName"
                 value={user.firstName}
                 onChange={handleChange}
-                classname={"w-3/4 h-[5vh]"}
+                classname="w-3/4 h-[5vh]"
               />
               <div className="text-orange-500 text-2xl font-medium font-['Maven Pro']">
                 Last Name
               </div>
               <InputField
-                placeholder={"Enter last name..."}
-                name={"lastName"}
+                placeholder="Enter last name..."
+                name="lastName"
                 value={user.lastName}
                 onChange={handleChange}
-                classname={"w-3/4 h-[5vh]"}
+                classname="w-3/4 h-[5vh]"
               />
               <div className="text-orange-500 text-2xl font-medium font-['Maven Pro']">
                 Email
               </div>
               <InputField
-                placeholder={"Enter email..."}
-                name={"email"}
+                placeholder="Enter email..."
+                name="email"
                 value={user.email}
                 onChange={handleChange}
-                classname={"w-3/4 h-[5vh]"}
+                classname="w-3/4 h-[5vh]"
               />
             </div>
             <div className="w-full h-full flex flex-col justify-evenly items-center">
@@ -117,30 +117,30 @@ export default function Register() {
                 Phone Number
               </div>
               <InputField
-                placeholder={"Enter phone number..."}
-                name={"phoneNumber"}
+                placeholder="Enter phone number..."
+                name="phoneNumber"
                 value={user.phoneNumber}
                 onChange={handleChange}
-                classname={"w-3/4 h-[5vh]"}
+                classname="w-3/4 h-[5vh]"
               />
               <div className="text-orange-500 text-2xl font-medium font-['Maven Pro']">
                 Password
               </div>
               <InputField
-                placeholder={"Enter password..."}
-                name={"password"}
+                placeholder="Enter password..."
+                name="password"
                 value={user.password}
                 onChange={handleChange}
-                classname={"w-3/4 h-[5vh]"}
+                classname="w-3/4 h-[5vh]"
               />
               <div className="text-orange-500 text-2xl font-medium font-['Maven Pro']">
                 Confirm Password
               </div>
               <InputField
-                placeholder={"Enter password..."}
-                name={"confirmPassword"}
+                placeholder="Enter password..."
+                name="confirmPassword"
                 onChange={handleChange}
-                classname={"w-3/4 h-[5vh]"}
+                classname="w-3/4 h-[5vh]"
               />
             </div>
           </div>

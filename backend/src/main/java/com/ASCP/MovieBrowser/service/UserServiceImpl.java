@@ -24,10 +24,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean emailExists(String email) {
-        String emailLowerCase = email.toLowerCase();
         for (User existingUser : getAllUsers()) {
-            System.out.println(existingUser.getEmail());
-            if (emailLowerCase.equalsIgnoreCase(existingUser.getEmail())) {
+            System.out.println(existingUser.getEmail() + " " + email);
+            if (email.equalsIgnoreCase(existingUser.getEmail())) {
                 return true;
             }
         }
