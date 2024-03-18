@@ -29,6 +29,8 @@ public class User {
     private String phoneNumber;
     @Column
     private boolean subToPromo;
+    @Column
+    private boolean isAdmin=false;
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_card",

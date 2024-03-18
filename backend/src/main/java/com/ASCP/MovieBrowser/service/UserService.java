@@ -16,7 +16,7 @@ public interface UserService {
 
     public User getUser(long id) throws ExecutionException, InterruptedException;
 
-    public boolean validateCreds(User user, String inputPwd, String decrytpedPwd);
+    public boolean validateCreds(String inputPwd, String decrytpedPwd);
 
     public Set<Card> getCards(long id) throws ExecutionException, InterruptedException;
 
