@@ -127,6 +127,7 @@ export default function EditProfile() {
             name="email"
             value={user.email}
             onChange={handleChange}
+            disabled={true}
             classname="w-[250px] h-[33.08px] mt-2 mb-10"
           />
           <label className="w-fit h-fit text-orange-500 text-2xl font-medium leading-normal">

@@ -7,12 +7,14 @@ const InputField = ({
   placeholder,
   value,
   onChange = () => {},
+  disabled,
   classname,
 }: {
   name?: string;
   placeholder?: string;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  disabled?: boolean;
   classname?: string;
 }) => {
   return (
@@ -23,6 +25,7 @@ const InputField = ({
         value={value}
         onChange={(e) => onChange(e)}
         placeholder={placeholder}
+        disabled={disabled}
         className="w-full px-4 bg-transparent outline-none z-20"
       />
     </div>
