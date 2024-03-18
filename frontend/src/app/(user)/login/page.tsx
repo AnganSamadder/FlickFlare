@@ -27,6 +27,15 @@ export default function Login() {
           if (data === "Admin Credentials verified") {
             router.push("/home/admin");
           }
+          console.log(data);
+          fetch(`http://localhost:8080/user/get?id=${data}`).then(
+            (response) => {
+              response.json().then((data) => {
+                localStorage.setItem("userType", "user");
+                localStorage.setItem("user", JSON.stringify(data));
+              });
+            },
+          );
           router.push("/home");
         } else {
           setWarning(data);

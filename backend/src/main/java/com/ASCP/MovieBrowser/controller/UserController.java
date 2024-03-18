@@ -76,12 +76,15 @@ public class UserController {
             if (user == null) {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect Email");
             }
+            if (!user.isVerified()) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Please verify your email first.");
+            }
             String pwd = userService.decrypt(user.getPassword());
             if (userService.validateCreds(pwd, password)) {
                 if (user.isAdmin()) {
                     return ResponseEntity.status(HttpStatus.OK).body("Admin Credentials verified");//Success. Redirect to Admin page
                 }
-                return ResponseEntity.status(HttpStatus.OK).body("Credentials verified");//Success. Redirect to user page
+                return ResponseEntity.status(HttpStatus.OK).body(Long.toString(user.getUserId()));//Success. Redirect to user page
             } else {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect Email or Password");
             }

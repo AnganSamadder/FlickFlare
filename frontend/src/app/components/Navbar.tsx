@@ -91,7 +91,7 @@ const Navbar = () => {
               />
             </div>
             <div>
-              <UserDropdownMenu userType={"guest"}></UserDropdownMenu>
+              <UserDropdownMenu />
             </div>
           </div>
         </div>
