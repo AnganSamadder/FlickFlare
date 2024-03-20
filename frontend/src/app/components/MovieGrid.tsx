@@ -5,6 +5,7 @@ import TrailerPopup from "./TrailerPopup";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { router } from "next/client";
 
 const MovieGrid = ({
   movies,
@@ -25,6 +26,11 @@ const MovieGrid = ({
   const closeModal = () => {
     setTrailerIsOpen(false);
     setSelectedMovie("");
+  };
+
+  const router = useRouter();
+  const handleMoreInfo = (movie: Movie) => {
+    router.push(`/${movie.title}/`);
   };
 
   return (
@@ -63,7 +69,10 @@ const MovieGrid = ({
               <CardTitle>{movie.title}</CardTitle>
               <CardImg src={movie.poster} />
               <CardDescription>{movie.description}</CardDescription>
-              <CardButtons onClick={() => handleTrailer(movie.trailer)} />
+              <CardButtons
+                onClickTrailer={() => handleTrailer(movie.trailer)}
+                onClickMoreInfo={() => handleMoreInfo(movie)}
+              />
             </Card>
           </div>
         ))}
@@ -154,23 +163,25 @@ export const CardDescription = ({
 
 export const CardButtons = ({
   className,
-  onClick,
+  onClickTrailer,
+  onClickMoreInfo,
 }: {
   className?: string;
-  onClick?: () => void;
+  onClickTrailer?: () => void;
+  onClickMoreInfo?: () => void;
 }) => {
   const router = useRouter();
 
   return (
     <div className={cn("flex justify-center mt-8", className)}>
-      <button className="p-[3px] relative" onClick={onClick}>
+      <button className="p-[3px] relative" onClick={onClickTrailer}>
         <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-500 rounded-l-full" />
         <div className="px-8 py-2  bg-black rounded-[6px] rounded-l-full relative group transition duration-200 text-white hover:bg-transparent">
           View Trailer
         </div>
       </button>
       <div className="w-2" />
-      <button className="p-[3px] relative">
+      <button className="p-[3px] relative" onClick={onClickMoreInfo}>
         <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-500 rounded-r-full" />
         <div className="px-8 py-2  bg-black rounded-[6px] rounded-r-full relative group transition duration-200 text-white hover:bg-transparent">
           More info
