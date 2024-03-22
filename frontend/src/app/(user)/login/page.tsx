@@ -69,6 +69,7 @@ export default function Login() {
           <InputField
             placeholder="Enter password..."
             name="password"
+            type="password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             classname="w-2/5 h-[5vh]"

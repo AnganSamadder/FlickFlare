@@ -47,11 +47,13 @@ export default function Profile() {
             <InputField
                 placeholder={"Enter new password..."}
                 name={"newPassword"}
+                type="password"
                 classname={"w-[250px] h-[33.08px] mb-2 mt-2"}
             />
             <InputField
                 placeholder={"Confirm new password..."}
                 name={"confirmNewPassword"}
+                type="password"
                 classname={"w-[250px] h-[33.08px]"}
             />
             <div className="mt-16">

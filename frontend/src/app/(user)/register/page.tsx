@@ -136,6 +136,7 @@ export default function Register() {
               <InputField
                 placeholder="Enter password..."
                 name="password"
+                type="password"
                 value={user.password}
                 onChange={handleChange}
                 classname="w-3/4 h-[5vh]"
@@ -146,6 +147,7 @@ export default function Register() {
               <InputField
                 placeholder="Enter password..."
                 name="confirmPassword"
+                type="password"
                 onChange={handleChange}
                 classname="w-3/4 h-[5vh]"
               />
