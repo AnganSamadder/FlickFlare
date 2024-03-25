@@ -3,7 +3,7 @@ import React from "react";
 import { cn } from "@/app/utils/cn";
 
 const InputField = ({
-                      type,
+  type,
   name,
   placeholder,
   value,
@@ -11,7 +11,7 @@ const InputField = ({
   disabled,
   classname,
 }: {
-  type?: string,
+  type?: string;
   name?: string;
   placeholder?: string;
   value?: string;

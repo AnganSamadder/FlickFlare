@@ -31,9 +31,12 @@ export default function Movie({
               </p>
             </button>
             <button className="w-[135px] h-11 bg-orange-500 rounded-tr-[29px] rounded-br-[29px]">
-              <p className="w-[91px] h-6 m-auto text-white text-[15px] font-bold leading-normal">
+              <Link
+                className="w-[91px] h-6 m-auto text-white text-[15px] font-bold leading-normal"
+                href={`/${movie}/showtimes`}
+              >
                 Book Movie
-              </p>
+              </Link>
             </button>
           </div>
         </div>

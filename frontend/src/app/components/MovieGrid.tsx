@@ -5,7 +5,6 @@ import TrailerPopup from "./TrailerPopup";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { router } from "next/client";
 
 const MovieGrid = ({
   movies,
