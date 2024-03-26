@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import InputField from "@/app/components/InputField";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function Login() {
@@ -9,6 +9,7 @@ export default function Login() {
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [user, setUser] = useState<string>("");
   const [warning, setWarning] = useState<string>("");
 
   const handleLogin = () => {
@@ -24,27 +25,37 @@ export default function Login() {
     ).then((response) => {
       response.text().then((data) => {
         if (response.ok) {
-          console.log(data);
+          // console.log(data);
           fetch(`http://localhost:8080/user/get?id=${data}`).then(
             (response) => {
-              response.json().then((data) => {
-                localStorage.setItem("user", JSON.stringify(data));
-                if (data["admin"]) {
-                  localStorage.setItem("userType", "admin");
-                  router.push("/home/admin");
-                } else {
-                  localStorage.setItem("userType", "user");
-                }
-              });
+              // console.log(user, localStorage.getItem("user"));
+              response.json().then((data) => setUser(JSON.stringify(data)));
+              // console.log(user, localStorage.getItem("user"));
+              // console.log(localStorage.getItem("userType"));
             },
           );
-          router.push("/home");
         } else {
           setWarning(data);
         }
       });
     });
   };
+
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem("user", user);
+      // console.log(user);
+      console.log(localStorage.getItem("user"));
+      // console.log(JSON.parse(user || "{}"));
+      if (JSON.parse(user || "{}")["admin"]) {
+        localStorage.setItem("userType", "admin");
+      } else {
+        localStorage.setItem("userType", "user");
+      }
+      window.dispatchEvent(new Event("storage"));
+      router.push("/home");
+    }
+  }, [user]);
 
   return (
     <div className="h-[86vh] flex-col justify-center">

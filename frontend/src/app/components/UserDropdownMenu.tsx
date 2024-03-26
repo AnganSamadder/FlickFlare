@@ -1,17 +1,26 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
+
+interface Option {
+  label: string;
+  value: string;
+}
 
 const UserDropdown = () => {
   const [dropdownOpen, setDropdownOpen] = React.useState(false);
+  const [options, setOptions] = React.useState<Option[]>([]);
+  const [userName, setUserName] = React.useState<string>("");
+  const [userType, setUserType] = React.useState<string>("");
 
   const handleSignOut = () => {
-    localStorage.setItem("userType", "guest");
-    localStorage.removeItem("user");
+    // console.log("signing out");
+    setUserType("guest");
+    setUserName("-1");
     window.location.href = "/home";
   };
 
-  const getOptions = () => {
-    switch (localStorage.getItem("userType")) {
+  const getOptions = (userType: string | null) => {
+    switch (userType) {
       case "user":
         return [
           { label: "Edit Profile", value: "/edit" },
@@ -19,7 +28,8 @@ const UserDropdown = () => {
         ];
       case "admin":
         return [
-          { label: "Manage Users", value: "/edit" },
+          { label: "Edit Profile", value: "/edit" },
+          { label: "Manage Users", value: "/manage/users" },
           { label: "Manage Movies", value: "/manage/movies" },
           { label: "Manage Promotions", value: "/manage/promotions" },
           { label: "Sign Out", value: "signout" },
@@ -32,7 +42,38 @@ const UserDropdown = () => {
     }
   };
 
-  const options = getOptions();
+  useEffect(() => {
+    const value = localStorage.getItem("userType") || "";
+    const name = JSON.parse(localStorage.getItem("user") || "{}").firstName;
+    // console.log("0", value, name);
+    setUserType(value);
+    setUserName(name);
+
+    window.addEventListener("storage", () => {
+      const value = localStorage.getItem("userType");
+      const name = JSON.parse(localStorage.getItem("user") || "{}").firstName;
+      // console.log("storage event", value);
+      setUserType(value || "");
+      setUserName(name);
+    });
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("userType", userType);
+    setOptions(getOptions(userType));
+  }, [userType]);
+
+  useEffect(() => {
+    if (userName === "-1") {
+      localStorage.removeItem("user");
+    } else if (localStorage.getItem("user") && userType === "") {
+      setUserType(
+        JSON.parse(localStorage.getItem("user") || "{}").admin
+          ? "admin"
+          : "user",
+      );
+    }
+  }, [userName]);
 
   return (
     <div>
@@ -45,15 +86,16 @@ const UserDropdown = () => {
       <div className="absolute pt-2 right-[6vw]">
         {dropdownOpen && (
           <div className="h-full pt-1 flex-col object-right bg-zinc-900 bg-opacity-90 text-right rounded-xl align-middle">
-            {(localStorage.getItem("userType") === "admin" ||
-              localStorage.getItem("userType") === "user") && (
+            {(userType === "admin" || userType === "user") && (
               <div className="w-[15vw] m-3 p-2 bg-zinc-900 rounded-xl text-white text-4xl font-extrabold align-middle">
-                Welcome,{" "}
-                {JSON.parse(localStorage.getItem("user") || "{}").firstName}
+                Welcome,{" " + userName}
               </div>
             )}
             {options.map((option) => (
-              <div className="w-[15vw] m-3 p-2 bg-zinc-900 hover:bg-black hover:bg-opacity-70 rounded-xl align-middle">
+              <div
+                key={option.label}
+                className="w-[15vw] m-3 p-2 bg-zinc-900 hover:bg-black hover:bg-opacity-70 rounded-xl align-middle"
+              >
                 {option.value === "signout" ? (
                   <div
                     onClick={handleSignOut}
