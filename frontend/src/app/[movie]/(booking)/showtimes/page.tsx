@@ -1,4 +1,4 @@
-import ShowtimeCard from "@/app/components/ShowtimeCard";
+import ShowtimeCard from "@/app/components/containers/ShowtimeCard";
 import Link from "next/link";
 
 export default function Showtimes() {

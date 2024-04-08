@@ -4,7 +4,7 @@ import { Address } from "@/app/interfaces/address";
 import { User } from "@/app/interfaces/user";
 import { redirect, useRouter } from "next/navigation";
 import { Card } from "@/app/interfaces/card";
-import InputField from "@/app/components/InputField";
+import InputField from "@/app/components/fields/InputField";
 
 export default function EditProfile() {
   if (

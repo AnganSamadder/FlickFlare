@@ -1,6 +1,6 @@
 "use client";
 import { User } from "@/app/interfaces/user";
-import InputField from "@/app/components/InputField";
+import InputField from "@/app/components/fields/InputField";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 

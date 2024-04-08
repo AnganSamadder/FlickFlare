@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import InputField from "@/app/components/InputField";
+import InputField from "@/app/components/fields/InputField";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 

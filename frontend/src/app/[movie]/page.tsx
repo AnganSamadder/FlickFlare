@@ -1,14 +1,31 @@
 import Link from "next/link";
 
-export default function Movie({
+async function getMovie(id: number) {
+  const res = await fetch("http://localhost:8080/movie/get?id=" + id, {
+    headers: {
+      "Cache-Control": "no-cache",
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error("Network response was not ok when fetching movie");
+  }
+
+  return res.json();
+}
+
+export default async function Movie({
   params: { movie },
 }: {
   params: { movie: number };
 }) {
+  //usestate, fetch, .../then
+  const movieObject = await getMovie(movie);
+
   return (
     <div className="w-screen p-5 flex-col flex justify-center relative bg-black ">
       <label className=" w-full h-auto text-orange-500 text-5xl font-bold leading-normal text-center">
-        {movie}
+        {movieObject.title}
       </label>
       <div className="flex flex-row justify-items-start space-x-5">
         <div className="w-fit p-5 flex-col">
@@ -46,10 +63,11 @@ export default function Movie({
               Synopsis:
             </label>
             <p className="w-2/3 h-auto text-white text-xl font-normal leading-normal">
-              A billionaire industrialist and genius inventor, Tony Stark
-              (Robert Downey Jr.), is conducting weapons tests overseas, but
-              terrorists kidnap him to force him to build a devastating weapon.
-              Instead, he builds an armored suit and upends his captors.
+              {movieObject.description}
+              {/*A billionaire industrialist and genius inventor, Tony Stark*/}
+              {/*(Robert Downey Jr.), is conducting weapons tests overseas, but*/}
+              {/*terrorists kidnap him to force him to build a devastating weapon.*/}
+              {/*Instead, he builds an armored suit and upends his captors.*/}
             </p>
           </div>
           <div className="space-y-2">

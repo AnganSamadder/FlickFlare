@@ -1,5 +1,5 @@
-import MovieGrid from "@/app/components/MovieGrid";
-import ManageButton from "@/app/components/ManageButton";
+import MovieGrid from "@/app/components/ui/MovieGrid";
+import ManageButton from "@/app/components/button/ManageButton";
 
 export default async function Home() {
   const res = await fetch("http://localhost:8080/movie/getAll");

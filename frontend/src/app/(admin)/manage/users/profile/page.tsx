@@ -1,5 +1,5 @@
 import Link from "next/link";
-import InputField from "@/app/components/InputField";
+import InputField from "@/app/components/fields/InputField";
 import { Checkbox } from "@nextui-org/react";
 
 export default function Profile() {

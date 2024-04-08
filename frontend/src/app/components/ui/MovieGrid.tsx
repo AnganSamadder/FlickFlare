@@ -1,10 +1,11 @@
 "use client";
-import { cn } from "../utils/cn";
-import { Movie } from "../interfaces/movie";
-import TrailerPopup from "./TrailerPopup";
+import { cn } from "../../utils/cn";
+import { Movie } from "../../interfaces/movie";
+import TrailerPopup from "../containers/TrailerPopup";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const MovieGrid = ({
   movies,
@@ -29,7 +30,7 @@ const MovieGrid = ({
 
   const router = useRouter();
   const handleMoreInfo = (movie: Movie) => {
-    router.push(`/${movie.title}/`);
+    router.push(`/${movie.id}/`);
   };
 
   return (
@@ -169,8 +170,6 @@ export const CardButtons = ({
   onClickTrailer?: () => void;
   onClickMoreInfo?: () => void;
 }) => {
-  const router = useRouter();
-
   return (
     <div className={cn("flex justify-center mt-8", className)}>
       <button className="p-[3px] relative" onClick={onClickTrailer}>
