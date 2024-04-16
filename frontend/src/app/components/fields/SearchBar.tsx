@@ -16,7 +16,7 @@ const SearchResults = (props: { results: Movie[] }) => {
                   // alt={alt}
                 />
                 <div
-                  className="y-full overflow-hidden text-white flex align-middle font-bold float-left"
+                  className="y-full overflow-hidden text-white hover:text-orange-400 flex align-middle font-bold float-left"
                   key={id}
                 >
                   {result["title"]}

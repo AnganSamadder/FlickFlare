@@ -13,14 +13,11 @@ interface Option {
 const UserDropdown = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [options, setOptions] = useState<Option[]>([]);
-  const [user, setUser] = useLocalStorage<User>("user", nullUser);
-  const [userType, setUserType] = useLocalStorage<string>("userType", "guest");
+  const [user, setUser, resetUser] = useLocalStorage<User>("user", nullUser);
+  // const [userType, setUserType] = useLocalStorage<string>("userType", "guest");
 
   const handleSignOut = () => {
-    useEffect(() => {
-      localStorage.removeItem("user");
-    }, []);
-    setUser(nullUser);
+    resetUser();
   };
 
   const getOptions = (userType: string | null) => {
@@ -47,11 +44,9 @@ const UserDropdown = () => {
   };
 
   useEffect(() => {
-    if (user == nullUser) {
-      setOptions(getOptions("guest"));
-    }
-
-    setOptions(getOptions(user.admin ? "admin" : "user"));
+    setOptions(
+      getOptions(user == nullUser ? "guest" : user.admin ? "admin" : "user"),
+    );
   }, [user]);
 
   return (
@@ -65,7 +60,7 @@ const UserDropdown = () => {
       <div className="absolute pt-2 right-[6vw]">
         {dropdownOpen && (
           <div className="h-full pt-1 flex-col object-right bg-zinc-900 bg-opacity-90 text-right rounded-xl align-middle">
-            {(userType === "admin" || userType === "user") && (
+            {user != nullUser && (
               <div className="w-[15vw] m-3 p-2 bg-zinc-900 rounded-xl text-white text-4xl font-extrabold align-middle">
                 Welcome,{" " + user.firstName}
               </div>
@@ -76,12 +71,12 @@ const UserDropdown = () => {
                 className="w-[15vw] m-3 p-2 bg-zinc-900 hover:bg-black hover:bg-opacity-70 rounded-xl align-middle"
               >
                 {option.value === "signout" ? (
-                  <div
+                  <button
                     onClick={handleSignOut}
                     className="flex text-white text-2xl rounded-md"
                   >
                     {option.label}
-                  </div>
+                  </button>
                 ) : (
                   <a
                     href={option.value}

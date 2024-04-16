@@ -3,7 +3,7 @@ import React, { useDebugValue, useEffect, useState } from "react";
 export const useLocalStorage = <S>(
   key: string,
   initialState?: S | (() => S),
-): [S, React.Dispatch<React.SetStateAction<S>>] => {
+): [S, React.Dispatch<React.SetStateAction<S>>, () => void] => {
   const [state, setState] = useState<S>(initialState as S);
   useDebugValue(state);
 
@@ -21,7 +21,12 @@ export const useLocalStorage = <S>(
     if (state != initialState) localStorage.setItem(key, JSON.stringify(state));
   }, [state]);
 
-  return [state, setState];
+  const resetState = () => {
+    localStorage.removeItem(key);
+    setState(initialState as S);
+  };
+
+  return [state, setState, resetState];
 };
 
 const parse = (value: string) => {

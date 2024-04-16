@@ -3,10 +3,13 @@ import React, { useEffect, useState } from "react";
 
 const AdminPage = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
-    const admin = JSON.parse(localStorage.getItem("user") || "guest").admin;
-    console.log(admin);
-    if (!admin) {
+    const user = localStorage.getItem("user");
+    if (!user) {
       window.location.href = "/home";
+    } else {
+      if (!JSON.parse(user).admin) {
+        window.location.href = "/home";
+      }
     }
   }, []);
 

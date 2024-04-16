@@ -1,6 +1,6 @@
 "use client";
 import { Movie } from "@/app/interfaces/movie";
-import InputField from "@/app/components/InputField";
+import InputField from "@/app/components/fields/InputField";
 import React from "react";
 
 const EditMoviesList = (props: {

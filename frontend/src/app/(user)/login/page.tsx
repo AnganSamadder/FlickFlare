@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import InputField from "@/app/components/InputField";
+import InputField from "@/app/components/fields/InputField";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -25,13 +25,10 @@ export default function Login() {
     ).then((response) => {
       response.text().then((data) => {
         if (response.ok) {
-          // console.log(data);
+          console.log(data);
           fetch(`http://localhost:8080/user/get?id=${data}`).then(
             (response) => {
-              // console.log(user, localStorage.getItem("user"));
               response.json().then((data) => setUser(JSON.stringify(data)));
-              // console.log(user, localStorage.getItem("user"));
-              // console.log(localStorage.getItem("userType"));
             },
           );
         } else {
@@ -48,9 +45,9 @@ export default function Login() {
       console.log(localStorage.getItem("user"));
       // console.log(JSON.parse(user || "{}"));
       if (JSON.parse(user || "{}")["admin"]) {
-        localStorage.setItem("userType", "admin");
+        // localStorage.setItem("userType", "admin");
       } else {
-        localStorage.setItem("userType", "user");
+        // localStorage.setItem("userType", "user");
       }
       window.dispatchEvent(new Event("storage"));
       router.push("/home");
@@ -80,6 +77,7 @@ export default function Login() {
           <InputField
             placeholder="Enter password..."
             name="password"
+            type="password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             classname="w-2/5 h-[5vh]"

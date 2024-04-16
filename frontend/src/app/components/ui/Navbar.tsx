@@ -1,6 +1,6 @@
 "use client";
-import SearchBar from "@/app/components/SearchBar";
-import UserDropdownMenu from "@/app/components/UserDropdownMenu";
+import SearchBar from "@/app/components/fields/SearchBar";
+import UserDropdownMenu from "@/app/components/dropdown/UserDropdownMenu";
 import React from "react";
 import { usePathname, useRouter } from "next/navigation";
 

@@ -1,5 +1,5 @@
 import { User } from "@/app/interfaces/user";
-import VerifyCodeInput from "@/app/components/VerifyCodeInput";
+import VerifyCodeInput from "@/app/components/fields/VerifyCodeInput";
 
 export default async function RegistrationPending({
   params: { id },
