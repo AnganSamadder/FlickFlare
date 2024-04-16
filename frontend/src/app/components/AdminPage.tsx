@@ -2,12 +2,10 @@
 import React, { useEffect, useState } from "react";
 
 const AdminPage = ({ children }: { children: React.ReactNode }) => {
-  // const [userType, setUserType] = useState<string>("guest");
-
   useEffect(() => {
-    const type = localStorage.getItem("userType") || "guest";
-    // setUserType(type);
-    if (type !== "admin") {
+    const admin = JSON.parse(localStorage.getItem("user") || "guest").admin;
+    console.log(admin);
+    if (!admin) {
       window.location.href = "/home";
     }
   }, []);

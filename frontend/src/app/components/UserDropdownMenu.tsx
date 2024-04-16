@@ -1,5 +1,9 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+
+import { useLocalStorage } from "@/app/utils/useLocalStorage";
+import { User } from "@/app/interfaces/user";
+import { nullUser } from "@/app/globals";
 
 interface Option {
   label: string;
@@ -7,16 +11,16 @@ interface Option {
 }
 
 const UserDropdown = () => {
-  const [dropdownOpen, setDropdownOpen] = React.useState(false);
-  const [options, setOptions] = React.useState<Option[]>([]);
-  const [userName, setUserName] = React.useState<string>("");
-  const [userType, setUserType] = React.useState<string>("");
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [options, setOptions] = useState<Option[]>([]);
+  const [user, setUser] = useLocalStorage<User>("user", nullUser);
+  const [userType, setUserType] = useLocalStorage<string>("userType", "guest");
 
   const handleSignOut = () => {
-    // console.log("signing out");
-    setUserType("guest");
-    setUserName("-1");
-    window.location.href = "/home";
+    useEffect(() => {
+      localStorage.removeItem("user");
+    }, []);
+    setUser(nullUser);
   };
 
   const getOptions = (userType: string | null) => {
@@ -43,37 +47,12 @@ const UserDropdown = () => {
   };
 
   useEffect(() => {
-    const value = localStorage.getItem("userType") || "";
-    const name = JSON.parse(localStorage.getItem("user") || "{}").firstName;
-    // console.log("0", value, name);
-    setUserType(value);
-    setUserName(name);
-
-    window.addEventListener("storage", () => {
-      const value = localStorage.getItem("userType");
-      const name = JSON.parse(localStorage.getItem("user") || "{}").firstName;
-      // console.log("storage event", value);
-      setUserType(value || "");
-      setUserName(name);
-    });
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("userType", userType);
-    setOptions(getOptions(userType));
-  }, [userType]);
-
-  useEffect(() => {
-    if (userName === "-1") {
-      localStorage.removeItem("user");
-    } else if (localStorage.getItem("user") && userType === "") {
-      setUserType(
-        JSON.parse(localStorage.getItem("user") || "{}").admin
-          ? "admin"
-          : "user",
-      );
+    if (user == nullUser) {
+      setOptions(getOptions("guest"));
     }
-  }, [userName]);
+
+    setOptions(getOptions(user.admin ? "admin" : "user"));
+  }, [user]);
 
   return (
     <div>
@@ -88,7 +67,7 @@ const UserDropdown = () => {
           <div className="h-full pt-1 flex-col object-right bg-zinc-900 bg-opacity-90 text-right rounded-xl align-middle">
             {(userType === "admin" || userType === "user") && (
               <div className="w-[15vw] m-3 p-2 bg-zinc-900 rounded-xl text-white text-4xl font-extrabold align-middle">
-                Welcome,{" " + userName}
+                Welcome,{" " + user.firstName}
               </div>
             )}
             {options.map((option) => (

@@ -12,7 +12,7 @@ const EditMoviesList = (props: {
     <div className="w-full h-full bg-zinc-700 rounded-2xl overflow-y-scroll">
       {props.movies.map((movie, id) => {
         return (
-          <div className="w-full h-16 p-1 flex justify-center">
+          <div key={id} className="w-full h-16 p-1 flex justify-center">
             <button
               className={
                 movie === props.selectedMovie

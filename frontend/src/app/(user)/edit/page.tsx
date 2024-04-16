@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Address } from "@/app/interfaces/address";
 import { User } from "@/app/interfaces/user";
 import { redirect, useRouter } from "next/navigation";
@@ -7,22 +7,13 @@ import { Card } from "@/app/interfaces/card";
 import InputField from "@/app/components/InputField";
 
 export default function EditProfile() {
-  if (
-    !localStorage.getItem("userType") ||
-    localStorage.getItem("userType") === "guest"
-  ) {
-    redirect(`/login`);
-  }
-
   const router = useRouter();
-
   const [address, setAddress] = useState<Address>({
     street: "",
     city: "",
     state: "",
     zip: "",
   });
-
   const [card, setCard] = useState<Card>({
     cardNumber: "",
     expMonth: "",
@@ -30,9 +21,14 @@ export default function EditProfile() {
     secCode: "",
   });
   const [passwordConfirmed, setPasswordConfirmed] = useState<boolean>(false);
-  const [user, setUser] = useState<User>(
-    JSON.parse(localStorage.getItem("user") || "{}"),
-  );
+  const [user, setUser] = useState<User>({
+    password: "",
+    email: "",
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
+    subToPromos: false,
+  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.name === "confirmPassword") {
@@ -112,6 +108,16 @@ export default function EditProfile() {
       });
     });
   };
+
+  useEffect(() => {
+    console.log(localStorage.getItem("userType"));
+    if (
+      !localStorage.getItem("userType") ||
+      localStorage.getItem("userType") === "guest"
+    ) {
+      redirect(`/login`);
+    }
+  }, []);
 
   return (
     <div className="w-screen h-[86vh] flex-col align-cen mb-40">

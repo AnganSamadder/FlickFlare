@@ -1,15 +1,12 @@
 package com.ASCP.MovieBrowser.service;
 
-import com.ASCP.MovieBrowser.model.Address;
 import com.ASCP.MovieBrowser.model.Card;
 import com.ASCP.MovieBrowser.model.User;
 import com.ASCP.MovieBrowser.repository.AddressRepository;
 import com.ASCP.MovieBrowser.repository.CardRepository;
 import com.ASCP.MovieBrowser.repository.UserRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +23,6 @@ public class UserServiceImpl implements UserService {
     private AddressRepository addressRepository;
 
 
-    @Override
     public boolean emailExists(String email) {
         for (User existingUser : getAllUsers()) {
             System.out.println(existingUser.getEmail() + " " + email);

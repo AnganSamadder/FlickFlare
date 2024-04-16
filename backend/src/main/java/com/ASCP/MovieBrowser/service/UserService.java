@@ -17,15 +17,13 @@ public interface UserService {
 
     List<User> getAllUsers();
 
-    User getUser(long id) throws ExecutionException, InterruptedException;
+    User getUser(long id);
 
     boolean validateCreds(String inputPwd, String decrytpedPwd);
 
-    Set<Card> getCards(long id) throws ExecutionException, InterruptedException;
+    Set<Card> getCards(long id);
 
     void verify(long id);
-
-    //public void deleteUser(long id);
 
     String encrypt(String encryptionString);
 

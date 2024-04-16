@@ -1,4 +1,4 @@
-import AdminPage from "@/app/components/AdminPage";
+// import AdminPage from "@/app/components/AdminPage";
 import EditMovies from "@/app/components/EditMovies";
 
 export default async function Showtimes() {
