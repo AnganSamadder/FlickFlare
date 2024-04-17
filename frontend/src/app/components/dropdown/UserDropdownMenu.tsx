@@ -71,11 +71,14 @@ const UserDropdown = () => {
                 className="w-[15vw] m-3 p-2 bg-zinc-900 hover:bg-black hover:bg-opacity-70 rounded-xl align-middle"
               >
                 {option.value === "signout" ? (
-                  <button
-                    onClick={handleSignOut}
-                    className="flex text-white text-2xl rounded-md"
-                  >
-                    {option.label}
+                  <button>
+                    <div
+                      key={"userSignout"}
+                      onClick={handleSignOut}
+                      className="flex text-white text-2xl rounded-md"
+                    >
+                      {option.label}
+                    </div>
                   </button>
                 ) : (
                   <a

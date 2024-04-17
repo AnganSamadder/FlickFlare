@@ -1,6 +1,8 @@
 import Link from "next/link";
 import InputField from "@/app/components/fields/InputField";
-import { Checkbox } from "@nextui-org/react";
+import SelectCardDropdown from "@/app/components/dropdown/SelectCardDropdown";
+import dummyCards from "@/app/lists/dummy/dummyCards";
+import noCardsList from "@/app/lists/dummy/noCardsList";
 
 export default function Profile() {
   return (
@@ -72,11 +74,12 @@ export default function Profile() {
               <label className="w-[165px] text-orange-500 text-2xl font-medium leading-normal">
                 Select Card
               </label>
-              <InputField
-                placeholder={"Card 1: XXXX XXXX XXXX 6548"}
-                name={"selectCard"}
-                classname={"w-[299px] h-[35.54px] mx-5"}
-              />
+              <SelectCardDropdown cards={dummyCards} />
+              {/*<InputField*/}
+              {/*  placeholder={"Card 1: XXXX XXXX XXXX 6548"}*/}
+              {/*  name={"selectCard"}*/}
+              {/*  classname={"w-[299px] h-[35.54px] mx-5"}*/}
+              {/*/>*/}
               <p className="w-fit mt-1 text-white text-[15px] font-medium leading-normal">
                 Can have only up to 3 cards at maximum
               </p>
