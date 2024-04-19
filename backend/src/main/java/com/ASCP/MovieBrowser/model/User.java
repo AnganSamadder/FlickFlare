@@ -45,4 +45,9 @@ public class User {
     @Column
     private String verifyCode;
 
+    @OneToMany(mappedBy = "bookingUser", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<Booking> bookings = new HashSet<>();
+
+
+
 }
