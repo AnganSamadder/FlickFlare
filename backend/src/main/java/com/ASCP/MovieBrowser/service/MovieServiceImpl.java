@@ -26,8 +26,8 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public void saveMovie(Movie movie) {
-        for (MovieShowtime showtime : movie.getShowtimes()) {
-            showtime.setMovie(movie);
+        for (Showtime showtime : movie.getShowtimes()) {
+            showtime.setShowMovie(movie);
         }
 
         for (MovieReview review : movie.getReviews()) {

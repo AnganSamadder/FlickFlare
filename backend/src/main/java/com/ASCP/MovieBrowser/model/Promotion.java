@@ -1,5 +1,6 @@
 package com.ASCP.MovieBrowser.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -17,10 +18,10 @@ public class Promotion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     private long promotion_id;
-    @OneToMany(mappedBy = "promotions")
+    @OneToMany(mappedBy = "bookPromotions",cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<Booking> bookings = new HashSet<>();
 
-
-
-
+    @Column
+    private String expirationDate;
 
 }

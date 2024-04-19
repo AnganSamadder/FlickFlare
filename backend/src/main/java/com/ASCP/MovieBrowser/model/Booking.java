@@ -33,6 +33,12 @@ public class Booking {
     )
     private Showtime bookedShowtime;
 
-
+    @ManyToOne
+    @JoinTable(
+            name = "promotion_booking",
+            joinColumns = @JoinColumn(name = "promotion_id"),
+            inverseJoinColumns = @JoinColumn(name = "booking_id")
+    )
+    private Promotion bookPromotions;
 
 }
