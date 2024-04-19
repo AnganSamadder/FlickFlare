@@ -18,10 +18,15 @@ public class Card {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     private long card_id;
-    @ManyToMany(mappedBy = "cards")
+    @ManyToOne
+    @JoinTable(
+            name = "user_card",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "card_id")
+    )
     @EqualsAndHashCode.Exclude
     @JsonIgnore
-    private Set<User> users;
+    private User CardUser;
     @Column
     private String cardNumber;
     @Column

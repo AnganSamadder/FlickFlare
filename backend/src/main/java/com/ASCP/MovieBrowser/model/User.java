@@ -31,12 +31,7 @@ public class User {
     private boolean subToPromo;
     @Column
     private boolean admin;
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "user_card",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "card_id")
-    )
+    @OneToMany(mappedBy = "cardUser", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Set<Card> cards = new HashSet<>();
     @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Address> addresses;
