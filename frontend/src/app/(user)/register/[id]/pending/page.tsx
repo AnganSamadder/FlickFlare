@@ -6,7 +6,11 @@ export default async function RegistrationPending({
 }: {
   params: { id: number };
 }) {
-  const response = await fetch(`http://localhost:8080/user/get?id=${id}`);
+  const response = await fetch(`http://localhost:8080/user/get?id=${id}`, {
+    headers: {
+      "Cache-Control": "no-cache",
+    },
+  });
   const user: User = await response.json();
 
   return (

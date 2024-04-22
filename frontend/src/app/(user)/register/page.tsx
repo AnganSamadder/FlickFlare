@@ -49,6 +49,7 @@ export default function Register() {
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
+        "Cache-Control": "no-cache",
       },
       body: JSON.stringify(user),
     }).then((response) => {
