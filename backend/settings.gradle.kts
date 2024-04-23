@@ -4,4 +4,4 @@ pluginManagement {
 		gradlePluginPortal()
 	}
 }
-rootProject.name = "MovieBrowser"
+rootProject.name = "FlickFlare"
