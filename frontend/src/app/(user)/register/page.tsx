@@ -3,26 +3,18 @@ import { User } from "@/app/interfaces/user";
 import InputField from "@/app/components/fields/InputField";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { nullUser } from "@/app/globals";
 
 export default function Register() {
   const router = useRouter();
 
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
   const [passwordConfirmed, setPasswordConfirmed] = useState<boolean>(false);
-  const [user, setUser] = useState<User>({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "",
-    password: "",
-    subToPromos: false,
-    cards: [],
-    addresses: [],
-  });
+  const [user, setUser] = useState<User>(nullUser);
   const [warning, setWarning] = useState<string>("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.name === "confirmPassword") {
+    if (e.target.name === "confirmPassword" || e.target.name === "password") {
       if (e.target.value === user.password) {
         setPasswordConfirmed(true);
       } else {
@@ -115,6 +107,7 @@ export default function Register() {
               <InputField
                 placeholder="Enter email..."
                 name="email"
+                type="email"
                 value={user.email}
                 onChange={handleChange}
                 classname="w-3/4 h-[5vh]"
@@ -127,6 +120,7 @@ export default function Register() {
               <InputField
                 placeholder="Enter phone number..."
                 name="phoneNumber"
+                type="tel"
                 value={user.phoneNumber}
                 onChange={handleChange}
                 classname="w-3/4 h-[5vh]"

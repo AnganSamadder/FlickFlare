@@ -13,6 +13,7 @@ export default function Login() {
   const [warning, setWarning] = useState<string>("");
 
   const handleLogin = () => {
+    console.log(email, password);
     fetch(
       `http://localhost:8080/user/login?email=${email.replace(/\+/g, "%2B")}&password=${password}`,
       {
@@ -41,14 +42,6 @@ export default function Login() {
   useEffect(() => {
     if (user) {
       localStorage.setItem("user", user);
-      // console.log(user);
-      console.log(localStorage.getItem("user"));
-      // console.log(JSON.parse(user || "{}"));
-      if (JSON.parse(user || "{}")["admin"]) {
-        // localStorage.setItem("userType", "admin");
-      } else {
-        // localStorage.setItem("userType", "user");
-      }
       window.dispatchEvent(new Event("storage"));
       router.push("/home");
     }
@@ -67,6 +60,7 @@ export default function Login() {
           <InputField
             placeholder="Enter email..."
             name="email"
+            type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             classname="w-2/5 h-[5vh]"

@@ -31,6 +31,7 @@ export default function Profile() {
           <InputField
             placeholder={"123-456-7890"}
             name={"phoneNumber"}
+            type="tel"
             classname={"w-[250px] h-[33.08px] mt-2 mb-10"}
           />
           <label className="w-fit h-fit text-orange-500 text-2xl font-medium leading-normal">
@@ -52,15 +53,6 @@ export default function Profile() {
             type="password"
             classname={"w-[250px] h-[33.08px]"}
           />
-          {/*<div className="mt-16">*/}
-          {/*<span className="text-orange-500 text-2xl font-bold leading-normal">*/}
-          {/*  **/}
-          {/*</span>*/}
-          {/*  <span className="text-orange-500 text-2xl font-medium leading-normal">*/}
-          {/*  {" "}*/}
-          {/*    Required to be filled in*/}
-          {/*</span>*/}
-          {/*</div>*/}
         </div>
         <div className="w-fit h-fit m-4 p-2 bg-zinc-700 rounded-xl">
           <label className="ml-6 p-4 text-white text-l font-bold leading-normal">
@@ -75,11 +67,6 @@ export default function Profile() {
                 Select Card
               </label>
               <SelectCardDropdown cards={dummyCards} />
-              {/*<InputField*/}
-              {/*  placeholder={"Card 1: XXXX XXXX XXXX 6548"}*/}
-              {/*  name={"selectCard"}*/}
-              {/*  classname={"w-[299px] h-[35.54px] mx-5"}*/}
-              {/*/>*/}
               <p className="w-fit mt-1 text-white text-[15px] font-medium leading-normal">
                 Can have only up to 3 cards at maximum
               </p>

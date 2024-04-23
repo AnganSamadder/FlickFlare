@@ -19,11 +19,15 @@ const InputField = ({
   disabled?: boolean;
   classname?: string;
 }) => {
+  if (type === "email") {
+    value = value?.toLowerCase();
+  }
+
   return (
     <div className={cn("bg-orange-50 rounded-md flex", classname)}>
       <input
-        type={type ? type : "text"}
         name={name}
+        type={type ? type : "text"}
         value={value}
         onChange={(e) => onChange(e)}
         placeholder={placeholder}

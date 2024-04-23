@@ -16,9 +16,11 @@ export default async function Home() {
   console.log(movies);
 
   return (
-    <div className="">
-      <div className="text-orange-500 text-4xl font-bold font-['Maven Pro'] leading-normal pt-5">
-        Coming Soon
+    <div className="flex-col">
+      <div className="w-full h-20 px-10">
+        <div className="text-orange-500 text-4xl font-bold font-['Maven Pro'] leading-normal pt-5 overflow-hidden float-left">
+          Coming Soon
+        </div>
       </div>
       <MovieGrid movies={movies} />
     </div>

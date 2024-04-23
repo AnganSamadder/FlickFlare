@@ -1,26 +1,21 @@
 import Link from "next/link";
 
-async function getMovie(id: number) {
-  const res = await fetch("http://localhost:8080/movie/get?id=" + id, {
-    headers: {
-      "Cache-Control": "no-cache",
-    },
-  });
-
-  if (!res.ok) {
-    throw new Error("Network response was not ok when fetching movie");
-  }
-
-  return res.json();
-}
-
 export default async function Movie({
   params: { movie },
 }: {
   params: { movie: number };
 }) {
-  //usestate, fetch, .../then
-  const movieObject = await getMovie(movie);
+  const res = await fetch("http://localhost:8080/movie/get?id=" + movie, {
+    headers: {
+      "Cache-Control": "no-cache",
+    },
+  })
+
+  if (!res.ok) {
+    throw new Error("Network response was not ok when fetching movie");
+  }
+
+  const movieObject = await res.json();
 
   return (
     <div className="w-screen p-5 flex-col flex justify-center relative bg-black ">

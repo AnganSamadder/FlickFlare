@@ -1,5 +1,5 @@
 "use client";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 
 import {useLocalStorage} from "@/app/utils/useLocalStorage";
 import {User} from "@/app/interfaces/user";
@@ -14,6 +14,14 @@ const UserDropdown = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [options, setOptions] = useState<Option[]>([]);
     const [user, setUser, resetUser] = useLocalStorage<User>("user", nullUser);
+
+    const ref = useRef<HTMLDivElement>(null);
+
+    const handleClickOutside = (e: MouseEvent) => {
+        if (ref.current && !ref.current.contains(e.target as Node)) {
+            setDropdownOpen(false);
+        }
+    };
 
     const handleSignOut = () => {
         resetUser();
@@ -43,13 +51,20 @@ const UserDropdown = () => {
     };
 
     useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
+    useEffect(() => {
         setOptions(
             getOptions(user == nullUser ? "guest" : user.admin ? "admin" : "user"),
         );
     }, [user]);
 
     return (
-        <div>
+        <div ref={ref}>
             <div onClick={() => setDropdownOpen(!dropdownOpen)}>
                 <img
                     className="w-[54px] h-[49px] rounded-full"
