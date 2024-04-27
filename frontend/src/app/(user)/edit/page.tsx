@@ -1,8 +1,8 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Address } from "@/app/interfaces/address";
 import { User } from "@/app/interfaces/user";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { Card } from "@/app/interfaces/card";
 import InputField from "@/app/components/fields/InputField";
 import UserPage from "@/app/components/UserPage";

@@ -14,6 +14,8 @@ const MovieGrid = ({
   movies: Movie[];
   className?: string;
 }) => {
+  const router = useRouter();
+
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [selectedMovie, setSelectedMovie] = useState(String);
   const [trailerIsOpen, setTrailerIsOpen] = useState(false);
@@ -27,8 +29,6 @@ const MovieGrid = ({
     setTrailerIsOpen(false);
     setSelectedMovie("");
   };
-
-  const router = useRouter();
   const handleMoreInfo = (movie: Movie) => {
     router.push(`/${movie.id}/`);
   };
@@ -41,15 +41,15 @@ const MovieGrid = ({
           className,
         )}
       >
-        {movies?.map((movie, idx) => (
+        {movies?.map((movie, id) => (
           <div
             key={movie?.title}
             className="relative group block p-10 h-full w-full"
-            onMouseEnter={() => setHoveredIndex(idx)}
+            onMouseEnter={() => setHoveredIndex(id)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
             <AnimatePresence>
-              {hoveredIndex === idx && (
+              {hoveredIndex === id && (
                 <motion.span
                   className="absolute inset-0 w-full h-full bg-neutral-200 dark:bg-slate-800/[0.8] block rounded-3xl"
                   layoutId="hoverBackground"

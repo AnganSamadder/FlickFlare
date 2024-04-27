@@ -1,4 +1,5 @@
 import MovieGrid from "@/app/components/ui/MovieGrid";
+import { Movie } from "@/app/interfaces/movie";
 // import { useLocalStorage } from "@/app/utils/useLocalStorage";
 // import { User } from "@/app/interfaces/user";
 // import { nullUser } from "@/app/globals";
@@ -46,7 +47,7 @@ export default async function Home() {
     throw new Error("Network response was not ok");
   }
 
-  const movies = await res.json();
+  const movies: Movie[] = await res.json();
 
   return (
     <div className="flex-col">
