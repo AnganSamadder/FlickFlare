@@ -1,4 +1,5 @@
 "use client";
+import { adultPrice, childPrice } from "@/app/globals";
 import { Movie } from "@/app/interfaces/movie";
 import { Booking, Tickets } from "@/app/interfaces/booking";
 import React, { useEffect, useState } from "react";
@@ -14,8 +15,6 @@ const TicketSelect = ({
 }) => {
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
   const [tickets, setTickets] = useState<Tickets>({ adult: 0, child: 0 });
-  const adultPrice = 14.99,
-    childPrice = 8.99;
 
   const handleClick = (type: string, change: number) => {
     if (type === "adult" && tickets.adult + change >= 0) {
@@ -32,7 +31,10 @@ const TicketSelect = ({
   };
 
   const handleSubmit = () => {
-    editBooking({ tickets: tickets });
+    editBooking({
+      tickets: tickets,
+      price: tickets.adult * adultPrice + tickets.child * childPrice,
+    });
     incStep();
   };
 

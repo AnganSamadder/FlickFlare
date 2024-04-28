@@ -5,6 +5,8 @@ export interface Booking {
   showtime: Showtime;
   seats: string[];
   tickets: Tickets;
+  price: number;
+  date?: number;
 }
 
 export interface Tickets {

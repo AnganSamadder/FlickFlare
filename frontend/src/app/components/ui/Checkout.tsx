@@ -1,10 +1,9 @@
 "use client";
 import { Movie } from "@/app/interfaces/movie";
-import { Booking, Tickets } from "@/app/interfaces/booking";
-import Seat from "@/public/seat.svg";
-import React, { useEffect, useState } from "react";
-import SeatSelector from "@/app/components/ui/SeatSelector";
+import { Booking } from "@/app/interfaces/booking";
+import { formatUSD } from "@/app/utils/formatUSD";
 import PaymentCardSection from "@/app/components/ui/PaymentCardSection";
+import React, { useState } from "react";
 
 const Checkout = ({
   movie,
@@ -17,9 +16,8 @@ const Checkout = ({
   editBooking: (newBooking: Partial<Booking>) => void;
   incStep: () => void;
 }) => {
-  const [selectedSeats, setSelectedSeats] = useState<string[]>([]);
-
   const handleSubmit = () => {
+    editBooking({ date: Date.now() });
     incStep();
   };
 
@@ -30,17 +28,17 @@ const Checkout = ({
         <div className="p-4">
           <img src={movie.poster} className="rounded-2xl" />
         </div>
-        <div className="text-white text-3xl font-bold text-center leading-normal">
-          {movie.title}
-        </div>
         <div className="text-white text-2xl font-bold leading-normal">
           [showtime info here]
         </div>
         <div className="text-white text-2xl font-bold leading-normal">
-          [seat info here]
+          Tickets: {booking.tickets.adult} Adult, {booking.tickets.child} Child
         </div>
         <div className="text-white text-2xl font-bold leading-normal">
-          [price]
+          Seats: {booking.seats.join(", ")}
+        </div>
+        <div className="text-white text-2xl font-bold leading-normal">
+          Price: {formatUSD(booking.price)}
         </div>
       </div>
       <div className="w-4/5 flex-col">

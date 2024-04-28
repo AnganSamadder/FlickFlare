@@ -4,6 +4,7 @@ import { Booking, Tickets } from "@/app/interfaces/booking";
 import Seat from "@/public/seat.svg";
 import React, { useEffect, useState } from "react";
 import SeatSelector from "@/app/components/ui/SeatSelector";
+import { adultPrice, childPrice } from "@/app/globals";
 
 const SeatSelect = ({
   movie,
@@ -41,9 +42,6 @@ const SeatSelect = ({
         <div className="p-4">
           <img src={movie.poster} className="rounded-2xl" />
         </div>
-        <div className="text-white text-3xl font-bold text-center leading-normal">
-          {movie.title}
-        </div>
         <div className="text-white text-2xl font-bold leading-normal">
           [showtime info here]
         </div>
@@ -72,7 +70,8 @@ const SeatSelect = ({
               </div>
               <div className="w-full h-1 my-4 bg-stone-950" />
               <div className="w-full h-8 mx-2 rounded-md text-white text-2xl leading-normal">
-                Subtotal: ${tickets.adult * 14.99 + tickets.child * 8.99}
+                Subtotal: $
+                {tickets.adult * adultPrice + tickets.child * childPrice}
               </div>
               <div className="w-full h-1 my-4 bg-stone-950" />
               <div className="w-full h-16 flex">

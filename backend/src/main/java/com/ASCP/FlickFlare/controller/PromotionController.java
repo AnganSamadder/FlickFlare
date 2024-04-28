@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 @CrossOrigin
 @RestController
-@RequestMapping("/movie")
+@RequestMapping("/promotion")
 @AllArgsConstructor
 public class PromotionController {
 

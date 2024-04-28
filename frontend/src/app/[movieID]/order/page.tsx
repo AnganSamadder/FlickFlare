@@ -7,6 +7,8 @@ import { Booking } from "@/app/interfaces/booking";
 import TicketSelect from "@/app/components/ui/TicketSelect";
 import SeatSelect from "@/app/components/ui/SeatSelect";
 import Checkout from "@/app/components/ui/Checkout";
+import OrderSummary from "@/app/components/ui/OrderSummary";
+import OrderConfirmation from "@/app/components/ui/OrderConfirmation";
 
 export default function Order({
   params: { movieID },
@@ -62,6 +64,13 @@ export default function Order({
           incStep={incStep}
         />
       ) : step === 3 ? (
+        <OrderSummary
+          movie={movie}
+          booking={booking}
+          editBooking={editBooking}
+          incStep={incStep}
+        />
+      ) : step === 4 ? (
         <Checkout
           movie={movie}
           booking={booking}
@@ -69,7 +78,7 @@ export default function Order({
           incStep={incStep}
         />
       ) : (
-        <div></div>
+        <OrderConfirmation movie={movie} booking={booking} />
       )}
     </div>
   );

@@ -3,6 +3,9 @@ import { User } from "@/app/interfaces/user";
 import { Movie } from "@/app/interfaces/movie";
 import { Showtime } from "@/app/interfaces/showtime";
 
+export const adultPrice = 14.99;
+export const childPrice = 8.99;
+
 export const nullUser: User = {
   password: "",
   email: "",
@@ -46,4 +49,5 @@ export const nullBooking: Booking = {
     adult: 0,
     child: 0,
   },
+  price: 0,
 };

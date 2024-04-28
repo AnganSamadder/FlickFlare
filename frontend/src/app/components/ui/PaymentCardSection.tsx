@@ -203,13 +203,13 @@ const PaymentCardSection = ({
           <div className="flex py-2 justify-between">
             <button
               onClick={() => router.push("/home")}
-              className="px-4 rounded-[20px] bg-red-600 text-white text-2xl font-bold leading-normal transition duration-200 hover:text-black border-2 border-transparent"
+              className="px-4 rounded-[20px] bg-red-600 text-white text-2xl font-bold leading-normal hover:bg-red-700 focus:outline-none focus:shadow-outline"
             >
               Cancel
             </button>
             <button
               onClick={onSubmit}
-              className="px-4 rounded-[20px] bg-orange-500 text-white text-2xl font-bold leading-normal transition duration-200 hover:text-black border-2 border-transparent"
+              className="px-4 rounded-[20px] bg-orange-500 text-white text-2xl font-bold leading-normal hover:bg-orange-600 focus:outline-none focus:shadow-outline"
             >
               Confirm
             </button>

@@ -1,6 +1,15 @@
-export default function Confirmation() {
+import { Movie } from "@/app/interfaces/movie";
+import { Booking } from "@/app/interfaces/booking";
+
+const OrderConfirmation = ({
+  movie,
+  booking,
+}: {
+  movie: Movie;
+  booking: Booking;
+}) => {
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex items-center justify-center">
       <div className="bg-zinc-700 bg-opacity-50 rounded-[17px] p-6 w-3/4">
         <div className="text-center mb-8">
           <h1 className="text-orange-500 text-5xl font-bold leading-normal">
@@ -19,7 +28,7 @@ export default function Confirmation() {
                 Movie:
               </span>
               <span className="text-white text-2xl font-medium ml-2">
-                Iron Man
+                {movie.title}
               </span>
             </div>
             <div className="mb-4">
@@ -35,7 +44,7 @@ export default function Confirmation() {
                 Seats:
               </span>
               <span className="text-white text-2xl font-medium ml-2">
-                Total: 4 (A3, C4, C5, C6)
+                Total: {booking.seats.length} ({booking.seats.join(", ")})
               </span>
             </div>
             <div className="mb-4">
@@ -43,7 +52,7 @@ export default function Confirmation() {
                 Total Price:
               </span>
               <span className="text-white text-2xl font-medium ml-2">
-                $32.00
+                {booking.price}
               </span>
             </div>
             <div className="mb-4">
@@ -51,7 +60,7 @@ export default function Confirmation() {
                 Order Date:
               </span>
               <span className="text-white text-2xl font-normal ml-2">
-                10/09/2024, 11:21 AM
+                {new Date(booking.date as number).toLocaleString()}
               </span>
             </div>
             <div>
@@ -67,4 +76,6 @@ export default function Confirmation() {
       </div>
     </div>
   );
-}
+};
+
+export default OrderConfirmation;
