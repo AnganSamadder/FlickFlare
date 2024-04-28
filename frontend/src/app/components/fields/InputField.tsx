@@ -8,6 +8,7 @@ const InputField = ({
   placeholder,
   value,
   onChange = () => {},
+  onKeyDown = () => {},
   disabled,
   classname,
 }: {
@@ -16,6 +17,7 @@ const InputField = ({
   placeholder?: string;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   disabled?: boolean;
   classname?: string;
 }) => {
@@ -30,6 +32,7 @@ const InputField = ({
         type={type ? type : "text"}
         value={value}
         onChange={(e) => onChange(e)}
+        onKeyDown={(e) => onKeyDown(e)}
         placeholder={placeholder}
         disabled={disabled}
         className="w-full px-4 bg-transparent outline-none z-20"

@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import InputField from "@/app/components/fields/InputField";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function Login() {
@@ -13,7 +13,7 @@ export default function Login() {
   const [warning, setWarning] = useState<string>("");
 
   const handleLogin = () => {
-    console.log(email, password);
+    // console.log(email, password);
     fetch(
       `http://localhost:8080/user/login?email=${email.replace(/\+/g, "%2B")}&password=${password}`,
       {
@@ -26,7 +26,7 @@ export default function Login() {
     ).then((response) => {
       response.text().then((data) => {
         if (response.ok) {
-          console.log(data);
+          // console.log(data);
           fetch(`http://localhost:8080/user/get?id=${data}`).then(
             (response) => {
               response.json().then((data) => setUser(JSON.stringify(data)));
@@ -39,9 +39,17 @@ export default function Login() {
     });
   };
 
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      if (email && password) {
+        handleLogin();
+      }
+    }
+  };
+
   useEffect(() => {
     if (user) {
-      console.log(user);
+      // console.log(user);
       localStorage.setItem("user", user);
       window.dispatchEvent(new Event("storage"));
       router.push("/home");
@@ -64,6 +72,7 @@ export default function Login() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            onKeyDown={handleKeyPress}
             classname="w-2/5 h-[5vh]"
           />
           <div className="text-orange-500 text-2xl font-medium font-['Maven Pro']">
@@ -74,6 +83,7 @@ export default function Login() {
             name="password"
             type="password"
             onChange={(e) => setPassword(e.target.value)}
+            onKeyDown={handleKeyPress}
             value={password}
             classname="w-2/5 h-[5vh]"
           />
