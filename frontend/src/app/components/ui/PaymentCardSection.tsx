@@ -18,7 +18,8 @@ const PaymentCardSection = ({
 }) => {
   const router = useRouter();
   const [address, setAddress] = useState<Address>({
-    street: "",
+    streetOne: "",
+    streetTwo: "",
     city: "",
     state: "",
     zip: "",
@@ -70,7 +71,7 @@ const PaymentCardSection = ({
             classname="w-[299px] h-[35.54px] mx-5"
           />
           <div className="w-fit text-white text-[15px] font-medium leading-normal">
-            Can save only 3 cards at max
+            Can only have 3 cards at max
           </div>
         </div>
         <div className="w-fit h-fit mt-2 flex flex-row">
@@ -150,7 +151,7 @@ const PaymentCardSection = ({
           <InputField
             placeholder="Enter street address..."
             name="street"
-            value={address.street}
+            value={address.streetOne}
             onChange={handleChangeAddress}
             classname="w-[298.23px] h-[35.54px]"
           />
@@ -160,7 +161,7 @@ const PaymentCardSection = ({
           <InputField
             placeholder="Enter street address..."
             name="street"
-            value={address.street}
+            value={address.streetTwo}
             onChange={handleChangeAddress}
             classname="w-[298.23px] h-[35.54px]"
           />

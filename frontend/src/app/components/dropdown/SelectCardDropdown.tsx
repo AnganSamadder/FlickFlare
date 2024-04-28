@@ -25,11 +25,11 @@ const SelectCardDropdown = ({
       id="cardSelect"
       value={selectedCard}
       onChange={handleCardChange}
-      className="bg-orange-50 rounded-md flex w-[299px] h-[35.54px] mx-5 px-4"
+      className={isDisabled? "bg-zinc-400 rounded-md flex w-[299px] h-[35.54px] mx-5 px-4" : "bg-orange-50 rounded-md flex w-[299px] h-[35.54px] mx-5 px-4"}
       disabled={isDisabled}
     >
       <option className="w-full px-4 bg-transparent outline-none z-20">
-        {isDisabled ? "Please add a card" : "Select a card"}
+        {isDisabled ? "No saved cards" : "Select a card"}
       </option>
       {cards.map((card: Card, index) => (
         <option

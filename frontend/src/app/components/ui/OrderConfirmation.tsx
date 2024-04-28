@@ -8,6 +8,11 @@ const OrderConfirmation = ({
   movie: Movie;
   booking: Booking;
 }) => {
+  const cardNumFormatter = (cardStr: String) => {
+    const formatNum = "XXXX XXXX XXXX " + cardStr.slice(cardStr.length - 4);
+    return formatNum;
+  };
+
   return (
     <div className="flex items-center justify-center">
       <div className="bg-zinc-700 bg-opacity-50 rounded-[17px] p-6 w-3/4">
@@ -68,7 +73,8 @@ const OrderConfirmation = ({
                 Card:
               </span>
               <span className="text-white text-2xl font-normal ml-2">
-                ********XXX
+                {/*{cardNumFormatter(booking.cardNumber)}*/}
+                {cardNumFormatter("1234 5678 9101")}
               </span>
             </div>
           </div>

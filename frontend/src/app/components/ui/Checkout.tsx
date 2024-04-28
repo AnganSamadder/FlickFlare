@@ -17,8 +17,8 @@ const Checkout = ({
   incStep: () => void;
 }) => {
   const handleSubmit = () => {
-    editBooking({ date: Date.now() });
-    incStep();
+      editBooking({date: Date.now()});
+      incStep();
   };
 
   // @ts-ignore

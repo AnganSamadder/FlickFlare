@@ -20,7 +20,7 @@ export default async function MovieDetails({
   const movie: Movie = await res.json();
 
   return (
-    <div className="w-full px-12 py-4 flex-col flex justify-center relative bg-black ">
+    <div className="w-full px-12 py-4 flex-col flex justify-center relative bg-black mb-10">
       <div className="w-screen flex-col flex justify-center relative bg-black ">
         <label className="w-full h-auto text-orange-500 text-5xl font-bold leading-normal text-center">
           {movie.title}
