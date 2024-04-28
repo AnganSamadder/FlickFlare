@@ -1,6 +1,5 @@
 "use client";
 import { Movie } from "@/app/interfaces/movie";
-import ShowtimeCard from "@/app/components/containers/ShowtimeCard";
 import { Booking, Tickets } from "@/app/interfaces/booking";
 import Seat from "@/public/seat.svg";
 import React, { useEffect, useState } from "react";
@@ -8,11 +7,13 @@ import SeatSelector from "@/app/components/ui/SeatSelector";
 
 const SeatSelect = ({
   movie,
+  layout,
   tickets,
   editBooking,
   incStep,
 }: {
   movie: Movie;
+  layout: string;
   tickets: Tickets;
   editBooking: (newBooking: Partial<Booking>) => void;
   incStep: () => void;
@@ -33,6 +34,7 @@ const SeatSelect = ({
     }
   }, [selectedSeats, tickets.adult, tickets.child]);
 
+  // @ts-ignore
   return (
     <div className="flex">
       <div className="w-1/6 h-full flex-col">
@@ -57,7 +59,7 @@ const SeatSelect = ({
                 Screen
               </div>
               <SeatSelector
-                layout="l"
+                layout={layout}
                 occupiedSeats={["A2", "A3", "C1", "C2"]}
                 maxSeats={tickets.adult + tickets.child}
                 selectedSeats={selectedSeats}

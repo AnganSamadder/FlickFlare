@@ -55,6 +55,7 @@ export default function Order({
       ) : step === 2 ? (
         <SeatSelect
           movie={movie}
+          layout="l"
           tickets={booking.tickets}
           editBooking={editBooking}
           incStep={incStep}

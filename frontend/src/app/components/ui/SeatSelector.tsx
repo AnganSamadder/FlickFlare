@@ -1,8 +1,13 @@
 "use client";
 
 import Seat from "@/public/seat.svg";
-import React, { useEffect, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import { cn } from "@/app/utils/cn";
+
+// interface Layout {
+//   cols: number;
+//   rows: number;
+// }
 
 const SeatSelector = ({
   layout,
@@ -19,8 +24,33 @@ const SeatSelector = ({
   setSelectedSeats: React.Dispatch<React.SetStateAction<string[]>>;
   className?: string;
 }) => {
-  const [cols, setCols] = useState<number>(0);
-  const [rows, setRows] = useState<number>(0);
+  let cols = 0;
+  let rows = 0;
+  let colsCN = "";
+  let rowsCN = "";
+
+  switch (layout) {
+    case "s":
+      cols = 6;
+      rows = 3;
+      colsCN = "grid-cols-6";
+      rowsCN = "grid-rows-3";
+      break;
+    case "m":
+      cols = 8;
+      rows = 4;
+      colsCN = "grid-cols-8";
+      rowsCN = "grid-rows-4";
+      break;
+    case "l":
+      cols = 12;
+      rows = 6;
+      colsCN = "grid-cols-12";
+      rowsCN = "grid-rows-6";
+      break;
+    default:
+      break;
+  }
 
   const handleClick = (seatId: string) => {
     console.log(seatId);
@@ -37,29 +67,29 @@ const SeatSelector = ({
     }
   };
 
-  useEffect(() => {
-    switch (layout) {
-      case "s":
-        setCols(6);
-        setRows(3);
-        break;
-      case "m":
-        setCols(8);
-        setRows(4);
-        break;
-      case "l":
-        setCols(12);
-        setRows(6);
-        break;
-      default:
-        break;
-    }
-  }, [layout]);
+  // useEffect(() => {
+  //   switch (layout) {
+  //     case "s":
+  //       setCols(6);
+  //       setRows(3);
+  //       break;
+  //     case "m":
+  //       setCols(8);
+  //       setRows(4);
+  //       break;
+  //     case "l":
+  //       setCols(12);
+  //       setRows(6);
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // }, [layout]);
 
   return (
     <div
       className={cn(
-        `w-full h-[80%] grid grid-cols-${cols} grid-rows-${rows} p-4 align-middle justify-center gap-2`,
+        `w-full h-[80%] grid ${colsCN} ${rowsCN} p-4 align-middle justify-center gap-2`,
         className,
       )}
     >
