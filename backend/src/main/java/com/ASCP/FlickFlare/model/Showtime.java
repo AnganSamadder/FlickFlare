@@ -22,7 +22,7 @@ public class Showtime {
     private String Time;
     private String Date;
     private int layout;
-    private String seats;
+    private String bookedSeats;
     @ManyToOne
     @JoinTable(
             name = "movie_showtime",

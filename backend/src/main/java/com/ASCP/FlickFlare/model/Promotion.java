@@ -22,6 +22,12 @@ public class Promotion {
     private Set<Booking> bookings = new HashSet<>();
 
     @Column
+    private int percentageDiscount;
+
+    @Column
     private String expirationDate;
+
+    @Column
+    private String code;
 
 }
