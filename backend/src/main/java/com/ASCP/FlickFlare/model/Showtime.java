@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,6 +21,8 @@ public class Showtime {
     @Column
     private String Time;
     private String Date;
+    private int layout;
+    private String seats;
     @ManyToOne
     @JoinTable(
             name = "movie_showtime",
