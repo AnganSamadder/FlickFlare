@@ -199,9 +199,7 @@ public class UserController {
         } catch (Exception e) {
             throw new NullPointerException("User not found");
         }
-        user.setPassword(newPassword);
-        String password = user.getPassword();
-        String encryptedPassword = userService.encrypt(password);
+        String encryptedPassword = userService.encrypt(newPassword);
         user.setPassword(encryptedPassword);
     }
 //    @PutMapping("/editPassword")
