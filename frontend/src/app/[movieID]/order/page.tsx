@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Booking } from "@/app/interfaces/booking";
 import TicketSelect from "@/app/components/ui/TicketSelect";
 import SeatSelect from "@/app/components/ui/SeatSelect";
+import Checkout from "@/app/components/ui/Checkout";
 
 export default function Order({
   params: { movieID },
@@ -57,6 +58,13 @@ export default function Order({
           movie={movie}
           layout="l"
           tickets={booking.tickets}
+          editBooking={editBooking}
+          incStep={incStep}
+        />
+      ) : step === 3 ? (
+        <Checkout
+          movie={movie}
+          booking={booking}
           editBooking={editBooking}
           incStep={incStep}
         />

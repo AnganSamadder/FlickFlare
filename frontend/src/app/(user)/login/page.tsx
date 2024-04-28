@@ -41,6 +41,7 @@ export default function Login() {
 
   useEffect(() => {
     if (user) {
+      console.log(user);
       localStorage.setItem("user", user);
       window.dispatchEvent(new Event("storage"));
       router.push("/home");

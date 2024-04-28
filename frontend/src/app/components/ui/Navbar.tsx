@@ -36,11 +36,7 @@ const Navbar = () => {
     }
   }, [pathname]);
 
-  const handleShowing = (
-    event: React.MouseEvent<HTMLElement>,
-    newShowing: string,
-  ) => {
-    // console.log(newShowing);
+  const handleShowing = (newShowing: string) => {
     setShowing(newShowing);
     if (newShowing === "currently-running") {
       window.dispatchEvent(new Event("currently-running"));
@@ -69,9 +65,9 @@ const Navbar = () => {
             <SearchBar />
             <div className="flex w-2/5 justify-center">
               <NavbarButton
-                onClick={(event) => handleShowing(event, "currently-running")}
+                onClick={(event) => handleShowing("currently-running")}
                 showing={showing}
-                onClick1={(event) => handleShowing(event, "coming-soon")}
+                onClick1={(event) => handleShowing("coming-soon")}
               />
             </div>
             <div>

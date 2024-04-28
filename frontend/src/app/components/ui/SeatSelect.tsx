@@ -44,12 +44,12 @@ const SeatSelect = ({
         <div className="text-white text-3xl font-bold text-center leading-normal">
           {movie.title}
         </div>
-        <div className="text-white text-3xl font-bold leading-normal">
+        <div className="text-white text-2xl font-bold leading-normal">
           [showtime info here]
         </div>
       </div>
       <div className="w-5/6 flex-col">
-        <div className="w-full h-[70vh] p-2 flex-cols bg-zinc-700 bg-opacity-50 rounded-[17px]">
+        <div className="w-full h-[72vh] p-2 flex-cols bg-zinc-700 bg-opacity-50 rounded-[17px]">
           <div className="p-3 pb-6 text-orange-500 text-5xl font-bold text-center">
             Select Showtime
           </div>
@@ -96,7 +96,7 @@ const SeatSelect = ({
               <button
                 disabled={buttonDisabled}
                 onClick={handleSubmit}
-                className="w-[10vw] h-[6vh] m-4 self-center bg-orange-500 rounded-[20px] text-white text-2xl font-bold font-['Maven Pro'] leading-normal
+                className="w-[10vw] h-[6vh] m-4 bg-orange-500 rounded-[20px] text-white text-2xl font-bold font-['Maven Pro'] leading-normal
               disabled:bg-amber-900 disabled:text-gray-500 disabled:cursor-not-allowed"
               >
                 Submit
