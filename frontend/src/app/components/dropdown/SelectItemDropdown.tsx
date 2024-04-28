@@ -12,11 +12,6 @@ const SelectItemDropdown = ({
 }) => {
   const [isDisabled, setIsDisabled] = React.useState(list.length === 0);
 
-  const cardNumFormatter = (cardStr: String) => {
-    const formatNum = "XXXX XXXX XXXX " + cardStr.slice(cardStr.length - 4);
-    return formatNum;
-  };
-
   return (
     <select
       name="select"
@@ -30,7 +25,7 @@ const SelectItemDropdown = ({
       {list.map((item: String, index) => (
         <option
           key={index}
-          className="w-full px-4 bg-transparent  outline-none z-20"
+          className="w-full px-4 bg-transparent outline-none z-20"
         >
           {item}
         </option>
