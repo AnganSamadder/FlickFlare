@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import javax.management.openmbean.ArrayType;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
 
 @Service
 public class PromotionServiceImpl implements PromotionService{
@@ -36,6 +37,28 @@ public class PromotionServiceImpl implements PromotionService{
     }
 
     public String getPromoCode(Promotion promo) {
+
         return promo.getCode();
     }
+    public void deletePromotion(long id) {
+        promotionRepository.deleteById(id);
+
+    }
+
+    public boolean verifyDate(long promoId){
+        Promotion promo = null;
+        LocalDate currentDate = LocalDate.now();
+        if (promotionRepository.findById(promoId).isPresent()) {
+            promo = promotionRepository.findById(promoId).get();
+        } else {
+            throw new NullPointerException("given Id promo doesnt exist");
+        }
+        if (currentDate.isAfter(LocalDate.parse(promo.getExpirationDate()))) {
+            return false;
+        }
+        return true;
+
+    }
 }
+
+

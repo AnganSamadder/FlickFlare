@@ -11,4 +11,12 @@ public interface PromotionService {
     Promotion getPromotion(long id);
     List<Promotion> getAllPromotions();
     String getPromoCode(Promotion promotion);
+
+    void deletePromotion(long id);
+
+    boolean promoExists(Promotion promo);
+
+    boolean verifyDate(long promoId);
+
+
 }
