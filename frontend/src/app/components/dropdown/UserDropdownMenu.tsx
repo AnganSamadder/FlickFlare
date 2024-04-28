@@ -4,6 +4,7 @@ import React, {useEffect, useRef, useState} from "react";
 import {useLocalStorage} from "@/app/utils/useLocalStorage";
 import {User} from "@/app/interfaces/user";
 import {nullUser} from "@/app/globals";
+import {useRouter} from "next/navigation";
 
 interface Option {
     label: string;
@@ -14,6 +15,7 @@ const UserDropdown = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [options, setOptions] = useState<Option[]>([]);
     const [user, setUser, resetUser] = useLocalStorage<User>("user", nullUser);
+    const router = useRouter();
 
     const ref = useRef<HTMLDivElement>(null);
 
@@ -24,6 +26,7 @@ const UserDropdown = () => {
     };
 
     const handleSignOut = () => {
+        router.push('/home');
         resetUser();
     };
 
