@@ -1,7 +1,6 @@
 "use client";
 import { Movie } from "@/app/interfaces/movie";
-import { Booking, Ticket } from "@/app/interfaces/booking";
-import { Showtime } from "@/app/interfaces/showtime";
+import { Booking, Tickets } from "@/app/interfaces/booking";
 import React, { useEffect, useState } from "react";
 
 const TicketSelect = ({
@@ -14,7 +13,7 @@ const TicketSelect = ({
   incStep: () => void;
 }) => {
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
-  const [tickets, setTickets] = useState<Ticket>({ adult: 0, child: 0 });
+  const [tickets, setTickets] = useState<Tickets>({ adult: 0, child: 0 });
   const adultPrice = 14.99,
     childPrice = 8.99;
 
@@ -137,7 +136,6 @@ const TicketSelect = ({
               Submit
             </button>
           </div>
-          {/*{movie.showtimes.map(())}*/}
         </div>
       </div>
     </div>

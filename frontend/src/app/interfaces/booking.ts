@@ -4,10 +4,10 @@ export interface Booking {
   id?: string;
   showtime: Showtime;
   seats: string[];
-  tickets: Ticket;
+  tickets: Tickets;
 }
 
-export interface Ticket {
+export interface Tickets {
   adult: number;
   child: number;
 }

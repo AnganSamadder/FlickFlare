@@ -5,6 +5,7 @@ import Showtimes from "@/app/components/ui/Showtimes";
 import { useEffect, useState } from "react";
 import { Booking } from "@/app/interfaces/booking";
 import TicketSelect from "@/app/components/ui/TicketSelect";
+import SeatSelect from "@/app/components/ui/SeatSelect";
 
 export default function Order({
   params: { movieID },
@@ -51,6 +52,13 @@ export default function Order({
         />
       ) : step === 1 ? (
         <Showtimes movie={movie} editBooking={editBooking} incStep={incStep} />
+      ) : step === 2 ? (
+        <SeatSelect
+          movie={movie}
+          tickets={booking.tickets}
+          editBooking={editBooking}
+          incStep={incStep}
+        />
       ) : (
         <div></div>
       )}
