@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,6 +21,8 @@ public class Showtime {
     @Column
     private String Time;
     private String Date;
+    private int layout;
+    private String bookedSeats;
     @ManyToOne
     @JoinTable(
             name = "movie_showtime",
@@ -27,7 +30,7 @@ public class Showtime {
             inverseJoinColumns = @JoinColumn(name = "showtime_id")
     )
     @EqualsAndHashCode.Exclude
-    private Movie showMovie;
+    private Movie movie;
     @OneToMany(mappedBy = "bookedShowtime", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Set<Booking> bookings = new HashSet<>();
 }

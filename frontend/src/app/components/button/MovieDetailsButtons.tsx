@@ -31,7 +31,7 @@ const MovieDetailsButtons = ({ movie }: { movie: Movie }) => {
         </p>
       </button>
       <button
-        onClick={() => router.push(pathname + "/showtimes")}
+        onClick={() => router.push(pathname + "/order")}
         className="w-1/2 h-11 ml-1 bg-orange-500 rounded-r-3xl"
       >
         <div className="w-full h-6 m-auto text-white text-[15px] font-bold leading-normal">
