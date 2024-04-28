@@ -9,8 +9,8 @@ import java.util.List;
 @Service
 public interface ShowtimeService {
     void saveShowtime(Showtime show);
-    Showtime getShowtime();
-    List<Showtime> getAllShowtimesByMovie(Movie movie);
+    Showtime getShowtime(long id);
+    List<Showtime> getAllShowtimesByMovie(long movieId);
     List<Showtime> getAllShowtimesByDate(String date);
-    void bookSeats(Showtime show);
+    void bookSeat(long showId,String seatNum);
 }

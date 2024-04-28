@@ -30,7 +30,7 @@ public class Showtime {
             inverseJoinColumns = @JoinColumn(name = "showtime_id")
     )
     @EqualsAndHashCode.Exclude
-    private Movie showMovie;
+    private Movie movie;
     @OneToMany(mappedBy = "bookedShowtime", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Set<Booking> bookings = new HashSet<>();
 }

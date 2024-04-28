@@ -19,7 +19,7 @@ public class Movie {
     private String title;
     @Column
     private String description;
-    @OneToMany(mappedBy = "showMovie", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Showtime> showtimes;
     @Column
     private String releaseDate;
