@@ -1,5 +1,6 @@
 package com.ASCP.FlickFlare.service;
 
+import com.ASCP.FlickFlare.model.Address;
 import com.ASCP.FlickFlare.model.Card;
 import com.ASCP.FlickFlare.model.User;
 import com.ASCP.FlickFlare.repository.AddressRepository;
@@ -41,16 +42,19 @@ public class UserServiceImpl implements UserService {
         for (Card card : user.getCards()) {
             String encryptedNum = encrypt(card.getCardNumber());
             card.setCardNumber(encryptedNum);
+            card.setCardUser(user);
         }
-
-        cardRepository.saveAll(user.getCards());
-        addressRepository.saveAll(user.getAddresses());
+        for(Address address : user.getAddresses()){
+            address.setUser(user);
+        }
         String password = user.getPassword();
         UserServiceImpl userService = new UserServiceImpl();
         String encryptedPassword = userService.encrypt(password);
         user.setPassword(encryptedPassword);
         user.setEmail(user.getEmail().toLowerCase());
         userRepository.save(user);
+        cardRepository.saveAll(user.getCards());
+        addressRepository.saveAll(user.getAddresses());
     }
 
     public List<User> getAllUsers() {

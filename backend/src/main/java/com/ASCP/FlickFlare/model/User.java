@@ -3,6 +3,7 @@ package com.ASCP.FlickFlare.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,7 +32,7 @@ public class User {
     private boolean subToPromo;
     @Column
     private boolean admin;
-    @OneToMany(mappedBy = "cardUser", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "cardUser", cascade = CascadeType.MERGE,orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Card> cards = new HashSet<>();
     @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Address> addresses;

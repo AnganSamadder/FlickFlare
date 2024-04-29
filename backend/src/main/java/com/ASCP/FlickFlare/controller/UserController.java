@@ -134,7 +134,7 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body("User does not have any cards.");
         }
         for (Card card : temp) {
-            card.setCardNumber("XXXX XXXX XXXX " + userService.decrypt(card.getCardNumber().substring(12)));
+            card.setCardNumber(userService.decrypt(card.getCardNumber()).substring(12));
         }
         return ResponseEntity.status(HttpStatus.OK).body(temp);
     }
@@ -167,7 +167,7 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User with given id doesn't exist");
         }
         user.setUserId(id);
-        userRepository.save(user);
+        userService.saveUser(user);
         return ResponseEntity.status(HttpStatus.OK).body("User profile successfully updated");
     }
 

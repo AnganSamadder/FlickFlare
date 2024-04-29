@@ -5,6 +5,7 @@ import com.ASCP.FlickFlare.repository.ActorRepository;
 import com.ASCP.FlickFlare.repository.GenreRepository;
 import com.ASCP.FlickFlare.repository.MovieRepository;
 
+import com.ASCP.FlickFlare.repository.ShowtimeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,12 +24,12 @@ public class MovieServiceImpl implements MovieService {
     private GenreRepository genreRepository;
     @Autowired
     private ActorRepository actorRepository;
+    @Autowired
+    private ShowtimeRepository showtimeRepository;
+
 
     @Override
     public void saveMovie(Movie movie) {
-        for (Showtime showtime : movie.getShowtimes()) {
-            showtime.setMovie(movie);
-        }
 
         for (MovieReview review : movie.getReviews()) {
             review.setMovie(movie);
@@ -55,6 +56,10 @@ public class MovieServiceImpl implements MovieService {
         }
 
         movieRepository.save(movie);
+        for (Showtime showtime : movie.getShowtimes()) {
+            showtime.setMovie(movie);
+        }
+        showtimeRepository.saveAll(movie.getShowtimes());
     }
 
     @Override

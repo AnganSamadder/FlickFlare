@@ -35,4 +35,5 @@ public class Card {
     private String expYear;
     @Column
     private int secCode;
+
 }
