@@ -167,7 +167,7 @@ const EditMovie = (props: { movie: Movie | null }) => {
                 return (
                   <div className="w-full h-8 flex justify-between" key={id}>
                     <div className="px-8 text-white text-2xl font-bold font-['Maven Pro']">
-                      2/28 {schedule}
+                      {/*2/28 {schedule}*/}
                     </div>
                     <button className="w-20 h-8 bg-red-500 rounded-full text-white font-['Maven Pro']">
                       Delete

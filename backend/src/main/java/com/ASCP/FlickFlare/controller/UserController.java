@@ -183,8 +183,8 @@ public class UserController {
         }
         String firstname = user.getFirstName();
         String subject = "Your account information has been updated!";
-        String body = "Hello" + firstname + " Your account information has been updated," +
-                "if this was not you, contact us at FlickFlareverify@gmail.com";
+        String body = "Hello " + firstname + ". Your account information has been updated," +
+                " if this was not you, contact us at FlickFlareverify@gmail.com";
         String email = user.getEmail();
         emailService.sendVerificationEmail(email, subject, body);
     }

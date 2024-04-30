@@ -192,7 +192,7 @@ export default function Promotions() {
   return (
     <div>
       <div>Manage Promotions</div>
-      {/*<EditPromotions/>*/}
+      {/*<EditPromotions />*/}
     </div>
   );
 }

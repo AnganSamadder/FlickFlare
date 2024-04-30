@@ -13,7 +13,8 @@ import PaymentCardSection from "@/app/components/ui/PaymentCardSection";
 export default function EditProfile() {
   const router = useRouter();
   const [address, setAddress] = useState<Address>({
-    street: "",
+    streetOne: "",
+    streetTwo: "",
     city: "",
     state: "",
     zip: "",
