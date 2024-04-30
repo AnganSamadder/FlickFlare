@@ -95,11 +95,17 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public List<Movie> getMovieGenre(String genre) throws ExecutionException, InterruptedException {
-        return movieRepository.findByGenreContainingIgnoreCase(genre);
+        Genre gen = null;
+        if(genreRepository.findByGenre(genre).isPresent()){
+            gen=genreRepository.findByGenre(genre).get();
+        }else{
+            throw new NullPointerException("Genre doesn't exist");
+        }
+        return movieRepository.findByGenresContainingIgnoreCase(gen);
     }
 
     @Override
     public List<Movie> getMovieDate(String date) throws ExecutionException, InterruptedException {
-        return movieRepository.findByDateContainingIgnoreCase(date);
+        return movieRepository.findByReleaseDateContainingIgnoreCase(date);
     }
 }

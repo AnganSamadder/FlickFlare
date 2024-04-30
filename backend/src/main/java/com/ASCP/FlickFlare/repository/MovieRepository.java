@@ -1,5 +1,6 @@
 package com.ASCP.FlickFlare.repository;
 
+import com.ASCP.FlickFlare.model.Genre;
 import org.springframework.data.repository.CrudRepository;
 
 import com.ASCP.FlickFlare.model.Movie;
@@ -13,7 +14,7 @@ public interface MovieRepository extends CrudRepository<Movie, Long> {
 
     List<Movie> findByShowing(boolean showing);
 
-    List<Movie> findByDateContainingIgnoreCase(String input);
+    List<Movie> findByReleaseDateContainingIgnoreCase(String input);
 
-    List<Movie> findByGenreContainingIgnoreCase(String genre);
+    List<Movie> findByGenresContainingIgnoreCase(Genre genre);
 }
