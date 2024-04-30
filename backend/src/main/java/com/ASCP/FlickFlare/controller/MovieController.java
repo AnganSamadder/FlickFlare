@@ -63,7 +63,8 @@ public class MovieController {
     public List<Movie> searchByGenre(@RequestParam String genre) throws ExecutionException, InterruptedException {
         return movieService.getMovieGenre(genre);
     }
-    @GetMapping("searchByDate")
+
+    @GetMapping("/searchByDate")
     public List<Movie> searchByDate(@RequestParam String date) throws ExecutionException, InterruptedException {
         return movieService.getMovieDate(date);
     }
