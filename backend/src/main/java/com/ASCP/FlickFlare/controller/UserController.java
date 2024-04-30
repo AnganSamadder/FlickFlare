@@ -202,20 +202,42 @@ public class UserController {
         String encryptedPassword = userService.encrypt(newPassword);
         user.setPassword(encryptedPassword);
     }
-//    @PutMapping("/editPassword")
-//    public ResponseEntity<String> editPassword(@RequestParam long id, @RequestParam String password){
-//        User user;
-//        if(userRepository.findById(id).isPresent()){
-//            user = userRepository.findById(id).get();
-//        }else{
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User with given id doesn't exist");
-//        }
-//        String decryptedPassword = userService.decrypt(user.getPassword());
-//        if(userService.validateCreds(password, decryptedPassword)){//ValidatePwd
-//
-//        }
-//        editUser.setFirstName(user.getFirstName());
-//        userRepository.save(editUser);
-//        return ResponseEntity.status(HttpStatus.OK).body("User profile successfully updated");
-//    }
+
+    @PutMapping("/deleteUser")
+    public void deleteUser(@RequestParam long id) {
+            User user = null;
+            try {
+                if (userRepository.findById(id).isPresent()) {
+                    userService.deleteUser(id);
+                }
+            } catch (Exception e) {
+                throw new NullPointerException("User not found");
+            }
+
+        }
+    @PutMapping("/makeAdmin")
+    public void makeAdmin(@RequestParam long id) {
+            User user = null;
+            try {
+                if (userRepository.findById(id).isPresent()) {
+                    userService.makeAdmin(id);
+                }
+            } catch (Exception e) {
+                throw new NullPointerException("User not found");
+            }
+        }
+
+    @PutMapping("/removeAdmin")
+    public void removeAdmin(@RequestParam long id) {
+            User user = null;
+            try {
+                if (userRepository.findById(id).isPresent()) {
+                    userService.removeAdmin(id);
+                }
+            } catch (Exception e) {
+                throw new NullPointerException("User not found");
+            }
+        }
+
+
 }
