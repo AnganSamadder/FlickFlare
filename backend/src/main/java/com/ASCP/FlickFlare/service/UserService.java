@@ -28,5 +28,13 @@ public interface UserService {
     String encrypt(String encryptionString);
 
     String decrypt(String encryptedString);
+    void deleteUser(long id);
+
+    void makeAdmin(long id);
+
+    void removeAdmin(long id);
 }
+
+
+
 

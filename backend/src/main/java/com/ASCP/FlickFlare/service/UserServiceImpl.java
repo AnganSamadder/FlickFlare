@@ -125,4 +125,19 @@ public class UserServiceImpl implements UserService {
 
         return decryptedStringBuilder.toString();
     }
+    public void deleteUser(long id) {
+        userRepository.deleteById(id);
+    }
+    public void makeAdmin(long id) {
+        User user = getUser(id);
+        user.setAdmin(true);
+
+    }
+
+    public void removeAdmin(long id) {
+        User user = getUser(id);
+        user.setAdmin(false);
+    }
+
+
 }
