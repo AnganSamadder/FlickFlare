@@ -3,6 +3,7 @@ package com.ASCP.FlickFlare.service;
 import com.ASCP.FlickFlare.model.Movie;
 import org.springframework.stereotype.Service;
 
+import java.beans.IntrospectionException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -20,4 +21,8 @@ public interface MovieService {
     List<Movie> searchMovies(String input) throws ExecutionException, InterruptedException;
 
     List<Movie> getShowingMovies(boolean showing) throws ExecutionException, InterruptedException;
+
+    List<Movie> getMovieGenre(String genre) throws ExecutionException, InterruptedException;
+
+    List<Movie> getMovieDate(String date) throws ExecutionException, InterruptedException;
 }

@@ -12,4 +12,8 @@ public interface MovieRepository extends CrudRepository<Movie, Long> {
     List<Movie> findByTitleContainingIgnoreCase(String input);
 
     List<Movie> findByShowing(boolean showing);
+
+    List<Movie> findByDateContainingIgnoreCase(String input);
+
+    List<Movie> findByGenreContainingIgnoreCase(String genre);
 }

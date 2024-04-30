@@ -92,4 +92,14 @@ public class MovieServiceImpl implements MovieService {
     public List<Movie> getShowingMovies(boolean showing) throws ExecutionException, InterruptedException {
         return movieRepository.findByShowing(showing);
     }
+
+    @Override
+    public List<Movie> getMovieGenre(String genre) throws ExecutionException, InterruptedException {
+        return movieRepository.findByGenreContainingIgnoreCase(genre);
+    }
+
+    @Override
+    public List<Movie> getMovieDate(String date) throws ExecutionException, InterruptedException {
+        return movieRepository.findByDateContainingIgnoreCase(date);
+    }
 }
