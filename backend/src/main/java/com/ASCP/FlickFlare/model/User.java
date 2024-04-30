@@ -43,7 +43,14 @@ public class User {
 
     @OneToMany(mappedBy = "bookingUser", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Booking> bookings = new HashSet<>();
-
+    @Column
+    private String street;
+    @Column
+    private String city;
+    @Column
+    private String state;
+    @Column
+    private String zip;
 
 
 }

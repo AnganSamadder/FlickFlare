@@ -54,7 +54,6 @@ public class UserServiceImpl implements UserService {
         user.setEmail(user.getEmail().toLowerCase());
         userRepository.save(user);
         cardRepository.saveAll(user.getCards());
-        addressRepository.saveAll(user.getAddresses());
     }
 
     public List<User> getAllUsers() {
