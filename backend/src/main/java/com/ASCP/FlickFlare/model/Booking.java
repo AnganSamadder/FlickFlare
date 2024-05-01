@@ -41,4 +41,7 @@ public class Booking {
     )
     private Promotion bookPromotions;
 
+    @Column
+    private boolean bookingStatus;
+
 }

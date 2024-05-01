@@ -66,7 +66,7 @@ public class PromotionController {
 
     }
     @GetMapping("/validPromotion")
-    public ResponseEntity<Boolean> validPromotion(@RequestParam String givenCode, @RequestParam long userId ) {
+    public ResponseEntity<Integer> validPromotion(@RequestParam String givenCode, @RequestParam long userId ) {
         long promoId = 0;
         User user = null;
         Promotion promotion;
@@ -79,20 +79,25 @@ public class PromotionController {
             if(promo.getCode().equalsIgnoreCase(givenCode)) {
                 promoId = promo.getPromotion_id();
             } else {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(false);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(0);
             }
         }
         if(!promotionService.verifyDate(promoId)) {
-            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(false);
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(0);
         }
 
         for(Booking booking : user.getBookings()) {
             if(promoId == booking.getBookPromotions().getPromotion_id()) {
-                return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(false);
+                return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(0);
             }
 
         }
-        return ResponseEntity.status(HttpStatus.OK).body(true);
+        if(promotionRepository.findById(promoId).isPresent()) {
+            promotion = promotionRepository.findById(promoId).get();
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(0);
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(promotion.getPercentageDiscount());
 
     }
 
