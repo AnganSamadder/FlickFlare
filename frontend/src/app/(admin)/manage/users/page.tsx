@@ -15,7 +15,7 @@ export default async function Users() {
   const users = await res.json();
 
   return (
-    <div className="m-5 w-max h-screen">
+    <div className="w-max h-[86vh]">
       <div>
         <ManageUsers users={users} />
       </div>

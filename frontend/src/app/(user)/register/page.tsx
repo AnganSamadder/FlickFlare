@@ -31,7 +31,7 @@ export default function Register() {
   const handleSubscribe = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUser({
       ...user,
-      subToPromos: e.target.checked,
+      subToPromo: e.target.checked,
     });
   };
 
@@ -152,7 +152,7 @@ export default function Register() {
             <input
               type="checkbox"
               id="subscribe"
-              checked={user.subToPromos}
+              checked={user.subToPromo}
               onChange={handleSubscribe}
               className="appearance-none w-6 h-6 border-2 border-orange-500 rounded-md align-middle
               checked:bg-orange-500 checked:border-transparent
