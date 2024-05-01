@@ -11,6 +11,5 @@ public interface BookingService {
     void saveBooking(Booking booking, long userId, long showId, String promoCode);
     Booking getBooking(long bookingId);
     Set<Booking> getAllBoookingsByUser(long userId);
-
     boolean isRefundable(long showtimeId);
 }
