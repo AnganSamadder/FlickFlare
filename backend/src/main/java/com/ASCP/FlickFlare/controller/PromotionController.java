@@ -50,7 +50,7 @@ public class PromotionController {
         return "Promotion deleted...";
     }
     @PutMapping ("/editPromotions")
-    public ResponseEntity<String> editPromotions(@RequestParam long id, @RequestParam String code, @RequestParam int percentageDiscount, @RequestParam String expirationDate) {
+    public ResponseEntity<String> editPromotions(@RequestParam long id, @RequestParam String code, @RequestParam int percentageDiscount, @RequestParam long expirationDate) {
 
         Promotion editPromo = null;
         if(promotionRepository.findById(id).isEmpty()) {

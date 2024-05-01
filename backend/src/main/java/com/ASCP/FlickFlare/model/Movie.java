@@ -22,7 +22,7 @@ public class Movie {
     @OneToMany(mappedBy = "movie", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Showtime> showtimes;
     @Column
-    private String releaseDate;
+    private long releaseDate;
     @Column
     private boolean upcoming;
     @Column

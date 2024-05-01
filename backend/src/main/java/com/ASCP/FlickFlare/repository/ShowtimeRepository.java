@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface ShowtimeRepository extends CrudRepository<Showtime, Long> {
 
-    List<Showtime> findByDate(String date);
+    List<Showtime> findByDate(long date);
 }

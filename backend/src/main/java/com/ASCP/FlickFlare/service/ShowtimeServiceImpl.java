@@ -53,10 +53,10 @@ public class ShowtimeServiceImpl implements ShowtimeService {
     }
 
     @Override
-    public List<Showtime> getAllShowtimesByDate(String date) {//String date is of the form yyyy-mm-dd
+    public List<Showtime> getAllShowtimesByDate(long date) {//String date is of the form yyyy-mm-dd
         List<Showtime> showtimes = new ArrayList<>();
         for (Showtime show : showtimeRepository.findAll()) {
-            if (LocalDate.parse(date).isEqual(LocalDate.parse(show.getDate()))) {
+            if (date == show.getDate()) {
                 showtimes.add(show);
             }
         }
@@ -96,13 +96,13 @@ public class ShowtimeServiceImpl implements ShowtimeService {
     }
 
     @Override
-    public List<Showtime> getAllShowtimesByMovieByDate(long movieId, String date) throws NullPointerException, DateTimeParseException {//Date format yyyy-mm-dd
+    public List<Showtime> getAllShowtimesByMovieByDate(long movieId, long date) throws NullPointerException, DateTimeParseException {//Date format yyyy-mm-dd
         List<Showtime> showtimes = null;
             showtimes = getAllShowtimesByMovie(movieId);
         List<Showtime> shows = new ArrayList<>();
         LocalDate currentDate = LocalDate.now();
         for (Showtime show : showtimes) {
-            if (LocalDate.parse(date).isEqual(LocalDate.parse(show.getDate()))) {
+            if (date == show.getDate()) {
                 shows.add(show);
             }
         }

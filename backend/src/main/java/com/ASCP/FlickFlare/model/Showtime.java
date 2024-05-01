@@ -20,7 +20,7 @@ public class Showtime {
     private long id;
     @Column
     private String time;
-    private String date;
+    private long date;
     private int layout;
     private String bookedSeats;
     @ManyToOne

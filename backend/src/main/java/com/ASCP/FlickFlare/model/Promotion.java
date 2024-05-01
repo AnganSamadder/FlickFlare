@@ -25,7 +25,7 @@ public class Promotion {
     private int percentageDiscount;
 
     @Column
-    private String expirationDate;
+    private long expirationDate;
     @Column
     private String code;
 

@@ -11,8 +11,8 @@ public interface ShowtimeService {
     void saveShowtime(Showtime show);
     Showtime getShowtime(long id);
     List<Showtime> getAllShowtimesByMovie(long movieId);
-    List<Showtime> getAllShowtimesByDate(String date);
+    List<Showtime> getAllShowtimesByDate(long date);
     void bookSeat(long showId,String seatNum);
     void unBookSeat(long bookingId,String seatNum);
-    List<Showtime> getAllShowtimesByMovieByDate(long movieId, String date);
+    List<Showtime> getAllShowtimesByMovieByDate(long movieId, long date);
 }
