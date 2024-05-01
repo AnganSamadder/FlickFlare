@@ -1,9 +1,7 @@
 package com.ASCP.FlickFlare.service;
 
-import com.ASCP.FlickFlare.model.Address;
 import com.ASCP.FlickFlare.model.Card;
 import com.ASCP.FlickFlare.model.User;
-import com.ASCP.FlickFlare.repository.AddressRepository;
 import com.ASCP.FlickFlare.repository.CardRepository;
 import com.ASCP.FlickFlare.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +18,6 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     @Autowired
     private CardRepository cardRepository;
-    @Autowired
-    private AddressRepository addressRepository;
 
 
     public boolean emailExists(String email) {
@@ -44,9 +40,7 @@ public class UserServiceImpl implements UserService {
             card.setCardNumber(encryptedNum);
             card.setCardUser(user);
         }
-        for(Address address : user.getAddresses()){
-            address.setUser(user);
-        }
+
         String password = user.getPassword();
         UserServiceImpl userService = new UserServiceImpl();
         String encryptedPassword = userService.encrypt(password);
@@ -143,7 +137,7 @@ public class UserServiceImpl implements UserService {
 
     public long findUserByEmail(String email) {
 
-        return userRepository.findByEmailContainingIgnoreCase(email);
+        return userRepository.findFirstByEmailContainingIgnoreCase(email).getUserId();
     }
 
 }

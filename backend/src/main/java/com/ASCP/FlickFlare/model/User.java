@@ -34,8 +34,6 @@ public class User {
     private boolean admin;
     @OneToMany(mappedBy = "cardUser", cascade = CascadeType.MERGE,orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Card> cards = new HashSet<>();
-    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.EAGER)
-    private Set<Address> addresses;
     @Column
     private boolean verified;
     @Column

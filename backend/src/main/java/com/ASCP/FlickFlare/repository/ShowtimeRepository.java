@@ -1,6 +1,5 @@
 package com.ASCP.FlickFlare.repository;
 
-import com.ASCP.FlickFlare.model.Address;
 import com.ASCP.FlickFlare.model.Movie;
 import com.ASCP.FlickFlare.model.Showtime;
 import org.springframework.data.repository.CrudRepository;

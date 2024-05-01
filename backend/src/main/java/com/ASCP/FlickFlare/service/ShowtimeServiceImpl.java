@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -100,9 +101,10 @@ public class ShowtimeServiceImpl implements ShowtimeService {
         List<Showtime> showtimes = null;
             showtimes = getAllShowtimesByMovie(movieId);
         List<Showtime> shows = new ArrayList<>();
-        LocalDate currentDate = LocalDate.now();
+        Date date1 = new Date();
+        long currentDate = date1.getTime();
         for (Showtime show : showtimes) {
-            if (date == show.getDate()) {
+            if (currentDate == show.getDate()) {
                 shows.add(show);
             }
         }
