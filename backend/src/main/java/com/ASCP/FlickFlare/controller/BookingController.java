@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -24,14 +26,19 @@ public class BookingController {
     BookingRepository bookingRepository;
 
     @GetMapping("/getOrderHistory")
-    public ResponseEntity<Set<Booking>> getOrderHistory (@RequestParam long userId) {
+    public ResponseEntity<List<Booking>> getOrderHistory (@RequestParam long userId) {
         User user = null;
+        ArrayList<Booking> bookingList = new ArrayList<Booking>();
         if(userRepository.findById(userId).isPresent()) {
             user = userRepository.findById(userId).get();
         }
-        Set<Booking> bookings = user.getBookings();
+        for (Booking booking : bookingRepository.findAll()) {
+            if(booking.getBookingUser()==user) {
+                bookingList.add(booking);
+            }
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(bookingList);
 
-        return ResponseEntity.status(HttpStatus.OK).body(bookings);
 
     }
     @GetMapping("/refundTicket")
