@@ -62,7 +62,6 @@ public class ShowtimeServiceImpl implements ShowtimeService {
         }
         return showtimes;
     }
-
     @Override
     public void bookSeat(long showId, String seatNum) throws NullPointerException {
         Showtime show;

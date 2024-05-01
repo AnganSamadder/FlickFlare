@@ -105,7 +105,11 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public List<Movie> getMovieDate(String date) throws ExecutionException, InterruptedException {
-        return movieRepository.findByReleaseDateContainingIgnoreCase(date);
+    public List<Movie> getMoviesByShowtimeDate(String date) throws ExecutionException, InterruptedException {
+        List<Movie> movies=new ArrayList<>();
+        for(Showtime show : showtimeRepository.findByDate(date)){
+            movies.add(show.getMovie());
+        }
+        return movies;
     }
 }

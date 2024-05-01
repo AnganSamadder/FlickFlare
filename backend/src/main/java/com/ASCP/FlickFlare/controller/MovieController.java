@@ -66,7 +66,7 @@ public class MovieController {
 
     @GetMapping("/searchByDate")
     public List<Movie> searchByDate(@RequestParam String date) throws ExecutionException, InterruptedException {
-        return movieService.getMovieDate(date);
+        return movieService.getMoviesByShowtimeDate(date);
     }
 
     @GetMapping("/test")

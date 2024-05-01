@@ -131,12 +131,13 @@ public class UserServiceImpl implements UserService {
     public void makeAdmin(long id) {
         User user = getUser(id);
         user.setAdmin(true);
-
+        userRepository.save(user);
     }
 
     public void removeAdmin(long id) {
         User user = getUser(id);
         user.setAdmin(false);
+        userRepository.save(user);
     }
 
 

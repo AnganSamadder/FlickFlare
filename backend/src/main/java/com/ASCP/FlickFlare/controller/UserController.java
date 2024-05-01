@@ -172,14 +172,12 @@ public class UserController {
     }
 
     @PostMapping("/updateNotifyEmail")
-    public void updateEmail(@RequestParam long id) {
+    public ResponseEntity<String> updateEmail(@RequestParam long id) {
         User user = null;
-        try {
-            if (userRepository.findById(id).isPresent()) {
+        if (userRepository.findById(id).isPresent()) {
                 user = userRepository.findById(id).get();
-            }
-        } catch (Exception e) {
-            throw new NullPointerException("User not found");
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User doesn't exist");
         }
         String firstname = user.getFirstName();
         String subject = "Your account information has been updated!";
@@ -187,57 +185,54 @@ public class UserController {
                 " if this was not you, contact us at FlickFlareverify@gmail.com";
         String email = user.getEmail();
         emailService.sendVerificationEmail(email, subject, body);
+        return ResponseEntity.status(HttpStatus.OK).body("Email succesfully sent");
     }
 
     @PutMapping("/newPassword")
-    public void newPassword(@RequestParam long id, String newPassword) {
+    public ResponseEntity<String> newPassword(@RequestParam long id, String newPassword) {
         User user = null;
-        try {
-            if (userRepository.findById(id).isPresent()) {
+        if (userRepository.findById(id).isPresent()) {
                 user = userRepository.findById(id).get();
-            }
-        } catch (Exception e) {
-            throw new NullPointerException("User not found");
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User doesn't exist");
         }
+
         String encryptedPassword = userService.encrypt(newPassword);
         user.setPassword(encryptedPassword);
+        return ResponseEntity.status(HttpStatus.OK).body("Password successfully changed");
     }
-
     @PutMapping("/deleteUser")
-    public void deleteUser(@RequestParam long id) {
+    public ResponseEntity<String> deleteUser(@RequestParam long id) {
             User user = null;
-            try {
-                if (userRepository.findById(id).isPresent()) {
+            if (userRepository.findById(id).isPresent()) {
                     userService.deleteUser(id);
-                }
-            } catch (Exception e) {
-                throw new NullPointerException("User not found");
+                    return ResponseEntity.status(HttpStatus.OK).body("User successfully deleted");
+            }else{
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User doesn't exist");
             }
 
         }
     @PutMapping("/makeAdmin")
-    public void makeAdmin(@RequestParam long id) {
+    public ResponseEntity<String> makeAdmin(@RequestParam long id) {
             User user = null;
-            try {
-                if (userRepository.findById(id).isPresent()) {
+            if (userRepository.findById(id).isPresent()) {
                     userService.makeAdmin(id);
-                }
-            } catch (Exception e) {
-                throw new NullPointerException("User not found");
+                    return ResponseEntity.status(HttpStatus.OK).body("User is now admin");
+            }else{
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User doesn't exist");
             }
         }
 
     @PutMapping("/removeAdmin")
-    public void removeAdmin(@RequestParam long id) {
+    public ResponseEntity<String> removeAdmin(@RequestParam long id) {
             User user = null;
-            try {
                 if (userRepository.findById(id).isPresent()) {
                     userService.removeAdmin(id);
+                    return ResponseEntity.status(HttpStatus.OK).body("User is now not an admin");
+                }else{
+                    return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User doesn't exist");
                 }
-            } catch (Exception e) {
-                throw new NullPointerException("User not found");
             }
-        }
 
 
 }

@@ -19,8 +19,8 @@ public class Showtime {
     @Column(unique = true, nullable = false)
     private long id;
     @Column
-    private String Time;
-    private String Date;
+    private String time;
+    private String date;
     private int layout;
     private String bookedSeats;
     @ManyToOne

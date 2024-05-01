@@ -24,5 +24,5 @@ public interface MovieService {
 
     List<Movie> getMovieGenre(String genre) throws ExecutionException, InterruptedException;
 
-    List<Movie> getMovieDate(String date) throws ExecutionException, InterruptedException;
+    List<Movie> getMoviesByShowtimeDate(String date) throws ExecutionException, InterruptedException;
 }

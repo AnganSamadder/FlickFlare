@@ -17,8 +17,7 @@ import java.util.Set;
 @RestController
 @RequestMapping("/booking")
 public class BookingController {
-    @Autowired
-    BookingService bookingService;
+
     @Autowired
     UserRepository userRepository;
     @Autowired

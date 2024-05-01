@@ -26,7 +26,6 @@ public class Promotion {
 
     @Column
     private String expirationDate;
-
     @Column
     private String code;
 
