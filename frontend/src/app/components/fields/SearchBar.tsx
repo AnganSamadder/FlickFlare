@@ -1,11 +1,15 @@
 "use client";
-import React from "react";
+import React, { MouseEventHandler, useEffect, useRef, useState } from "react";
 import { Movie } from "@/app/interfaces/movie";
 import Link from "next/link";
 
-const SearchResults = (props: { results: Movie[] }) => {
+const SearchResults = (props: { results: Movie[]; onClose: () => void }) => {
+  const handleResultClick = () => {
+    props.onClose();
+  };
+
   return (
-    <div className="w-2/5 absolute pt-12 z-10">
+    <div className="w-2/5 absolute pt-12 z-10" onClick={handleResultClick}>
       <div className="bg-zinc-700 drop-shadow-xl flex flex-col max-h-80 overflow-y-scroll rounded-b-lg">
         {props.results &&
           props.results.map(
@@ -38,6 +42,7 @@ const SearchResults = (props: { results: Movie[] }) => {
 const SearchBar = () => {
   const [search, setSearch] = React.useState("");
   const [results, setResults] = React.useState<Movie[]>([]);
+  const searchRef = useRef(null);
 
   const fetchMovies = (value: string) => {
     fetch(`http://localhost:8080/movie/search?input=${value}`)
@@ -52,15 +57,36 @@ const SearchBar = () => {
     fetchMovies(event.target.value);
   };
 
+  const handleCloseResults = () => {
+    setResults([]);
+  };
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      searchRef.current &&
+      !(searchRef.current as any).contains(event.target)
+    ) {
+      setResults([]);
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="w-3/5 h-[32px] bg-orange-50 rounded-[29px] flex">
+    <div
+      className="w-3/5 h-[32px] bg-orange-50 rounded-[29px] flex"
+      ref={searchRef}
+    >
       <input
         className="w-full px-4 bg-transparent outline-none z-20"
         placeholder="Search"
         value={search}
         onChange={handleSearch}
       ></input>
-      <SearchResults results={results} />
+      <SearchResults results={results} onClose={handleCloseResults} />
     </div>
   );
 };
