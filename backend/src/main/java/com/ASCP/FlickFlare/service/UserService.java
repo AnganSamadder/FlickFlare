@@ -33,6 +33,8 @@ public interface UserService {
     void makeAdmin(long id);
 
     void removeAdmin(long id);
+
+    long findUserByEmail(String email);
 }
 
 

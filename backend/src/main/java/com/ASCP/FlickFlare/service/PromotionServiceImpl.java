@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.time.LocalDate;
 
@@ -46,16 +47,14 @@ public class PromotionServiceImpl implements PromotionService{
 
     public boolean verifyDate(long promoId){
         Promotion promo = null;
-        LocalDate currentDate = LocalDate.now();
+        Date date = new Date();
+        long currentDate = date.getTime();
         if (promotionRepository.findById(promoId).isPresent()) {
             promo = promotionRepository.findById(promoId).get();
         } else {
             throw new NullPointerException("given Id promo doesnt exist");
         }
-        if (currentDate.isAfter(LocalDate.parse(promo.getExpirationDate()))) {
-            return false;
-        }
-        return true;
+        return currentDate <= promo.getExpirationDate();
 
     }
 }

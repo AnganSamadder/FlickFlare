@@ -8,7 +8,10 @@ import com.ASCP.FlickFlare.repository.*;
 import com.ASCP.FlickFlare.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.time.LocalDate;
 
+
+import java.util.Date;
 import java.util.Set;
 
 @Service
@@ -70,4 +73,22 @@ public class BookingServiceImpl implements BookingService {
         }
         return user.getBookings();
     }
+
+    @Override
+    public boolean isRefundable(long showtimeId) {
+        Showtime showtime;
+        if (showRepository.findById(showtimeId).isPresent()) {
+            showtime = showRepository.findById(showtimeId).get();
+        } else {
+            throw new NullPointerException("Given booking does not exist");
+        }
+        Date date = new Date();
+        long currentDate = date.getTime();
+
+        return showtime.getDate() <= currentDate;
+
+
+    }
+
+
 }

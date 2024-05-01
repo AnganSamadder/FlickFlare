@@ -234,5 +234,11 @@ public class UserController {
                 }
             }
 
+    @GetMapping("/findUserByEmail")
+    public ResponseEntity<Long> findUserByEmail(String email) {
+
+        return ResponseEntity.status(HttpStatus.OK).body(userService.findUserByEmail(email));
+    }
+
 
 }

@@ -11,4 +11,5 @@ public interface BookingService {
     Booking getBooking(long bookingId);
     Set<Booking> getAllBoookingsByUser(long userId);
 
+    boolean isRefundable(long showtimeId);
 }

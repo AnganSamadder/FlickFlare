@@ -141,4 +141,9 @@ public class UserServiceImpl implements UserService {
     }
 
 
+    public long findUserByEmail(String email) {
+
+        return userRepository.findByEmailContainingIgnoreCase(email);
+    }
+
 }
