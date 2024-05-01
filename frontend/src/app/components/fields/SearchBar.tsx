@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { Movie } from "@/app/interfaces/movie";
+import Link from "next/link";
 
 const SearchResults = (props: { results: Movie[] }) => {
   return (
@@ -9,7 +10,11 @@ const SearchResults = (props: { results: Movie[] }) => {
         {props.results &&
           props.results.map(
             (result, id) => (
-              <div className="h-16 border-t-2 border-gray-500 align-middle justify-around">
+              <Link
+                className="h-16 border-t-2 border-gray-500 align-middle justify-around"
+                key={id}
+                href={"/" + result.id}
+              >
                 <img
                   className="h-full p-1 rounded-lg object-scale-down float-left"
                   src={result["poster"]}
@@ -21,7 +26,7 @@ const SearchResults = (props: { results: Movie[] }) => {
                 >
                   {result["title"]}
                 </div>
-              </div>
+              </Link>
             ),
             [],
           )}

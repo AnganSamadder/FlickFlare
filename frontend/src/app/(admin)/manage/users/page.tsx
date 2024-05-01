@@ -15,9 +15,10 @@ export default async function Users() {
   const users = await res.json();
 
   return (
-    <div className="m-10 w-max flex-col justify-center">
-      <label className="text-orange-500 text-4xl font-bold">Manage Users</label>
-      <ManageUsers users={users} />
+    <div className="m-5 w-max h-screen">
+      <div>
+        <ManageUsers users={users} />
+      </div>
     </div>
   );
 }

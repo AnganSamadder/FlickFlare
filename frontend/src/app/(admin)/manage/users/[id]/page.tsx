@@ -1,12 +1,25 @@
+"use client";
 import Link from "next/link";
 import InputField from "@/app/components/fields/InputField";
 import SelectCardDropdown from "@/app/components/dropdown/SelectCardDropdown";
 import dummyCards from "@/app/lists/dummy/dummyCards";
 import noCardsList from "@/app/lists/dummy/noCardsList";
+import { useRouter } from "next/navigation";
 
 export default function Profile() {
+  const router = useRouter();
+  const handleBackButtonClick = () => {
+    router.push(`/manage/users`);
+  };
+
   return (
     <div className="h-fit flex-col justify-center mb-40">
+      <button
+        onClick={handleBackButtonClick}
+        className=" mt-5 h-fit px-8 py-2 rounded-bl-3xl rounded-tr-3xl bg-orange-500 text-white font-bold font-['Maven Pro'] leading-normal transition duration-200 hover:bg-orange-500 hover:text-black border-2 border-transparent"
+      >
+        Back
+      </button>
       <div className="text-center text-5xl font-bold text-orange-500 mb-2">
         Edit Profile
       </div>

@@ -200,7 +200,12 @@ const EditMovies = (props: { movies: Movie[] }) => {
   return (
     <div className="h-[75vh] p-4 flex bg-zinc-800 rounded-2xl">
       <div className="w-1/4 h-full pr-2 flex flex-col items-center rounded-2xl">
-        <div className="text-white pb-2 text-2xl font-bold">Movies</div>
+        <div className="w-full flex flex-row justify-between">
+          <div className="text-white pb-2 text-2xl font-bold">Movies</div>
+          <button className="mb-3 mx-5 p-2 font-bold text-white bg-amber-600 rounded-full">
+            + Movie
+          </button>
+        </div>
         <EditMoviesList
           movies={props.movies}
           onClick={handleSelect}

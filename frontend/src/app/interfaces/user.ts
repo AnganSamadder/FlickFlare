@@ -8,10 +8,11 @@ export interface User {
   firstName: string;
   lastName: string;
   phoneNumber: string;
-  subToPromos: boolean;
+  subToPromo: boolean;
   admin?: boolean;
   cards?: Card[];
   addresses?: Address[];
+  suspended?: boolean;
   verified?: boolean;
   verifyCode?: string;
 }

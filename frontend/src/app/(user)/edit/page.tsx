@@ -45,7 +45,7 @@ export default function EditProfile() {
   const handleSubscribe = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUser({
       ...user,
-      subToPromos: e.target.checked,
+      subToPromo: e.target.checked,
     });
   };
 
@@ -164,7 +164,7 @@ export default function EditProfile() {
                 id="optInPromo"
                 name="receivePromo"
                 value="checkPromo"
-                checked={user.subToPromos}
+                checked={user.subToPromo}
                 onChange={handleSubscribe}
                 className="ml-8"
               />
