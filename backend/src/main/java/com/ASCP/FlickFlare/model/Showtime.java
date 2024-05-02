@@ -26,8 +26,8 @@ public class Showtime {
     @ManyToOne
     @JoinTable(
             name = "movie_showtime",
-            joinColumns = @JoinColumn(name = "movie_id"),
-            inverseJoinColumns = @JoinColumn(name = "showtime_id")
+            joinColumns = @JoinColumn(name = "showtime_id"),
+            inverseJoinColumns = @JoinColumn(name = "movie_id")
     )
     @EqualsAndHashCode.Exclude
     private Movie movie;

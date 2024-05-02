@@ -20,24 +20,24 @@ public class Booking {
     @ManyToOne
     @JoinTable(
             name = "user_booking",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "booking_id")
+            joinColumns = @JoinColumn(name = "booking_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     private User bookingUser;
 
     @ManyToOne
     @JoinTable(
             name = "showtime_booking",
-            joinColumns = @JoinColumn(name = "showtime_id"),
-            inverseJoinColumns = @JoinColumn(name = "booking_id")
+            joinColumns = @JoinColumn(name = "booking_id"),
+            inverseJoinColumns = @JoinColumn(name = "showtime_id")
     )
     private Showtime bookedShowtime;
 
     @ManyToOne
     @JoinTable(
             name = "promotion_booking",
-            joinColumns = @JoinColumn(name = "promotion_id"),
-            inverseJoinColumns = @JoinColumn(name = "booking_id")
+            joinColumns = @JoinColumn(name = "booking_id"),
+            inverseJoinColumns = @JoinColumn(name = "promotion_id")
     )
     private Promotion bookPromotions;
 

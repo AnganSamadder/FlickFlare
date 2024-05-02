@@ -21,8 +21,8 @@ public class Card {
     @ManyToOne
     @JoinTable(
             name = "user_card",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "card_id")
+            joinColumns = @JoinColumn(name = "card_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     @EqualsAndHashCode.Exclude
     @JsonIgnore
