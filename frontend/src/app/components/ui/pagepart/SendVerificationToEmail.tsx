@@ -41,18 +41,20 @@ const SendVerificationToEmail = ({onEmailConfirm,  }: {onEmailConfirm: (email: s
                 <h1 className="text-5xl font-bold text-orange-500 mb-6">
                     Forgot Password
                 </h1>
-                <p className="text-2xl font-bold text-white mb-8">
-                    Please enter the email that you have registered your account with:
-                </p>
-                <InputField
-                    placeholder="Enter email..."
-                    name="email"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    onKeyDown={handleKeyPress}
-                    classname="w-2/5 h-[5vh]"
-                />
+                <div className="flex flex-col items-center">
+                    <p className="text-2xl font-bold text-white mb-8">
+                        Please enter the email that you have registered your account with:
+                    </p>
+                    <InputField
+                        placeholder="Enter email..."
+                        name="email"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        onKeyDown={handleKeyPress}
+                        classname="w-2/5 h-[5vh]"
+                    />
+                </div>
             </div>
         </div>
     );
