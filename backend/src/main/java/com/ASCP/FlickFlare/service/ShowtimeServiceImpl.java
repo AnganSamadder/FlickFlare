@@ -25,7 +25,14 @@ public class ShowtimeServiceImpl implements ShowtimeService {
     private BookingRepository bookingRepository;
 
     @Override
-    public void saveShowtime(Showtime show) {
+    public void saveShowtime(Showtime show, long movieId) {
+        Movie movie;
+        if(movieRepository.findById(movieId).isPresent()){
+            movie=movieRepository.findById(movieId).get();
+        }else{
+            throw new NullPointerException("Given movieId doesn't exist");
+        }
+        show.setMovie(movie);
         showtimeRepository.save(show);
     }
 

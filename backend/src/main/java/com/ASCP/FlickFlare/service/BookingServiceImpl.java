@@ -39,14 +39,15 @@ public class BookingServiceImpl implements BookingService {
         } else {
             throw new NullPointerException("Given showId doesn't exist");
         }
-        for(Promotion existingPromotion : promoRepository.findAll()) {
-            if(existingPromotion.getCode().equalsIgnoreCase(promoCode)) {
-                booking.setBookPromotions(existingPromotion);
-            }
-        }if(promoCode.isBlank()) {
+        if(promoCode.isBlank()) {
             booking.setBookPromotions(null);
+        }else {
+            for (Promotion existingPromotion : promoRepository.findAll()) {
+                if (existingPromotion.getCode().equalsIgnoreCase(promoCode)) {
+                    booking.setBookPromotions(existingPromotion);
+                }
+            }
         }
-
         booking.setBookingUser(user);
         booking.setBookedShowtime(show);
         bookingRepository.save(booking);

@@ -43,9 +43,9 @@ public class Booking {
 
     @Column
     private boolean bookingStatus;
-
+    @Column
+    private String Seats;
     @Column
     private boolean refundable;
-
 
 }

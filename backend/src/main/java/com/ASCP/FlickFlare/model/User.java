@@ -32,6 +32,7 @@ public class User {
     private boolean subToPromo;
     @Column
     private boolean admin;
+    private boolean suspended;
     @OneToMany(mappedBy = "cardUser", cascade = CascadeType.MERGE, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Card> cards = new HashSet<>();
     @Column

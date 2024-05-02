@@ -3,8 +3,10 @@ package com.ASCP.FlickFlare.controller;
 import com.ASCP.FlickFlare.model.Booking;
 import com.ASCP.FlickFlare.model.User;
 import com.ASCP.FlickFlare.repository.BookingRepository;
+import com.ASCP.FlickFlare.repository.ShowtimeRepository;
 import com.ASCP.FlickFlare.repository.UserRepository;
 import com.ASCP.FlickFlare.service.BookingService;
+import com.ASCP.FlickFlare.service.ShowtimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +26,18 @@ public class BookingController {
     UserRepository userRepository;
     @Autowired
     BookingRepository bookingRepository;
-
+    @Autowired
+    ShowtimeRepository showtimeRepository;
+    @Autowired
+    BookingService bookingService;
+    @Autowired
+    ShowtimeService showtimeService;
+    @PostMapping("/book")
+    public ResponseEntity<String> addBooking(Booking booking, String promoCode, long userId, long showtimeId) {
+        bookingService.saveBooking(booking, userId, showtimeId, promoCode);
+        showtimeService.bookSeat(showtimeId, booking.getSeats());
+        return ResponseEntity.status(HttpStatus.OK).body("Booking successfully added");
+    }
     @GetMapping("/getOrderHistory")
     public ResponseEntity<List<Booking>> getOrderHistory (@RequestParam long userId) {
         User user = null;
@@ -50,7 +63,7 @@ public class BookingController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("booking not found");
         }
 
-        booking.setBookingStatus(true);
+        booking.setBookingStatus(false);
         return ResponseEntity.status(HttpStatus.OK).body("refunded");
     }
 }

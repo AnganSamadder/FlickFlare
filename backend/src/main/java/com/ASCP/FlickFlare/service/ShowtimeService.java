@@ -8,7 +8,7 @@ import java.util.List;
 
 @Service
 public interface ShowtimeService {
-    void saveShowtime(Showtime show);
+    void saveShowtime(Showtime show,long movieId);
     Showtime getShowtime(long id);
     List<Showtime> getAllShowtimesByMovie(long movieId);
     List<Showtime> getAllShowtimesByDate(long date);

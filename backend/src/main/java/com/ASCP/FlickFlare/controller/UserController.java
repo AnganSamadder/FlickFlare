@@ -202,7 +202,32 @@ public class UserController {
 
         String encryptedPassword = userService.encrypt(newPassword);
         user.setPassword(encryptedPassword);
+        userRepository.save(user);
         return ResponseEntity.status(HttpStatus.OK).body("Password successfully changed");
+    }
+    @PutMapping("/suspendUser")
+    public ResponseEntity<String> suspendUser(@RequestParam long id) {
+        User user = null;
+        if (userRepository.findById(id).isPresent()) {
+            user=userRepository.findById(id).get();
+            user.setSuspended(true);
+            return ResponseEntity.status(HttpStatus.OK).body("User successfully suspended");
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User doesn't exist");
+        }
+
+    }
+    @PutMapping("/suspendUser")
+    public ResponseEntity<String> unsuspendUser(@RequestParam long id) {
+        User user = null;
+        if (userRepository.findById(id).isPresent()) {
+            user=userRepository.findById(id).get();
+            user.setSuspended(false);
+            return ResponseEntity.status(HttpStatus.OK).body("User successfully unsuspended");
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User doesn't exist");
+        }
+
     }
     @PutMapping("/deleteUser")
     public ResponseEntity<String> deleteUser(@RequestParam long id) {

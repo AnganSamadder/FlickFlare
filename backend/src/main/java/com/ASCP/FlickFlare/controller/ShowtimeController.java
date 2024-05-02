@@ -17,6 +17,15 @@ public class ShowtimeController {
     @Autowired
     ShowtimeService showtimeService;
 
+    @PostMapping("/add")
+    public ResponseEntity<String> addShowtime(Showtime show,long movieId){
+        try {
+            showtimeService.saveShowtime(show,movieId);
+        } catch (NullPointerException e) {
+            throw new RuntimeException("Given movieId doesn't exist");
+        }
+        return ResponseEntity.status(HttpStatus.OK).body("Showtime Added");
+    }
     @GetMapping("/get")
     public ResponseEntity<List<Showtime>> getShowtimesByMovie(@RequestParam long movieId){
         try{
