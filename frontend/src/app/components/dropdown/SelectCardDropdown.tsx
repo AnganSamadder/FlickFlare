@@ -1,31 +1,39 @@
 "use client";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Card } from "@/app/interfaces/card";
+import { cn } from "@/app/utils/cn";
 
 const SelectCardDropdown = ({
   cards,
+  selectedCard,
+  setSelectedCard,
   classname,
 }: {
   cards: Card[];
+  selectedCard: Card;
+  setSelectedCard: React.Dispatch<React.SetStateAction<Card>>;
   classname?: String;
 }) => {
   const [isDisabled, setIsDisabled] = React.useState(cards.length === 0);
-  const[selectedCard, setSelectedCard] = useState("");
 
   const cardNumFormatter = (cardStr: String) => {
-    const formatNum = "XXXX XXXX XXXX " + cardStr.slice(cardStr.length - 4);
-    return formatNum;
+    return "XXXX XXXX XXXX " + cardStr.slice(cardStr.length - 4);
   };
-  const handleCardChange =(e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedCard(e.target.value);
-  }
+  const handleCardChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    // setSelectedCard(e.target.value); //get the card id
+  };
 
   return (
     <select
       id="cardSelect"
-      value={selectedCard}
+      value={selectedCard.cardNumber}
       onChange={handleCardChange}
-      className={isDisabled? "bg-zinc-400 rounded-md flex w-[299px] h-[35.54px] mx-5 px-4" : "bg-orange-50 rounded-md flex w-[299px] h-[35.54px] mx-5 px-4"}
+      className={cn(
+        isDisabled
+          ? "bg-zinc-400 rounded-md flex w-[299px] h-[35.54px] mx-5 px-4"
+          : "bg-orange-50 rounded-md flex w-[299px] h-[35.54px] mx-5 px-4",
+        classname,
+      )}
       disabled={isDisabled}
     >
       <option className="w-full px-4 bg-transparent outline-none z-20">
@@ -40,7 +48,7 @@ const SelectCardDropdown = ({
           {"Card " + (index + 1) + ": " + cardNumFormatter(card.cardNumber)}
         </option>
       ))}
-      <p> Selected card: {selectedCard}</p>
+      <p> Selected card: {selectedCard.cardNumber}</p>
     </select>
   );
 };

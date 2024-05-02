@@ -32,23 +32,22 @@ public class User {
     private boolean subToPromo;
     @Column
     private boolean admin;
-    @OneToMany(mappedBy = "cardUser", cascade = CascadeType.MERGE,orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "cardUser", cascade = CascadeType.MERGE, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Card> cards = new HashSet<>();
     @Column
     private boolean verified;
     @Column
     private String verifyCode;
-
     @OneToMany(mappedBy = "bookingUser", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Booking> bookings = new HashSet<>();
     @Column
     private String street;
+    @Column
+    private String streetTwo;
     @Column
     private String city;
     @Column
     private String state;
     @Column
     private String zip;
-
-
 }

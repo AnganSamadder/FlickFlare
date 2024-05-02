@@ -2,8 +2,8 @@
 import { Movie } from "@/app/interfaces/movie";
 import { Booking } from "@/app/interfaces/booking";
 import { formatUSD } from "@/app/utils/formatUSD";
-import PaymentCardSection from "@/app/components/ui/PaymentCardSection";
-import React, { useState } from "react";
+import PaymentCards from "./PaymentCards";
+import React from "react";
 
 const Checkout = ({
   movie,
@@ -17,8 +17,8 @@ const Checkout = ({
   incStep: () => void;
 }) => {
   const handleSubmit = () => {
-      editBooking({date: Date.now()});
-      incStep();
+    editBooking({ date: Date.now() });
+    incStep();
   };
 
   // @ts-ignore
@@ -46,7 +46,7 @@ const Checkout = ({
           <div className="p-2 text-orange-500 text-5xl font-bold text-center">
             Checkout
           </div>
-          <PaymentCardSection checkout={true} onSubmit={handleSubmit} />
+          <PaymentCards checkout={true} onSubmit={handleSubmit} />
         </div>
       </div>
     </div>

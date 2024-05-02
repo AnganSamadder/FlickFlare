@@ -1,4 +1,3 @@
-import { Address } from "@/app/interfaces/address";
 import { Card } from "@/app/interfaces/card";
 
 export interface User {
@@ -11,8 +10,12 @@ export interface User {
   subToPromo: boolean;
   admin?: boolean;
   cards?: Card[];
-  addresses?: Address[];
   suspended?: boolean;
   verified?: boolean;
   verifyCode?: string;
+  street?: string;
+  streetTwo?: string;
+  city?: string;
+  state?: string;
+  zip?: string;
 }

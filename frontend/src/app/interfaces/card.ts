@@ -6,5 +6,9 @@ export interface Card {
   expMonth: string;
   expYear: string;
   secCode: string;
-  users?: User[];
+  street: string;
+  streetTwo?: string;
+  city: string;
+  state: string;
+  zip: string;
 }

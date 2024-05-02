@@ -122,6 +122,12 @@ public class UserController {
         }
     }
 
+    @GetMapping("/getByEmail")
+    public ResponseEntity<Long> getByEmail(String email) {
+
+        return ResponseEntity.status(HttpStatus.OK).body(userService.findUserByEmail(email));
+    }
+
     @GetMapping("/getCards")
     public ResponseEntity<Object> getCards(@RequestParam int id) throws ExecutionException, InterruptedException {
         Set<Card> temp;
@@ -233,12 +239,4 @@ public class UserController {
                     return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User doesn't exist");
                 }
             }
-
-    @GetMapping("/findByEmail")
-    public ResponseEntity<Long> findByEmail(String email) {
-
-        return ResponseEntity.status(HttpStatus.OK).body(userService.findUserByEmail(email));
-    }
-
-
 }
