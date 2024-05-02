@@ -10,22 +10,29 @@ const SeatSelect = ({
   movie,
   layout,
   tickets,
+  occupiedSeats,
   editBooking,
   incStep,
 }: {
   movie: Movie;
   layout: string;
   tickets: Tickets;
+  occupiedSeats: string;
   editBooking: (newBooking: Partial<Booking>) => void;
   incStep: () => void;
 }) => {
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
   const [selectedSeats, setSelectedSeats] = useState<string[]>([]);
+  const [occupiedSeatsArray, setOccupiedSeatsArray] = useState<string[]>([]);
 
   const handleSubmit = () => {
     editBooking({ seats: selectedSeats });
     incStep();
   };
+
+  useEffect(() => {
+    setOccupiedSeatsArray(occupiedSeats.split(", "));
+  }, [occupiedSeats]);
 
   useEffect(() => {
     if (selectedSeats.length === tickets.adult + tickets.child) {
@@ -58,7 +65,7 @@ const SeatSelect = ({
               </div>
               <SeatSelector
                 layout={layout}
-                occupiedSeats={["A2", "A3", "C1", "C2"]}
+                occupiedSeats={occupiedSeatsArray}
                 maxSeats={tickets.adult + tickets.child}
                 selectedSeats={selectedSeats}
                 setSelectedSeats={setSelectedSeats}

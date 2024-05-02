@@ -101,4 +101,29 @@ public class PromotionController {
 
     }
 
+    @GetMapping("/validPromo")
+    public ResponseEntity<Integer> validPromo(@RequestParam String givenCode) {
+        long promoId = 0;
+        Promotion promotion;
+        for(Promotion promo:promotionRepository.findAll()) {
+            if(promo.getCode().equalsIgnoreCase(givenCode)) {
+                promoId = promo.getPromotion_id();
+                break;
+            }
+        }
+
+        if(!promotionService.verifyDate(promoId)) {
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(0);
+        }
+
+        if(promotionRepository.findById(promoId).isPresent()) {
+            promotion = promotionRepository.findById(promoId).get();
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(0);
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(promotion.getPercentageDiscount());
+
+    }
+
+
 }

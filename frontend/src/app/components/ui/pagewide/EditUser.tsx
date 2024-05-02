@@ -60,7 +60,7 @@ const EditUser = ({ id }: { id?: string }) => {
     }
 
     console.log(JSON.stringify(user));
-    fetch(`http://localhost:8080/user/editProfile?id=${user.id}`, {
+    fetch(`http://localhost:8080/user/editProfile?id=${user.userId}`, {
       method: "PUT",
       mode: "cors",
       headers: {
@@ -72,7 +72,7 @@ const EditUser = ({ id }: { id?: string }) => {
         if (response.ok) {
           if (!id) {
             fetch(
-              `http://localhost:8080/user/updateNotifyEmail?id=${user.id}`,
+              `http://localhost:8080/user/updateNotifyEmail?id=${user.userId}`,
               {
                 method: "POST",
                 mode: "cors",

@@ -46,21 +46,21 @@ const PaymentCards = ({
   }, []);
 
   useEffect(() => {
-    if (currentUser.id) {
-      fetch(`http://localhost:8080/user/getCards?id=${currentUser.id}`).then(
-        (response) => {
-          console.log(
-            `http://localhost:8080/user/getCards?id=${currentUser.id}`,
-          );
-          if (response.ok) {
-            response.json().then((data) => {
-              setCurrentCardList(data);
-            });
-          } else {
-            console.log("Error getting cards");
-          }
-        },
-      );
+    if (currentUser.userId) {
+      fetch(
+        `http://localhost:8080/user/getCards?id=${currentUser.userId}`,
+      ).then((response) => {
+        console.log(
+          `http://localhost:8080/user/getCards?id=${currentUser.userId}`,
+        );
+        if (response.ok) {
+          response.json().then((data) => {
+            setCurrentCardList(data);
+          });
+        } else {
+          console.log("Error getting cards");
+        }
+      });
     }
   }, [currentUser]);
 

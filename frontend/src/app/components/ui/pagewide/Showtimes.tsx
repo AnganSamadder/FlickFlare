@@ -61,7 +61,7 @@ const Showtimes = ({
                     ? 18
                     : showtime.layout === "2"
                       ? 32
-                      : 72) - showtime.occupiedSeats.length
+                      : 72) - showtime.occupiedSeats.split(", ").length
                 }
                 totalSeats={
                   showtime.layout === "1"

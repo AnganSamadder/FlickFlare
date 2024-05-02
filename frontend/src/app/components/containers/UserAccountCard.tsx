@@ -38,14 +38,61 @@ const UserAccountCard = ({ user }: { user: User }) => {
       setConfirmCountdown(count);
     }, 1000);
   };
-  const handleSuspendCommand = () => handleOpenPopup(1);
-  const handleUnSuspendCommand = () => handleOpenPopup(2);
-  const handleAddAdminCommand = () => handleOpenPopup(3);
-  const handleRemoveAdminCommand = () => handleOpenPopup(4);
-  const handleDeleteCommand = () => handleOpenPopup(5);
+  const handleSuspendCommand = () => {
+    console.log(user);
+    console.log(`http://localhost:8080/user/suspendUser?id=${user.userId}`);
+    fetch(`http://localhost:8080/user/suspendUser?id=${user.userId}`, {
+      method: "PUT",
+    }).then((response) => {
+      if (response.ok) {
+        // handleOpenPopup(1);
+      } else {
+        console.log("Failed to suspend user");
+      }
+    });
+    handleOpenPopup(1);
+  };
+  const handleUnSuspendCommand = () => {
+    fetch(`http://localhost:8080/user/unsuspendUser?id=${user.userId}`).then(
+      (response) => {
+        if (response.ok) {
+        } else {
+          console.log("Failed to unsuspend user");
+        }
+      },
+    );
+  };
+  const handleAddAdminCommand = () => {
+    fetch(`http://localhost:8080/user/makeAdmin?id=${user.userId}`).then(
+      (response) => {
+        if (response.ok) {
+          // handleOpenPopup(3);
+        }
+      },
+    );
+  };
+  const handleRemoveAdminCommand = () => {
+    fetch(`http://localhost:8080/user/removeAdmin?id=${user.userId}`).then(
+      (response) => {
+        if (response.ok) {
+          // handleOpenPopup(4);
+        }
+      },
+    );
+  };
+  const handleDeleteCommand = () => {
+    fetch(`http://localhost:8080/user/delete?id=${user.userId}`).then(
+      (response) => {
+        if (response.ok) {
+          // handleOpenPopup(5);
+        }
+      },
+    );
+    handleOpenPopup(5);
+  };
 
   const handleNavToEditUser = () => {
-    router.push(`/manage/users/${user.id}`);
+    router.push(`/manage/users/${user.userId}`);
   };
 
   const handleOpenPopup = (command: number) => {
@@ -84,7 +131,7 @@ const UserAccountCard = ({ user }: { user: User }) => {
         <div className="flex flex-row gap-x-5">
           <div className="flex-col text-white font-bold">
             <label>ID</label>
-            <p className={checkTextFormat()}>{user.id}</p>
+            <p className={checkTextFormat()}>{user.userId}</p>
           </div>
           <div className="flex-col text-white font-bold">
             <label>Email</label>
@@ -106,14 +153,14 @@ const UserAccountCard = ({ user }: { user: User }) => {
             user.suspended ? (
               <button
                 className="mx-2 p-2 rounded-full bg-yellow-400 hover:bg-yellow-100 active:bg-yellow-700"
-                onClick={handleUnSuspendCommand}
+                onClick={() => handleOpenPopup(2)}
               >
                 Unsuspend
               </button>
             ) : (
               <button
                 className="mx-2 p-2 rounded-full bg-yellow-400 hover:bg-yellow-100 active:bg-yellow-700"
-                onClick={handleSuspendCommand}
+                onClick={() => handleOpenPopup(1)}
               >
                 Suspend
               </button>
@@ -122,21 +169,21 @@ const UserAccountCard = ({ user }: { user: User }) => {
           {user.admin ? (
             <button
               className="py-2 px-3 rounded-full bg-rose-600 hover:bg-rose-400 active:bg-rose-800"
-              onClick={handleRemoveAdminCommand}
+              onClick={() => handleOpenPopup(4)}
             >
               - Admin
             </button>
           ) : (
             <button
               className="py-2 px-3 rounded-full bg-green-500 text-white hover:bg-green-200 active:bg-green-800"
-              onClick={handleAddAdminCommand}
+              onClick={() => handleOpenPopup(3)}
             >
               + Admin
             </button>
           )}
           <button
             className="mx-2 p-2 rounded-full bg-red-600 text-white hover:bg-red-400 active:bg-red-900"
-            onClick={handleDeleteCommand}
+            onClick={() => handleOpenPopup(5)}
           >
             Delete
           </button>
@@ -150,7 +197,6 @@ const UserAccountCard = ({ user }: { user: User }) => {
           ) : null}
         </div>
       </div>
-      {/* Confirmation Popup*/}
       {isPopupVisible ? (
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-zinc-800 p-10 rounded-lg shadow-lg text-white text-center">
           <p>Do you want to {confirmType}:</p>
@@ -168,7 +214,17 @@ const UserAccountCard = ({ user }: { user: User }) => {
                   ? "px-3 py-1 rounded-full bg-rose-800 text-gray-400"
                   : "px-3 py-1 rounded-full bg-red-600 text-white hover:bg-red-500"
               }
-              onClick={handleDeleteUser}
+              onClick={
+                confirmType === "SUSPEND"
+                  ? handleSuspendCommand
+                  : confirmType === "DELETE"
+                    ? handleDeleteUser
+                    : confirmType === "UNSUSPEND"
+                      ? handleUnSuspendCommand
+                      : confirmType === "MAKE ADMIN"
+                        ? handleAddAdminCommand
+                        : handleRemoveAdminCommand
+              }
               disabled={isConfirmDisabled}
             >
               Confirm

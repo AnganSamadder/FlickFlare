@@ -4,24 +4,57 @@ import { Booking } from "@/app/interfaces/booking";
 import { adultPrice, childPrice } from "@/app/globals";
 import { formatUSD } from "@/app/utils/formatUSD";
 import React, { useState } from "react";
+import { useLocalStorage } from "@/app/utils/useLocalStorage";
+import { User } from "@/app/interfaces/user";
+import { Promotion } from "@/app/interfaces/promotion";
 
 const OrderSummary = ({
   movie,
   booking,
   editBooking,
+  promocodeUsed,
+  setPromocodeUsed,
   incStep,
 }: {
   movie: Movie;
   booking: Booking;
   editBooking: (newBooking: Partial<Booking>) => void;
+  promocodeUsed: string;
+  setPromocodeUsed: (promocode: string) => void;
   incStep: () => void;
 }) => {
   const [promocode, setPromocode] = useState<string>("");
-  const [promocodeUsed, setPromocodeUsed] = useState<string>("");
+  const [promoDiscount, setPromoDiscount] = useState<string>("");
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
-      setPromocodeUsed(promocode);
+      fetch(
+        `http://localhost:8080/promotion/validPromo?givenCode=${promocode}`,
+        {
+          headers: {
+            "Cache-Control": "no-cache",
+          },
+        },
+      ).then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok");
+        }
+        res.json().then((obj) => {
+          if (obj) {
+            setPromocodeUsed(promocode);
+            setPromoDiscount(
+              (
+                (parseInt(obj) *
+                  (booking.tickets.adult * adultPrice +
+                    booking.tickets.child * childPrice)) /
+                100
+              ).toString(),
+            );
+          } else {
+            alert("Invalid promocode");
+          }
+        });
+      });
     }
   };
 
@@ -31,7 +64,8 @@ const OrderSummary = ({
         (
           (booking.tickets.adult * adultPrice +
             booking.tickets.child * childPrice) *
-          1.08
+            1.08 -
+          (promocodeUsed !== "" ? parseInt(promoDiscount) : 0)
         ).toFixed(2),
       ),
     });
@@ -100,7 +134,9 @@ const OrderSummary = ({
               <div className="grid grid-cols-3 mb-1 font-semibold text-orange-500">
                 <span>Promo Code ({promocodeUsed})</span>
                 <span className="justify-self-center text-orange-500">-</span>
-                <span className="justify-self-end text-orange-500">-$3.00</span>
+                <span className="justify-self-end text-orange-500">
+                  -{formatUSD(parseFloat(promoDiscount))}
+                </span>
               </div>
             )}
             <div className="grid grid-cols-2 mb-1 text-orange-500">
@@ -120,7 +156,8 @@ const OrderSummary = ({
                 {formatUSD(
                   (booking.tickets.adult * adultPrice +
                     booking.tickets.child * childPrice) *
-                    1.08,
+                    1.08 -
+                    (promocodeUsed !== "" ? parseInt(promoDiscount) : 0),
                 )}
               </span>
             </div>

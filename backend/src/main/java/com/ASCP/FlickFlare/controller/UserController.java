@@ -215,9 +215,8 @@ public class UserController {
         }else{
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User doesn't exist");
         }
-
     }
-    @PutMapping("/suspendUser")
+    @PutMapping("/unsuspendUser")
     public ResponseEntity<String> unsuspendUser(@RequestParam long id) {
         User user = null;
         if (userRepository.findById(id).isPresent()) {

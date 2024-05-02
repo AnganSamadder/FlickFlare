@@ -3,5 +3,5 @@ export interface Showtime {
   date: string;
   time: string;
   layout: string;
-  occupiedSeats: string[];
+  occupiedSeats: string;
 }

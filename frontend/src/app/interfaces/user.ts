@@ -1,7 +1,7 @@
 import { Card } from "@/app/interfaces/card";
 
 export interface User {
-  id?: string;
+  userId?: string;
   password: string;
   email: string;
   firstName: string;

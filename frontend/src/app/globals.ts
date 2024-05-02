@@ -21,7 +21,7 @@ export const nullShowtime: Showtime = {
   date: "",
   time: "",
   layout: "",
-  occupiedSeats: [],
+  occupiedSeats: "",
 };
 
 export const nullMovie: Movie = {

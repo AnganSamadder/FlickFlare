@@ -18,7 +18,7 @@ const ManageUsers = (props: { users: User[] }) => {
         </div>
         <div className="max-h-[65vh] overflow-y-scroll">
           {props.users.map((user) => (
-            <UserAccountCard key={user.id} user={user} />
+            <UserAccountCard key={user.userId} user={user} />
           ))}
         </div>
       </div>

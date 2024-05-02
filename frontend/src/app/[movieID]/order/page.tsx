@@ -12,6 +12,9 @@ import OrderConfirmation from "@/app/components/ui/pagewide/OrderConfirmation";
 import { router } from "next/client";
 import { useRouter } from "next/navigation";
 import { Showtime } from "@/app/interfaces/showtime";
+import { useLocalStorage } from "@/app/utils/useLocalStorage";
+import { User } from "@/app/interfaces/user";
+import { step } from "next/dist/experimental/testmode/playwright/step";
 
 export default function Order({
   params: { movieID },
@@ -21,7 +24,9 @@ export default function Order({
   const [booking, setBooking] = useState<Booking>(nullBooking);
   const [movie, setMovie] = useState<Movie>(nullMovie);
   const [showtime, setShowtime] = useState<Showtime>(nullShowtime);
+  const [promocodeUsed, setPromocodeUsed] = useState<string>("");
   const [step, setStep] = useState<number>(0);
+  const [user, setUser, resetUser] = useLocalStorage<User>("user");
   const router = useRouter();
 
   useEffect(() => {
@@ -58,8 +63,25 @@ export default function Order({
   };
 
   useEffect(() => {
+    const finalBooking = {
+      ...booking,
+      seat: booking.seats.join(", "),
+    };
+
     if (step > 4) {
-      //write fetch to update booking here
+      fetch(
+        `http://localhost:8080/booking/book?booking=${JSON.stringify(booking)}&promoCode=${promocodeUsed}&userId=${user.userId}&showtimeId=${showtime.id}`,
+        {
+          method: "POST",
+          headers: {
+            "Cache-Control": "no-cache",
+          },
+        },
+      ).then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok when booking");
+        }
+      });
     }
   }, [step]);
 
@@ -103,6 +125,7 @@ export default function Order({
             showtime.layout === "1" ? "s" : showtime.layout === "2" ? "m" : "l"
           }
           tickets={booking.tickets}
+          occupiedSeats={showtime.occupiedSeats}
           editBooking={editBooking}
           incStep={incStep}
         />
@@ -111,6 +134,8 @@ export default function Order({
           movie={movie}
           booking={booking}
           editBooking={editBooking}
+          promocodeUsed={promocodeUsed}
+          setPromocodeUsed={setPromocodeUsed}
           incStep={incStep}
         />
       ) : step === 4 ? (
