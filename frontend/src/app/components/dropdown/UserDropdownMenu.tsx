@@ -35,6 +35,7 @@ const UserDropdown = () => {
             case "user":
                 return [
                     {label: "Edit Profile", value: "/edit"},
+                    {label: "Order History", value: "/history"},
                     {label: "Sign Out", value: "signout"},
                 ];
             case "admin":

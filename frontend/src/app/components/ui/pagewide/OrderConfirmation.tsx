@@ -1,5 +1,6 @@
 import { Movie } from "@/app/interfaces/movie";
 import { Booking } from "@/app/interfaces/booking";
+import {useRouter} from "next/navigation";
 
 const OrderConfirmation = ({
   movie,
@@ -8,10 +9,15 @@ const OrderConfirmation = ({
   movie: Movie;
   booking: Booking;
 }) => {
+  const router = useRouter();
   const cardNumFormatter = (cardStr: String) => {
     const formatNum = "XXXX XXXX XXXX " + cardStr.slice(cardStr.length - 4);
     return formatNum;
   };
+
+  const handleNavToHistory = () => {
+    router.push('/history');
+  }
 
   return (
     <div className="flex items-center justify-center">
@@ -78,6 +84,12 @@ const OrderConfirmation = ({
               </span>
             </div>
           </div>
+        </div>
+        <div className="w-full m-5">
+          <button className="w-fit h-fit p-2 bg-orange-500 text-white font-bold rounded-full"
+          onClick={handleNavToHistory}>
+              Order History
+            </button>
         </div>
       </div>
     </div>

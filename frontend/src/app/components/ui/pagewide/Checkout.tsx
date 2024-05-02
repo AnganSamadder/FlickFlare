@@ -1,8 +1,8 @@
-use client";
+"use client"
 import { Movie } from "@/app/interfaces/movie";
 import { Booking } from "@/app/interfaces/booking";
 import { formatUSD } from "@/app/utils/formatUSD";
-import PaymentCards from "./PaymentCards";
+import PaymentCards from "@/app/components/ui/PaymentCards";
 import React from "react";
 
 const Checkout = ({

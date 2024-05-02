@@ -56,24 +56,26 @@ export default function Order({
   };
 
   return (
-    <div className="w-full h-[86vh] px-10 flex-col">
+    <div className="w-full h-[86vh] px-10 flex-col mb-20">
       <div className="flex flex-row">
         {step <= 4 ? (
           <button
             onClick={handleBackButtonClick}
-            className=" mt-5 h-fit px-8 py-2 rounded-bl-3xl rounded-tr-3xl bg-orange-500 text-white font-bold font-['Maven Pro'] leading-normal transition duration-200 hover:bg-orange-500 hover:text-black border-2 border-transparent"
+            className="mx-10 mt-5 h-fit px-8 py-2 rounded-bl-3xl rounded-tr-3xl bg-orange-500 text-white font-bold font-['Maven Pro'] leading-normal transition duration-200 hover:bg-orange-500 hover:text-black border-2 border-transparent"
           >
             Back
           </button>
         ) : null}
 
-        <div className="w-full p-1 text-orange-500 text-5xl font-bold text-center leading-normal">
-          {movie.title}
-        </div>
+        {step <= 4 ? (
+            <div className="w-full p-1 text-orange-500 text-5xl font-bold text-center leading-normal">
+              {movie.title}
+            </div>
+        ) : null}
       </div>
 
       {step === 0 ? (
-        <Showtimes movie={movie} editBooking={editBooking} incStep={incStep} />
+          <Showtimes movie={movie} editBooking={editBooking} incStep={incStep}/>
       ) : step === 1 ? (
         <TicketSelect
           movie={movie}
