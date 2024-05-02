@@ -29,6 +29,8 @@ public class UserController {
     public EmailVerificationServiceImpl emailService;
     @Autowired
     public UserRepository userRepository;
+    @Autowired
+    public CardRepository cardRepository;
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody User user) {
@@ -239,6 +241,20 @@ public class UserController {
     public ResponseEntity<Long> findByEmail(String email) {
 
         return ResponseEntity.status(HttpStatus.OK).body(userService.findUserByEmail(email));
+    }
+
+    @PostMapping("/addCards")
+    public ResponseEntity<String> addCards(@RequestParam long userId, @RequestBody Card card) {
+        User user = null;
+        if(userRepository.findById(userId).isPresent()) {
+            user = userRepository.findById(userId).get();
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("user not found");
+        }
+        card.setCardUser(user);
+        cardRepository.save(card);
+        return ResponseEntity.status(HttpStatus.OK).body("Card successfully added");
+
     }
 
 
