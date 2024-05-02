@@ -217,7 +217,7 @@ public class UserController {
         }
 
     }
-    @PutMapping("/suspendUser")
+    @PutMapping("/unsuspendUser")
     public ResponseEntity<String> unsuspendUser(@RequestParam long id) {
         User user = null;
         if (userRepository.findById(id).isPresent()) {

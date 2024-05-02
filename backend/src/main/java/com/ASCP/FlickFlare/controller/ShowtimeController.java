@@ -18,7 +18,7 @@ public class ShowtimeController {
     ShowtimeService showtimeService;
 
     @PostMapping("/add")
-    public ResponseEntity<String> addShowtime(Showtime show,long movieId){
+    public ResponseEntity<String> addShowtime(@RequestBody Showtime show,@RequestParam long movieId){
         try {
             showtimeService.saveShowtime(show,movieId);
         } catch (NullPointerException e) {

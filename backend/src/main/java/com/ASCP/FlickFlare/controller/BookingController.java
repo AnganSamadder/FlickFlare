@@ -33,7 +33,7 @@ public class BookingController {
     @Autowired
     ShowtimeService showtimeService;
     @PostMapping("/book")
-    public ResponseEntity<String> addBooking(Booking booking, String promoCode, long userId, long showtimeId) {
+    public ResponseEntity<String> addBooking(@RequestBody Booking booking,@RequestParam String promoCode,@RequestParam long userId,@RequestParam long showtimeId) {
         bookingService.saveBooking(booking, userId, showtimeId, promoCode);
         showtimeService.bookSeat(showtimeId, booking.getSeats());
         return ResponseEntity.status(HttpStatus.OK).body("Booking successfully added");
