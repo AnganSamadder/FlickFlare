@@ -15,6 +15,7 @@ import { Showtime } from "@/app/interfaces/showtime";
 import { useLocalStorage } from "@/app/utils/useLocalStorage";
 import { User } from "@/app/interfaces/user";
 import { step } from "next/dist/experimental/testmode/playwright/step";
+import UserPage from "@/app/components/checks/UserPage";
 
 export default function Order({
   params: { movieID },
@@ -86,68 +87,74 @@ export default function Order({
   }, [step]);
 
   return (
-    <div className="w-full h-[86vh] px-10 flex-col mb-20">
-      <div className="flex flex-row">
-        {step <= 4 ? (
-          <button
-            onClick={handleBackButtonClick}
-            className="mx-10 mt-5 h-fit px-8 py-2 rounded-bl-3xl rounded-tr-3xl bg-orange-500 text-white font-bold font-['Maven Pro'] leading-normal transition duration-200 hover:bg-orange-500 hover:text-black border-2 border-transparent"
-          >
-            Back
-          </button>
-        ) : null}
+    <UserPage>
+      <div className="w-full h-[86vh] px-10 flex-col mb-20">
+        <div className="flex flex-row">
+          {step <= 4 ? (
+            <button
+              onClick={handleBackButtonClick}
+              className="mx-10 mt-5 h-fit px-8 py-2 rounded-bl-3xl rounded-tr-3xl bg-orange-500 text-white font-bold font-['Maven Pro'] leading-normal transition duration-200 hover:bg-orange-500 hover:text-black border-2 border-transparent"
+            >
+              Back
+            </button>
+          ) : null}
 
-        {step <= 4 ? (
-          <div className="w-full p-1 text-orange-500 text-5xl font-bold text-center leading-normal">
-            {movie.title}
-          </div>
-        ) : null}
+          {step <= 4 ? (
+            <div className="w-full p-1 text-orange-500 text-5xl font-bold text-center leading-normal">
+              {movie.title}
+            </div>
+          ) : null}
+        </div>
+
+        {step === 0 ? (
+          <Showtimes
+            movie={movie}
+            selectedShowtimes={showtime}
+            editSelectedShowtimes={setShowtime}
+            editBooking={editBooking}
+            incStep={incStep}
+          />
+        ) : step === 1 ? (
+          <TicketSelect
+            movie={movie}
+            editBooking={editBooking}
+            incStep={incStep}
+          />
+        ) : step === 2 ? (
+          <SeatSelect
+            movie={movie}
+            layout={
+              showtime.layout === "1"
+                ? "s"
+                : showtime.layout === "2"
+                  ? "m"
+                  : "l"
+            }
+            tickets={booking.tickets}
+            occupiedSeats={showtime.occupiedSeats}
+            editBooking={editBooking}
+            incStep={incStep}
+          />
+        ) : step === 3 ? (
+          <OrderSummary
+            movie={movie}
+            booking={booking}
+            editBooking={editBooking}
+            promocodeUsed={promocodeUsed}
+            setPromocodeUsed={setPromocodeUsed}
+            incStep={incStep}
+          />
+        ) : step === 4 ? (
+          <Checkout
+            movie={movie}
+            booking={booking}
+            editBooking={editBooking}
+            incStep={incStep}
+          />
+        ) : (
+          <OrderConfirmation movie={movie} booking={booking} />
+        )}
       </div>
-
-      {step === 0 ? (
-        <Showtimes
-          movie={movie}
-          selectedShowtimes={showtime}
-          editSelectedShowtimes={setShowtime}
-          editBooking={editBooking}
-          incStep={incStep}
-        />
-      ) : step === 1 ? (
-        <TicketSelect
-          movie={movie}
-          editBooking={editBooking}
-          incStep={incStep}
-        />
-      ) : step === 2 ? (
-        <SeatSelect
-          movie={movie}
-          layout={
-            showtime.layout === "1" ? "s" : showtime.layout === "2" ? "m" : "l"
-          }
-          tickets={booking.tickets}
-          occupiedSeats={showtime.occupiedSeats}
-          editBooking={editBooking}
-          incStep={incStep}
-        />
-      ) : step === 3 ? (
-        <OrderSummary
-          movie={movie}
-          booking={booking}
-          editBooking={editBooking}
-          promocodeUsed={promocodeUsed}
-          setPromocodeUsed={setPromocodeUsed}
-          incStep={incStep}
-        />
-      ) : step === 4 ? (
-        <Checkout
-          movie={movie}
-          booking={booking}
-          editBooking={editBooking}
-          incStep={incStep}
-        />
-      ) : (
-        <OrderConfirmation movie={movie} booking={booking} />
-      )}
-    </div>
+    </UserPage>
   );
 }

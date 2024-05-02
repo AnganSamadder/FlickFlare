@@ -112,9 +112,9 @@ public class PromotionController {
             }
         }
 
-        if(!promotionService.verifyDate(promoId)) {
-            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(0);
-        }
+//        if(!promotionService.verifyDate(promoId)) {
+//            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(0);
+//        }
 
         if(promotionRepository.findById(promoId).isPresent()) {
             promotion = promotionRepository.findById(promoId).get();

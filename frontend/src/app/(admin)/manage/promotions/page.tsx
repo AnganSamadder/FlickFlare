@@ -151,7 +151,6 @@ function Figma() {
 }
 
 export default async function Promotions() {
-
   //replace this stuff with promo, this movie stuff is to
   const res = await fetch("http://localhost:8080/movie/getAll", {
     headers: {
@@ -166,13 +165,13 @@ export default async function Promotions() {
   const movies = await res.json();
 
   return (
-      <AdminPage>
-        <div className="w-screen h-[86vh] px-4 pb-4 justify-center">
-          <div className="text-orange-500 text-4xl text-center font-bold font-['Maven Pro'] leading-normal">
-            Manage Promotions
-          </div>
-          <EditPromotions promos={movies}/>
+    <AdminPage>
+      <div className="w-screen h-[86vh] px-4 pb-4 justify-center">
+        <div className="text-orange-500 text-4xl text-center font-bold font-['Maven Pro'] leading-normal">
+          Manage Promotions
         </div>
-      </AdminPage>
+        <EditPromotions />
+      </div>
+    </AdminPage>
   );
 }

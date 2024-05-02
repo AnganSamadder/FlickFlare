@@ -1,6 +1,6 @@
 export interface Promotion {
-  id: string;
+  promotion_id: string;
   code: string;
-  expDate: number;
-  discount: string;
+  expirationDate: number;
+  percentageDiscount: string;
 }
