@@ -3,6 +3,7 @@ package com.ASCP.FlickFlare.controller;
 
 import com.ASCP.FlickFlare.model.User;
 import com.ASCP.FlickFlare.model.Card;
+import com.ASCP.FlickFlare.repository.CardRepository;
 import com.ASCP.FlickFlare.repository.UserRepository;
 import com.ASCP.FlickFlare.service.EmailVerificationServiceImpl;
 import com.ASCP.FlickFlare.service.UserService;
