@@ -78,9 +78,11 @@ public class PromotionController {
         for(Promotion promo:promotionRepository.findAll()) {
             if(promo.getCode().equalsIgnoreCase(givenCode)) {
                 promoId = promo.getPromotion_id();
-            } else {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(0);
+                break;
             }
+        }
+        if(promoId==0){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(0);
         }
         if(!promotionService.verifyDate(promoId)) {
             return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(0);

@@ -56,7 +56,7 @@ public class ShowtimeServiceImpl implements ShowtimeService {
         } else {
             throw new NullPointerException("Given movieId doesn't exist");
         }
-        List<Showtime> showtimes = movie.getShowtimes();
+        List<Showtime> showtimes = (List<Showtime>) movie.getShowtimes();
         return showtimes;
     }
 
