@@ -211,6 +211,7 @@ public class UserController {
         if (userRepository.findById(id).isPresent()) {
             user=userRepository.findById(id).get();
             user.setSuspended(true);
+            userRepository.save(user);
             return ResponseEntity.status(HttpStatus.OK).body("User successfully suspended");
         }else{
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User doesn't exist");
@@ -222,6 +223,7 @@ public class UserController {
         if (userRepository.findById(id).isPresent()) {
             user=userRepository.findById(id).get();
             user.setSuspended(false);
+            userRepository.save(user);
             return ResponseEntity.status(HttpStatus.OK).body("User successfully unsuspended");
         }else{
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User doesn't exist");
@@ -266,9 +268,25 @@ public class UserController {
 
         return ResponseEntity.status(HttpStatus.OK).body(userService.findUserByEmail(email));
     }
-
     @PostMapping("/addCards")
     public ResponseEntity<String> addCards(@RequestParam long userId, @RequestBody Card card) {
+        User user = null;
+        if(userRepository.findById(userId).isPresent()) {
+            user = userRepository.findById(userId).get();
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("user not found");
+        }
+
+        String encryptedCard = userService.encrypt(card.getCardNumber());
+        card.setCardNumber(encryptedCard);
+        card.setCardUser(user);
+        cardRepository.save(card);
+
+        return ResponseEntity.status(HttpStatus.OK).body("Card successfully added");
+
+    }
+    @GetMapping("/getAllCards")
+    public ResponseEntity<String> getAllCards(@RequestParam long userId, @RequestBody Card card) {
         User user = null;
         if(userRepository.findById(userId).isPresent()) {
             user = userRepository.findById(userId).get();
@@ -280,6 +298,5 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body("Card successfully added");
 
     }
-
 
 }

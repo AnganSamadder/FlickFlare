@@ -1,5 +1,6 @@
 package com.ASCP.FlickFlare.model;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -20,7 +21,7 @@ public class Movie {
     @Column
     private String description;
     @OneToMany(mappedBy = "movie", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.EAGER)
-    private List<Showtime> showtimes;
+    private Set<Showtime> showtimes=new HashSet<>();
     @Column
     private long releaseDate;
     @Column
