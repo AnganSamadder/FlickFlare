@@ -1,4 +1,4 @@
-import EditMovies from "@/app/components/ui/EditMovies";
+import EditMovies from "@/app/components/ui/pagewide/EditMovies";
 import AdminPage from "@/app/components/checks/AdminPage";
 
 export default async function Showtimes() {
