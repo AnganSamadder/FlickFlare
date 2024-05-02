@@ -1,18 +1,44 @@
+"use client";
 import EditMovies from "@/app/components/ui/pagewide/EditMovies";
 import AdminPage from "@/app/components/checks/AdminPage";
+import { useEffect, useState } from "react";
+import { Movie } from "@/app/interfaces/movie";
 
-export default async function Showtimes() {
-  const res = await fetch("http://localhost:8080/movie/getAll", {
-    headers: {
-      "Cache-Control": "no-cache",
-    },
-  });
+export default function ManageMovies() {
+  const [movies, setMovies] = useState<Movie[]>([]);
+  // const res = await fetch("http://localhost:8080/movie/getAll", {
+  //   headers: {
+  //     "Cache-Control": "no-cache",
+  //   },
+  // });
+  //
+  // if (!res.ok) {
+  //   throw new Error("Network response was not ok");
+  // }
+  //
+  // const movies = await res.json();
 
-  if (!res.ok) {
-    throw new Error("Network response was not ok");
-  }
+  useEffect(() => {
+    fetch("http://localhost:8080/movie/getAll", {
+      headers: {
+        "Cache-Control": "no-cache",
+      },
+    }).then((res) => {
+      if (!res.ok) {
+        throw new Error("Network response was not ok");
+      }
+      res.json().then(
+        (data) => {
+          setMovies(data);
+        },
+        (error) => {
+          console.error("Error when fetching movies:", error);
+        },
+      );
+    });
+  }, []);
 
-  const movies = await res.json();
+  console.log(movies);
 
   return (
     <AdminPage>

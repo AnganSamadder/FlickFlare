@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import AdminPage from "@/app/components/checks/AdminPage";
-import EditUser from "@/app/components/ui/EditUser";
+import EditUser from "@/app/components/ui/pagewide/EditUser";
 
 export default function EditUsers({
   params: { id },

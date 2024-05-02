@@ -10,15 +10,23 @@ import { useRouter } from "next/navigation";
 
 const PaymentCards = ({
   checkout,
+  user,
   onSubmit,
 }: {
+  user?: User;
   checkout?: boolean;
   onSubmit?: () => void;
 }) => {
+  if (!user) {
+    user = nullUser;
+  }
   const router = useRouter();
   const [card, setCard] = useState<Card>(nullCard);
-  const [user, setUser] = useLocalStorage<User>("user", nullUser);
-  const [currentCardList, setCurrentCardList] = useState([]);
+  const [currentCardList, setCurrentCardList] = useState<Card[]>([]);
+  const [currentUser, setCurrentUser, resetCurrentUser] = useLocalStorage<User>(
+    "user",
+    nullUser,
+  );
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCard({
@@ -28,9 +36,33 @@ const PaymentCards = ({
   };
 
   const handleAddCard = () => {
-    user.cards?.push(card);
+    currentUser.cards?.push(card);
     setCard(card);
   };
+
+  useEffect(() => {
+    if (currentUser === nullUser) {
+    }
+  }, []);
+
+  useEffect(() => {
+    if (currentUser.id) {
+      fetch(`http://localhost:8080/user/getCards?id=${currentUser.id}`).then(
+        (response) => {
+          console.log(
+            `http://localhost:8080/user/getCards?id=${currentUser.id}`,
+          );
+          if (response.ok) {
+            response.json().then((data) => {
+              setCurrentCardList(data);
+            });
+          } else {
+            console.log("Error getting cards");
+          }
+        },
+      );
+    }
+  }, [currentUser]);
 
   return (
     <div className="mx-6">

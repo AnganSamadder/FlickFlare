@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Card } from "@/app/interfaces/card";
 import { cn } from "@/app/utils/cn";
 
@@ -17,11 +17,15 @@ const SelectCardDropdown = ({
   const [isDisabled, setIsDisabled] = React.useState(cards.length === 0);
 
   const cardNumFormatter = (cardStr: String) => {
-    return "XXXX XXXX XXXX " + cardStr.slice(cardStr.length - 4);
+    return "XXXX XXXX XXXX XXXX" + cardStr.slice(cardStr.length - 4);
   };
   const handleCardChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     // setSelectedCard(e.target.value); //get the card id
   };
+
+  useEffect(() => {
+    setIsDisabled(cards.length === 0);
+  }, [cards.length]);
 
   return (
     <select
@@ -48,7 +52,7 @@ const SelectCardDropdown = ({
           {"Card " + (index + 1) + ": " + cardNumFormatter(card.cardNumber)}
         </option>
       ))}
-      <p> Selected card: {selectedCard.cardNumber}</p>
+      {/*<div> Selected card: {selectedCard.cardNumber}</div>*/}
     </select>
   );
 };

@@ -1,16 +1,17 @@
 "use client";
 import { Movie } from "@/app/interfaces/movie";
-import { nullBooking, nullMovie } from "@/app/globals";
+import { nullBooking, nullMovie, nullShowtime } from "@/app/globals";
 import { useEffect, useState } from "react";
 import { Booking } from "@/app/interfaces/booking";
 import Showtimes from "@/app/components/ui/pagewide/Showtimes";
 import TicketSelect from "@/app/components/ui/pagewide/TicketSelect";
-import SeatSelect from "@/app/components/ui/pagepart/SeatSelect";
+import SeatSelect from "@/app/components/ui/pagewide/SeatSelect";
 import Checkout from "@/app/components/ui/pagewide/Checkout";
 import OrderSummary from "@/app/components/ui/pagewide/OrderSummary";
 import OrderConfirmation from "@/app/components/ui/pagewide/OrderConfirmation";
 import { router } from "next/client";
 import { useRouter } from "next/navigation";
+import { Showtime } from "@/app/interfaces/showtime";
 
 export default function Order({
   params: { movieID },
@@ -19,6 +20,7 @@ export default function Order({
 }) {
   const [booking, setBooking] = useState<Booking>(nullBooking);
   const [movie, setMovie] = useState<Movie>(nullMovie);
+  const [showtime, setShowtime] = useState<Showtime>(nullShowtime);
   const [step, setStep] = useState<number>(0);
   const router = useRouter();
 
@@ -55,6 +57,12 @@ export default function Order({
     }
   };
 
+  useEffect(() => {
+    if (step > 4) {
+      //write fetch to update booking here
+    }
+  }, [step]);
+
   return (
     <div className="w-full h-[86vh] px-10 flex-col mb-20">
       <div className="flex flex-row">
@@ -68,14 +76,20 @@ export default function Order({
         ) : null}
 
         {step <= 4 ? (
-            <div className="w-full p-1 text-orange-500 text-5xl font-bold text-center leading-normal">
-              {movie.title}
-            </div>
+          <div className="w-full p-1 text-orange-500 text-5xl font-bold text-center leading-normal">
+            {movie.title}
+          </div>
         ) : null}
       </div>
 
       {step === 0 ? (
-          <Showtimes movie={movie} editBooking={editBooking} incStep={incStep}/>
+        <Showtimes
+          movie={movie}
+          selectedShowtimes={showtime}
+          editSelectedShowtimes={setShowtime}
+          editBooking={editBooking}
+          incStep={incStep}
+        />
       ) : step === 1 ? (
         <TicketSelect
           movie={movie}
@@ -85,7 +99,9 @@ export default function Order({
       ) : step === 2 ? (
         <SeatSelect
           movie={movie}
-          layout="l"
+          layout={
+            showtime.layout === "1" ? "s" : showtime.layout === "2" ? "m" : "l"
+          }
           tickets={booking.tickets}
           editBooking={editBooking}
           incStep={incStep}
