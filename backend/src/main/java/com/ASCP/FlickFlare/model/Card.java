@@ -38,6 +38,8 @@ public class Card {
     @Column
     private String street;
     @Column
+    private String streetTwo;
+    @Column
     private String city;
     @Column
     private String state;

@@ -1,40 +1,22 @@
 "use client";
-import InputField from "@/app/components/fields/InputField";
 import { Card } from "@/app/interfaces/card";
-import { Address } from "@/app/interfaces/address";
+import { nullCard } from "@/app/globals";
+import InputField from "@/app/components/fields/InputField";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function Payment() {
   const router = useRouter();
 
-  const [address, setAddress] = useState<Address>({
-    street: "",
-    city: "",
-    state: "",
-    zip: "",
-  });
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
   const [passwordConfirmed, setPasswordConfirmed] = useState<boolean>(false);
-  const [card, setCard] = useState<Card>({
-    cardNumber: "",
-    expMonth: "",
-    expYear: "",
-    secCode: "",
-  });
+  const [card, setCard] = useState<Card>(nullCard);
 
   const [warning, setWarning] = useState<string>("");
 
-  const handleChangeCard = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCard({
       ...card,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleChangeAddress = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setAddress({
-      ...address,
       [e.target.name]: e.target.value,
     });
   };
@@ -91,7 +73,7 @@ export default function Payment() {
                 placeholder="Enter card number..."
                 name="cardNumber"
                 value={card.cardNumber}
-                onChange={handleChangeCard}
+                onChange={handleChange}
                 classname="w-3/4 h-[5vh]"
               />
               <div className="text-orange-500 text-2xl font-medium font-['Maven Pro']">
@@ -103,7 +85,7 @@ export default function Payment() {
                     placeholder="Month"
                     name="expMonth"
                     value={card.expMonth}
-                    onChange={handleChangeCard}
+                    onChange={handleChange}
                     classname="w-[80px] h-9"
                   />
                   <p className="w-1 mx-3 text-white text-[15px] font-medium leading-normal">
@@ -113,7 +95,7 @@ export default function Payment() {
                     placeholder="Year"
                     name="expYear"
                     value={card.expYear}
-                    onChange={handleChangeCard}
+                    onChange={handleChange}
                     classname="w-[80px] h-9"
                   />
                 </div>
@@ -125,7 +107,7 @@ export default function Payment() {
                 placeholder="Enter cvv..."
                 name="secCode"
                 value={card.secCode}
-                onChange={handleChangeCard}
+                onChange={handleChange}
                 classname="w-3/4 h-[5vh]"
               />
             </div>
@@ -136,8 +118,8 @@ export default function Payment() {
               <InputField
                 placeholder="Enter address line 1..."
                 name="street"
-                value={address.street}
-                onChange={handleChangeAddress}
+                value={card.street}
+                onChange={handleChange}
                 classname="w-3/4 h-[5vh]"
               />
               <div className="text-orange-500 text-2xl font-medium font-['Maven Pro']">
@@ -146,8 +128,8 @@ export default function Payment() {
               <InputField
                 placeholder="Enter city..."
                 name="city"
-                value={address.city}
-                onChange={handleChangeAddress}
+                value={card.city}
+                onChange={handleChange}
                 classname="w-3/4 h-[5vh]"
               />
               <div className="w-fit h-fit flex flex-row">
@@ -156,18 +138,18 @@ export default function Payment() {
                     State
                   </div>
                   <InputField
-                    name="expMonth"
+                    name="state"
                     value={card.expMonth}
-                    onChange={handleChangeCard}
+                    onChange={handleChange}
                     classname="w-[60px] h-9 px-2"
                   />
                   <div className="text-orange-500 text-2xl font-medium font-['Maven Pro']">
                     Zip
                   </div>
                   <InputField
-                    name="expYear"
+                    name="zip"
                     value={card.expYear}
-                    onChange={handleChangeCard}
+                    onChange={handleChange}
                     classname="w-[60px] h-9 px-2"
                   />
                 </div>

@@ -1,5 +1,5 @@
 import EditMovies from "@/app/components/ui/EditMovies";
-import AdminPage from "@/app/components/AdminPage";
+import AdminPage from "@/app/components/checks/AdminPage";
 
 export default async function Showtimes() {
   const res = await fetch("http://localhost:8080/movie/getAll", {

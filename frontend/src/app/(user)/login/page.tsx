@@ -92,9 +92,10 @@ export default function Login() {
               {warning}
             </div>
           )}
-          <div className="text-orange-500 text-xl font-medium font-['Maven Pro'] leading-normal">
+          <Link className="text-orange-500 text-xl font-medium font-['Maven Pro'] leading-normal"
+          href={"/forgot"}>
             Forgot Password?
-          </div>
+          </Link>
           <div className="pt-4">
             <button
               onClick={handleLogin}

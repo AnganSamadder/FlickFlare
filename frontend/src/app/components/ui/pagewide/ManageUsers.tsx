@@ -4,7 +4,7 @@ import UserAccountCard from "@/app/components/containers/UserAccountCard";
 const ManageUsers = (props: { users: User[] }) => {
   return (
     <div className="flex-col items-center">
-      <div className="my-5 text-orange-500 text-4xl font-bold text-center">
+      <div className="pt-5 text-orange-500 text-4xl font-bold text-center">
         Manage Users
       </div>
       <div className="rounded-lg bg-zinc-600 m-5 p-5 font-bold">
@@ -16,7 +16,7 @@ const ManageUsers = (props: { users: User[] }) => {
           <p className="font-bold text-black">Unverified User</p>
           <p className="font-bold text-red-600">Suspended User</p>
         </div>
-        <div className="max-h-[70vh] overflow-y-scroll">
+        <div className="max-h-[65vh] overflow-y-scroll">
           {props.users.map((user) => (
             <UserAccountCard key={user.userId} user={user} />
           ))}

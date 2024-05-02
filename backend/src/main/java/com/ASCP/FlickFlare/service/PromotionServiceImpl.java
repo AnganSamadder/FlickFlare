@@ -54,6 +54,7 @@ public class PromotionServiceImpl implements PromotionService{
         } else {
             throw new NullPointerException("given Id promo doesnt exist");
         }
+
         return currentDate <= promo.getExpirationDate();
 
     }

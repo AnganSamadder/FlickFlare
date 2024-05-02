@@ -2,6 +2,7 @@ import { Booking } from "@/app/interfaces/booking";
 import { User } from "@/app/interfaces/user";
 import { Movie } from "@/app/interfaces/movie";
 import { Showtime } from "@/app/interfaces/showtime";
+import { Card } from "@/app/interfaces/card";
 
 export const adultPrice = 14.99;
 export const childPrice = 8.99;
@@ -12,7 +13,7 @@ export const nullUser: User = {
   firstName: "",
   lastName: "",
   phoneNumber: "",
-  subToPromos: false,
+  subToPromo: false,
 };
 
 export const nullShowtime: Showtime = {
@@ -50,4 +51,15 @@ export const nullBooking: Booking = {
     child: 0,
   },
   price: 0,
+};
+
+export const nullCard: Card = {
+  cardNumber: "",
+  expMonth: "",
+  expYear: "",
+  secCode: "",
+  street: "",
+  city: "",
+  state: "",
+  zip: "",
 };

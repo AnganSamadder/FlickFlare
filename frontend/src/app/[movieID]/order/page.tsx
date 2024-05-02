@@ -1,14 +1,14 @@
 "use client";
 import { Movie } from "@/app/interfaces/movie";
 import { nullBooking, nullMovie } from "@/app/globals";
-import Showtimes from "@/app/components/ui/Showtimes";
 import { useEffect, useState } from "react";
 import { Booking } from "@/app/interfaces/booking";
-import TicketSelect from "@/app/components/ui/TicketSelect";
-import SeatSelect from "@/app/components/ui/SeatSelect";
-import Checkout from "@/app/components/ui/Checkout";
-import OrderSummary from "@/app/components/ui/OrderSummary";
-import OrderConfirmation from "@/app/components/ui/OrderConfirmation";
+import Showtimes from "@/app/components/ui/pagewide/Showtimes";
+import TicketSelect from "@/app/components/ui/pagewide/TicketSelect";
+import SeatSelect from "@/app/components/ui/pagepart/SeatSelect";
+import Checkout from "@/app/components/ui/pagewide/Checkout";
+import OrderSummary from "@/app/components/ui/pagewide/OrderSummary";
+import OrderConfirmation from "@/app/components/ui/pagewide/OrderConfirmation";
 import { router } from "next/client";
 import { useRouter } from "next/navigation";
 
