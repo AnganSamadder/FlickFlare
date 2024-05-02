@@ -5,7 +5,7 @@ export interface Movie {
   title: string;
   description: string;
   showtimes: Showtime[];
-  releaseDate: string;
+  releaseDate: number;
   poster: string;
   trailer: string;
   genres: Genre[];

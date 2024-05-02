@@ -45,7 +45,7 @@ const UserAccountCard = ({ user }: { user: User }) => {
   const handleDeleteCommand = () => handleOpenPopup(5);
 
   const handleNavToEditUser = () => {
-    router.push(`/manage/users/${user.userId}`);
+    router.push(`/manage/users/${user.id}`);
   };
 
   const handleOpenPopup = (command: number) => {
@@ -84,7 +84,7 @@ const UserAccountCard = ({ user }: { user: User }) => {
         <div className="flex flex-row gap-x-5">
           <div className="flex-col text-white font-bold">
             <label>ID</label>
-            <p className={checkTextFormat()}>{user.userId}</p>
+            <p className={checkTextFormat()}>{user.id}</p>
           </div>
           <div className="flex-col text-white font-bold">
             <label>Email</label>

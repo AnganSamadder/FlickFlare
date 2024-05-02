@@ -51,6 +51,7 @@ export default function Register() {
           // console.log(data);
           router.push(`/register/${data}/pending`);
         } else {
+          console.log(JSON.stringify(user));
           setWarning(data);
         }
       });

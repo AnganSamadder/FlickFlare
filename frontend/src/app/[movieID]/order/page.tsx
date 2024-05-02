@@ -68,14 +68,14 @@ export default function Order({
         ) : null}
 
         {step <= 4 ? (
-            <div className="w-full p-1 text-orange-500 text-5xl font-bold text-center leading-normal">
-              {movie.title}
-            </div>
+          <div className="w-full p-1 text-orange-500 text-5xl font-bold text-center leading-normal">
+            {movie.title}
+          </div>
         ) : null}
       </div>
 
       {step === 0 ? (
-          <Showtimes movie={movie} editBooking={editBooking} incStep={incStep}/>
+        <Showtimes movie={movie} editBooking={editBooking} incStep={incStep} />
       ) : step === 1 ? (
         <TicketSelect
           movie={movie}

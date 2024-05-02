@@ -1,6 +1,6 @@
 "use client";
 import InputField from "@/app/components/fields/InputField";
-import PaymentCards from "@/app/components/ui/PaymentCards";
+import PaymentCards from "@/app/components/ui/pagepart/PaymentCards";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { User } from "@/app/interfaces/user";
@@ -60,7 +60,7 @@ const EditUser = ({ id }: { id?: string }) => {
     }
 
     console.log(JSON.stringify(user));
-    fetch(`http://localhost:8080/user/editProfile?id=${user.userId}`, {
+    fetch(`http://localhost:8080/user/editProfile?id=${user.id}`, {
       method: "PUT",
       mode: "cors",
       headers: {
@@ -72,7 +72,7 @@ const EditUser = ({ id }: { id?: string }) => {
         if (response.ok) {
           if (!id) {
             fetch(
-              `http://localhost:8080/user/updateNotifyEmail?id=${user.userId}`,
+              `http://localhost:8080/user/updateNotifyEmail?id=${user.id}`,
               {
                 method: "POST",
                 mode: "cors",
@@ -94,6 +94,7 @@ const EditUser = ({ id }: { id?: string }) => {
   };
 
   useEffect(() => {
+    // console.log(user);
     if (id) {
       fetch(`http://localhost:8080/user/get?id=${id}`).then((response) => {
         if (response.ok) {
@@ -101,10 +102,10 @@ const EditUser = ({ id }: { id?: string }) => {
         }
       });
     } else {
-      JSON.parse(localStorage.getItem("user") || "{}");
+      // console.log(JSON.parse(localStorage.getItem("user") as string));
+      setUser(JSON.parse(localStorage.getItem("user") as string));
+      console.log(user);
     }
-
-    setUser(user);
   }, [id]);
 
   return (
@@ -170,7 +171,7 @@ const EditUser = ({ id }: { id?: string }) => {
           />
         </div>
         <div className="grow m-4 p-2 bg-zinc-700 rounded-xl">
-          <PaymentCards />
+          <PaymentCards currentUser={user} />
           <div className="mt-4 mx-6">
             <label className="my-4 w-fit text-white text-[32px] font-bold leading-normal">
               Billing Address

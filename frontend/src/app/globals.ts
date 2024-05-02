@@ -13,7 +13,7 @@ export const nullUser: User = {
   firstName: "",
   lastName: "",
   phoneNumber: "",
-  subToPromo: false,
+  subToPromo: true,
 };
 
 export const nullShowtime: Showtime = {
@@ -29,7 +29,7 @@ export const nullMovie: Movie = {
   title: "",
   description: "",
   showtimes: [],
-  releaseDate: "",
+  releaseDate: 0,
   poster: "",
   trailer: "",
   genres: [],
