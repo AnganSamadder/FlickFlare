@@ -1,5 +1,3 @@
-// import EditPromotions from "@/app/components/EditPromotions";
-
 import AdminPage from "@/app/components/checks/AdminPage";
 import EditPromotions from "@/app/components/ui/pagewide/EditPromotions";
 

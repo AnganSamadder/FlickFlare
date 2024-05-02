@@ -4,6 +4,7 @@ import UserDropdownMenu from "@/app/components/dropdown/UserDropdownMenu";
 import NavbarButton from "@/app/components/button/NavbarButton";
 import React, { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import GenreDropdown from "@/app/components/dropdown/GenreDropdown";
 
 const Navbar = () => {
   // const searchParams = useSearchParams();
@@ -63,6 +64,7 @@ const Navbar = () => {
           </div>
           <div className="flex w-5/6 items-center space-x-4">
             <SearchBar />
+            <GenreDropdown />
             <div className="flex w-2/5 justify-center">
               <NavbarButton
                 onClick={(event) => handleShowing("currently-running")}

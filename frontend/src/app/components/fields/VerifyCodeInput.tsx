@@ -22,7 +22,8 @@ const VerifyCodeInput = ({
     );
 
     if (e.target.value === verifyCode) {
-      fetch(`http://localhost:8080/user/` + isForgotPassword ? `forgotPassword` : `verify` + `?id=${id}`, {
+      // `http://localhost:8080/user/` + isForgotPassword ? `forgotPassword` : `verify` + `?id=${id}`
+      fetch(`http://localhost:8080/user/verify?id=${id}`, {
         method: "PUT",
         mode: "cors",
         headers: {
