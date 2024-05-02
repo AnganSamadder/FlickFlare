@@ -1,4 +1,4 @@
-import MovieGrid from "@/app/components/ui/MovieGrid";
+import MovieGrid from "@/app/components/ui/pagewide/MovieGrid";
 import { Movie } from "@/app/interfaces/movie";
 // import { useLocalStorage } from "@/app/utils/useLocalStorage";
 // import { User } from "@/app/interfaces/user";

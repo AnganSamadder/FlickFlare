@@ -1,4 +1,4 @@
-import MovieGrid from "@/app/components/ui/MovieGrid";
+import MovieGrid from "@/app/components/ui/pagewide/MovieGrid";
 
 export default async function Home() {
   const res = await fetch("http://localhost:8080/movie/showing?showing=false", {

@@ -4,10 +4,11 @@ import { useRouter } from "next/navigation";
 
 const VerifyCodeInput = ({
   id,
-  verifyCode,
+  verifyCode, isForgotPassword,
 }: {
   id: number;
   verifyCode?: string;
+  isForgotPassword?: boolean;
 }) => {
   const router = useRouter();
 
@@ -21,7 +22,7 @@ const VerifyCodeInput = ({
     );
 
     if (e.target.value === verifyCode) {
-      fetch(`http://localhost:8080/user/verify?id=${id}`, {
+      fetch(`http://localhost:8080/user/` + isForgotPassword ? `forgotPassword` : `verify` + `?id=${id}`, {
         method: "PUT",
         mode: "cors",
         headers: {

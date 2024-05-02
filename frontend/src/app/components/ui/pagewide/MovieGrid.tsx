@@ -1,7 +1,7 @@
 "use client";
-import { cn } from "../../utils/cn";
-import { Movie } from "../../interfaces/movie";
-import TrailerPopup from "../containers/TrailerPopup";
+import { cn } from "../../../utils/cn";
+import { Movie } from "../../../interfaces/movie";
+import TrailerPopup from "../../containers/TrailerPopup";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { useRouter } from "next/navigation";

@@ -1,5 +1,5 @@
 import { User } from "@/app/interfaces/user";
-import ManageUsers from "@/app/components/ui/ManageUsers";
+import ManageUsers from "@/app/components/ui/pagewide/ManageUsers";
 
 export default async function Users() {
   const res = await fetch("http://localhost:8080/user/getAll", {

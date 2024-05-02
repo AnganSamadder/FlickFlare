@@ -14,7 +14,8 @@ export default function Register() {
   const [warning, setWarning] = useState<string>("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.name === "confirmPassword" || e.target.name === "password") {
+    // || e.target.name === "password" has resulted in password field to not be able to allow any typing
+    if (e.target.name === "confirmPassword") {
       if (e.target.value === user.password) {
         setPasswordConfirmed(true);
       } else {

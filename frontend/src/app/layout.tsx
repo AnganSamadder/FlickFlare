@@ -1,7 +1,7 @@
 "use client";
 import "@/app/globals.css";
-import Navbar from "@/app/components/ui/Navbar";
-import Footer from "@/app/components/ui/Footer";
+import Navbar from "@/app/components/ui/pagepart/Navbar";
+import Footer from "@/app/components/ui/pagepart/Footer";
 import React from "react";
 
 export default function RootLayout({

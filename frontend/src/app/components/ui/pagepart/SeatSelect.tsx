@@ -3,7 +3,7 @@ import { Movie } from "@/app/interfaces/movie";
 import { Booking, Tickets } from "@/app/interfaces/booking";
 import Seat from "@/public/seat.svg";
 import React, { useEffect, useState } from "react";
-import SeatSelector from "@/app/components/ui/SeatSelector";
+import SeatSelector from "@/app/components/ui/pagewide/SeatSelector";
 import { adultPrice, childPrice } from "@/app/globals";
 
 const SeatSelect = ({
